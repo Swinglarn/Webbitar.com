@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Webbitar</title>
+<meta name="description" content="Webbitar is a small studio that builds, hosts, and cares for websites, and runs its own network of sites to prove what works.">
+<link rel="icon" type="image/png" href="assets/logo-black.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.lede{padding:90px 0}
+.lede .wrap{max-width:760px}
+.lede p{font-size:21px;line-height:1.55;color:var(--ink);margin-bottom:26px}
+.lede p.muted{color:var(--muted);font-size:19px}
+.lede p strong{font-weight:500}
+.stats{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.stat{background:var(--paper);padding:46px 30px;text-align:center}
+.stat .n{font-family:var(--serif);font-size:54px;font-weight:500;line-height:1;color:var(--ink)}
+.stat .l{font-size:13px;letter-spacing:.08em;color:var(--muted);margin-top:10px}
+.values{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.value{border:1px solid var(--line);border-radius:3px;padding:34px 30px}
+.value .mk{color:var(--gold);margin-bottom:18px}
+.value .mk svg{width:22px;height:22px}
+.value h3{font-family:var(--serif);font-weight:600;font-size:23px;margin-bottom:10px}
+.value p{color:var(--muted);font-size:15px}
+.howto{background:var(--paper);border-top:1px solid var(--line)}
+.steps{max-width:760px;margin:0 auto}
+.step{display:flex;gap:28px;padding:30px 0;border-bottom:1px solid var(--line)}
+.step:last-child{border-bottom:0}
+.step .idx{font-family:var(--serif);font-size:36px;font-weight:500;color:var(--gold);line-height:1;min-width:52px}
+.step h3{font-family:var(--serif);font-weight:600;font-size:24px;margin-bottom:6px}
+.step p{color:var(--muted);font-size:15.5px}
+.cta-final{text-align:center}
+.cta-final h2{font-family:var(--serif);font-weight:500;font-size:clamp(32px,5vw,50px);line-height:1.08;max-width:18ch;margin:0 auto 26px}
+.cta-final h2 em{font-style:italic;color:var(--gold)}
+@media(max-width:860px){.stat-grid,.values{grid-template-columns:1fr}.step .idx{font-size:30px;min-width:40px}}
+</style>
+</head>
+<body data-page="about">
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <div class="eyebrow">About Webbitar</div>
+      <h1>A small studio that <em>owns</em> what it builds.</h1>
+      <p>We make websites for businesses, and we run our own network of sites alongside them. That mix keeps us honest: we use the same tools, hosting, and SEO playbook on our own work that we put behind yours.</p>
+    </div>
+  </section>
+
+  <section class="lede">
+    <div class="wrap">
+      <p class="reveal">Most agencies hand you a site and walk away. We do the opposite. <strong>We design and build it, we host it, and we keep caring for it</strong> so it stays fast, secure, and findable for years, not just on launch day.</p>
+      <p class="muted reveal">Webbitar grew out of building and ranking our own sites. Before we ask a client to trust an approach, we have usually tried it on our own properties first. If it does not bring in traffic for us, we do not sell it to you.</p>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="wrap">
+      <div class="stat-grid reveal">
+        <div class="stat"><div class="n">7+</div><div class="l">Sites we own and run</div></div>
+        <div class="stat"><div class="n">200+</div><div class="l">Pages live across our network</div></div>
+        <div class="stat"><div class="n">100%</div><div class="l">Custom-coded, no page builders</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">How we work</div>
+        <h2>What you can expect from us</h2>
+      </div>
+      <div class="values reveal">
+        <div class="value">
+          <div class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h7v8l10-12h-7z"/></svg></div>
+          <h3>Fast by default</h3>
+          <p>Hand-coded, lightweight pages that load quickly on a phone, not heavy templates stuffed with plugins.</p>
+        </div>
+        <div class="value">
+          <div class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+          <h3>Built to be found</h3>
+          <p>Search is at the center of how we build, because being seen is the whole point of having a site.</p>
+        </div>
+        <div class="value">
+          <div class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3>Looked after</h3>
+          <p>Hosting, backups, security, and small edits handled on an ongoing plan, so you can forget the plumbing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="howto">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">The process</div>
+        <h2>From first message to live site</h2>
+      </div>
+      <div class="steps reveal">
+        <div class="step"><div class="idx">I</div><div><h3>Talk</h3><p>You send a short brief through the quote form. We reply with questions and a price range, no obligation.</p></div></div>
+        <div class="step"><div class="idx">II</div><div><h3>Design</h3><p>We agree on scope and look, then build a real, working version you can click through, not just a flat mockup.</p></div></div>
+        <div class="step"><div class="idx">III</div><div><h3>Build &amp; launch</h3><p>We code it properly, set up search and analytics, and put it live on hosting we manage.</p></div></div>
+        <div class="step"><div class="idx">IV</div><div><h3>Care</h3><p>We keep it running, make edits as you grow, and watch the numbers so the site keeps earning its place.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-final">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="star-rule" style="margin-bottom:30px"><span class="ln"></span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l1.6 9L24 12l-10.4 3L12 24l-1.6-9L0 12l10.4-3z"/></svg><span class="ln r"></span></div>
+        <h2>Let's build something <em>worth keeping</em>.</h2>
+        <a href="contact.html" class="btn btn-primary">Get a quote</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="site.js"></script>
+</body>
+</html>

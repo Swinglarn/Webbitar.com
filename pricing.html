@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — Webbitar</title>
+<meta name="description" content="What a Webbitar website typically costs. Indicative ranges for builds and hosting, in SEK. Request a fixed quote.">
+<link rel="icon" type="image/png" href="assets/logo-black.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.tier{background:#fff;border:1px solid var(--line);border-radius:3px;padding:38px 32px;display:flex;flex-direction:column}
+.tier.feature{border-color:var(--gold);position:relative}
+.tier.feature::before{content:"Most common";position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:#fff;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:4px 14px;border-radius:2px}
+.tier h3{font-family:var(--serif);font-weight:600;font-size:26px;margin-bottom:6px}
+.tier .blurb{font-size:14px;color:var(--muted);margin-bottom:22px;min-height:42px}
+.tier .price{font-family:var(--serif);font-size:42px;font-weight:500;line-height:1;margin-bottom:4px}
+.tier .price small{font-size:16px;color:var(--muted)}
+.tier .from{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
+.tier ul{list-style:none;margin-bottom:28px;flex:1}
+.tier li{font-size:14.5px;padding:9px 0;border-bottom:1px solid var(--line);color:var(--ink);display:flex;gap:10px;align-items:flex-start}
+.tier li:last-child{border-bottom:0}
+.tier li svg{width:14px;height:14px;flex-shrink:0;margin-top:4px;color:var(--gold)}
+.tier .btn{text-align:center;width:100%}
+.hosting-row{margin-top:30px;background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:30px 34px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.hosting-row .h-txt h4{font-family:var(--serif);font-size:23px;font-weight:600;margin-bottom:4px}
+.hosting-row .h-txt p{font-size:14.5px;color:var(--muted);max-width:52ch}
+.hosting-row .h-price{font-family:var(--serif);font-size:30px;font-weight:500;white-space:nowrap}
+.hosting-row .h-price small{font-size:14px;color:var(--muted)}
+.note-band{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.note-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.note{padding:6px 4px}
+.note h4{font-family:var(--serif);font-size:21px;font-weight:600;margin-bottom:8px}
+.note p{font-size:14.5px;color:var(--muted)}
+.faq{max-width:760px;margin:0 auto}
+.faq details{border-bottom:1px solid var(--line);padding:20px 0}
+.faq summary{font-family:var(--serif);font-size:21px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .pl{color:var(--gold);font-size:22px;transition:transform .2s}
+.faq details[open] summary .pl{transform:rotate(45deg)}
+.faq details p{color:var(--muted);font-size:15.5px;margin-top:12px}
+.cta-final{text-align:center;background:var(--paper);border-top:1px solid var(--line)}
+.cta-final h2{font-family:var(--serif);font-weight:500;font-size:clamp(32px,5vw,50px);line-height:1.08;max-width:18ch;margin:0 auto 16px}
+.cta-final h2 em{font-style:italic;color:var(--gold)}
+.cta-final p{color:var(--muted);max-width:48ch;margin:0 auto 26px}
+@media(max-width:860px){.price-grid,.note-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-page="pricing">
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <div class="eyebrow">Pricing</div>
+      <h1>Clear ranges, then a <em>fixed</em> quote.</h1>
+      <p>Every site is quoted on its own, but these ranges cover most of what we build. Prices in SEK, excluding VAT. Send a brief and you'll get a firm number back, no obligation.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="price-grid reveal">
+        <div class="tier">
+          <h3>Starter</h3>
+          <div class="blurb">A clean one-pager or small brochure site to get you online properly.</div>
+          <div class="price">8,000<small> kr</small></div>
+          <div class="from">From / one-time build</div>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Up to 5 pages, custom design</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Mobile-ready &amp; fast</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Contact form &amp; basic SEO</li>
+          </ul>
+          <a href="contact.html" class="btn btn-ghost">Get a quote</a>
+        </div>
+
+        <div class="tier feature">
+          <h3>Business</h3>
+          <div class="blurb">A full multi-page site with the content and search setup to bring in work.</div>
+          <div class="price">18,000<small> kr</small></div>
+          <div class="from">From / one-time build</div>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Up to ~15 pages</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>SEO structure &amp; copy help</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Analytics &amp; search setup</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>1 month support included</li>
+          </ul>
+          <a href="contact.html" class="btn btn-primary">Get a quote</a>
+        </div>
+
+        <div class="tier">
+          <h3>Custom</h3>
+          <div class="blurb">Web apps, calculators, booking, logins, or anything beyond a standard site.</div>
+          <div class="price">30,000<small> kr+</small></div>
+          <div class="from">From / scoped per project</div>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Custom features &amp; logic</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Database &amp; integrations</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Built for scale</li>
+          </ul>
+          <a href="contact.html" class="btn btn-ghost">Let's talk</a>
+        </div>
+      </div>
+
+      <div class="hosting-row reveal">
+        <div class="h-txt">
+          <h4>Hosting &amp; care plan</h4>
+          <p>Hosting, security, backups, small edits, and updates. We keep it running so you don't have to think about it.</p>
+        </div>
+        <div class="h-price">from 400 kr<small> / month</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="note-band">
+    <div class="wrap">
+      <div class="note-grid reveal">
+        <div class="note"><h4>No surprises</h4><p>You get a fixed quote before any work starts. The number we agree is the number you pay.</p></div>
+        <div class="note"><h4>You own it</h4><p>The site is yours. Hosting with us is a choice, not a lock-in, and you can take your site elsewhere.</p></div>
+        <div class="note"><h4>Pay in stages</h4><p>For larger builds we split payment across milestones, so cost tracks progress.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Questions</div>
+        <h2>Before you ask</h2>
+      </div>
+      <div class="faq reveal">
+        <details><summary>Why a range and not a fixed price?<span class="pl">+</span></summary><p>A five-page site and a fifteen-page site with a booking tool are very different jobs. The ranges show where most projects land, and the quote pins it down once we know what you actually need.</p></details>
+        <details><summary>What affects the final price?<span class="pl">+</span></summary><p>Number of pages, how much custom design and functionality is involved, whether you have content ready, and any tools or integrations. We walk through all of it before quoting.</p></details>
+        <details><summary>Do I have to take the hosting plan?<span class="pl">+</span></summary><p>No. It's the easiest path because we then handle everything, but you're free to host the finished site wherever you like.</p></details>
+        <details><summary>How long does a build take?<span class="pl">+</span></summary><p>A starter site is usually a couple of weeks; larger and custom builds take longer. We give you a timeline with the quote.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-final">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="star-rule" style="margin-bottom:30px"><span class="ln"></span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l1.6 9L24 12l-10.4 3L12 24l-1.6-9L0 12l10.4-3z"/></svg><span class="ln r"></span></div>
+        <h2>Get a <em>real</em> number for your project.</h2>
+        <p>Tell us what you need and we'll send a fixed quote back, usually within a day or two.</p>
+        <a href="contact.html" class="btn btn-primary">Request a quote</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="site.js"></script>
+</body>
+</html>
