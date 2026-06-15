@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Om oss — Webbitar</title>
+<meta name="description" content="Webbitar är en liten studio som bygger, driftar och sköter webbplatser, och driver egna sidor för att bevisa vad som fungerar.">
+<link rel="icon" type="image/png" href="assets/logo-black.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.lede{padding:90px 0}
+.lede .wrap{max-width:760px}
+.lede p{font-size:21px;line-height:1.55;color:var(--ink);margin-bottom:26px}
+.lede p.muted{color:var(--muted);font-size:19px}
+.lede p strong{font-weight:500}
+.stats{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.stat{background:var(--paper);padding:46px 30px;text-align:center}
+.stat .n{font-family:var(--serif);font-size:54px;font-weight:500;line-height:1;color:var(--ink)}
+.stat .l{font-size:13px;letter-spacing:.04em;color:var(--muted);margin-top:10px}
+.values{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.value{border:1px solid var(--line);border-radius:3px;padding:34px 30px}
+.value .mk{color:var(--gold);margin-bottom:18px}
+.value .mk svg{width:22px;height:22px}
+.value h3{font-family:var(--serif);font-weight:600;font-size:23px;margin-bottom:10px}
+.value p{color:var(--muted);font-size:15px}
+.howto{background:var(--paper);border-top:1px solid var(--line)}
+.steps{max-width:760px;margin:0 auto}
+.step{display:flex;gap:28px;padding:30px 0;border-bottom:1px solid var(--line)}
+.step:last-child{border-bottom:0}
+.step .idx{font-family:var(--serif);font-size:36px;font-weight:500;color:var(--gold);line-height:1;min-width:52px}
+.step h3{font-family:var(--serif);font-weight:600;font-size:24px;margin-bottom:6px}
+.step p{color:var(--muted);font-size:15.5px}
+.cta-final{text-align:center}
+.cta-final h2{font-family:var(--serif);font-weight:500;font-size:clamp(32px,5vw,50px);line-height:1.08;max-width:18ch;margin:0 auto 26px}
+.cta-final h2 em{font-style:italic;color:var(--gold)}
+@media(max-width:860px){.stat-grid,.values{grid-template-columns:1fr}.step .idx{font-size:30px;min-width:40px}}
+</style>
+</head>
+<body data-page="about">
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <div class="eyebrow">Om Webbitar</div>
+      <h1>En liten studio som <em>äger</em> det den bygger.</h1>
+      <p>Vi gör webbplatser för företag, och vi driver våra egna sidor vid sidan av dem. Den blandningen håller oss ärliga: vi använder samma verktyg, hosting och SEO-metod på vårt eget arbete som vi lägger bakom ditt.</p>
+    </div>
+  </section>
+
+  <section class="lede">
+    <div class="wrap">
+      <p class="reveal">De flesta byråer lämnar över en sida och går vidare. Vi gör tvärtom. <strong>Vi designar och bygger den, vi driftar den, och vi fortsätter sköta den</strong> så att den förblir snabb, säker och hittbar i flera år, inte bara på lanseringsdagen.</p>
+      <p class="muted reveal">Webbitar växte fram ur att bygga och ranka våra egna sidor. Innan vi ber en kund lita på ett tillvägagångssätt har vi oftast testat det på våra egna plattformar först. Om det inte ger trafik åt oss, säljer vi det inte till dig.</p>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="wrap">
+      <div class="stat-grid reveal">
+        <div class="stat"><div class="n">2</div><div class="l">Plattformar vi äger och driver</div></div>
+        <div class="stat"><div class="n">800+</div><div class="l">Sidor live i vårt nätverk</div></div>
+        <div class="stat"><div class="n">SMF</div><div class="l">Inriktade på små &amp; medelstora företag</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Så jobbar vi</div>
+        <h2>Vad du kan förvänta dig av oss</h2>
+      </div>
+      <div class="values reveal">
+        <div class="value">
+          <div class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h7v8l10-12h-7z"/></svg></div>
+          <h3>Snabb som standard</h3>
+          <p>Snabba, lätta sidor som laddar fort i mobilen, så att besökare stannar och sökmotorer tar notis.</p>
+        </div>
+        <div class="value">
+          <div class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+          <h3>Byggd för att hittas</h3>
+          <p>Sök står i centrum för hur vi bygger, för att synas är hela poängen med att ha en sida.</p>
+        </div>
+        <div class="value">
+          <div class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3>Omhändertagen</h3>
+          <p>Hosting, säkerhetskopior, säkerhet och små ändringar sköts löpande, så du kan glömma rörmokeriet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="howto">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Processen</div>
+        <h2>Från första meddelande till live sida</h2>
+      </div>
+      <div class="steps reveal">
+        <div class="step"><div class="idx">I</div><div><h3>Prata</h3><p>Du skickar en kort beskrivning via offertformuläret. Vi svarar med frågor och ett prisförslag, utan förpliktelse.</p></div></div>
+        <div class="step"><div class="idx">II</div><div><h3>Design</h3><p>Vi kommer överens om omfattning och utseende, och bygger sedan en riktig, fungerande version du kan klicka dig igenom, inte bara en platt skiss.</p></div></div>
+        <div class="step"><div class="idx">III</div><div><h3>Bygg &amp; lansera</h3><p>Vi bygger den ordentligt, sätter upp sök och analys, och tar den live på hosting vi sköter.</p></div></div>
+        <div class="step"><div class="idx">IV</div><div><h3>Skötsel</h3><p>Vi håller den igång, gör ändringar när du växer, och bevakar siffrorna så sidan fortsätter göra nytta.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-final">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="star-rule" style="margin-bottom:30px"><span class="ln"></span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l1.6 9L24 12l-10.4 3L12 24l-1.6-9L0 12l10.4-3z"/></svg><span class="ln r"></span></div>
+        <h2>Låt oss bygga något <em>värt att behålla</em>.</h2>
+        <a href="contact.html" class="btn btn-primary">Begär offert</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="site.js"></script>
+</body>
+</html>

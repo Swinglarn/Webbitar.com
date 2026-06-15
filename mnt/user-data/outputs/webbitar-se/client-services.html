@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kundtjänster — Webbitar</title>
+<meta name="description" content="Webbitar Kundtjänster: webbdesign, hosting och löpande skötsel för företag. Begär en offert.">
+<link rel="icon" type="image/png" href="assets/logo-black.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.offer{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.offer .item{border:1px solid var(--line);border-radius:3px;padding:38px 34px;display:flex;flex-direction:column}
+.offer .item .mk{color:var(--gold);margin-bottom:18px}
+.offer .item .mk svg{width:24px;height:24px}
+.offer .item h3{font-family:var(--serif);font-weight:600;font-size:25px;margin-bottom:10px}
+.offer .item p{color:var(--muted);font-size:15.5px}
+.fit{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.fit .col{background:#fff;border:1px solid var(--line);border-radius:3px;padding:32px 30px}
+.fit .col h3{font-family:var(--serif);font-weight:600;font-size:22px;margin-bottom:14px}
+.fit .col ul{list-style:none}
+.fit .col li{font-size:15px;color:var(--ink);padding:9px 0;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:flex-start}
+.fit .col li:last-child{border-bottom:0}
+.fit .col li svg{width:15px;height:15px;flex-shrink:0;margin-top:4px;color:var(--gold)}
+.proof{text-align:center}
+.proof .wrap{max-width:720px}
+.proof blockquote{font-family:var(--serif);font-weight:500;font-style:italic;font-size:clamp(26px,4vw,38px);line-height:1.25}
+.proof .src{margin-top:24px;font-size:14px;letter-spacing:.04em;color:var(--muted)}
+.proof .src a{color:var(--gold);font-weight:500}
+.cta-final{text-align:center;background:var(--ink);color:#e9e7df}
+.cta-final h2{font-family:var(--serif);font-weight:500;font-size:clamp(32px,5vw,52px);line-height:1.08;max-width:18ch;margin:0 auto 16px;color:#fff}
+.cta-final h2 em{font-style:italic;color:var(--gold-soft)}
+.cta-final p{color:#b8b6ad;max-width:48ch;margin:0 auto 28px}
+@media(max-width:860px){.offer,.fit-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-page="client">
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <div class="eyebrow">Webbitar Kundtjänster</div>
+      <h1>Din webbplats, byggd och skött av <em>människor som äger sina egna</em>.</h1>
+      <p>Vi tar med exakt det hantverk som ligger bakom vårt eget nätverk till ditt företag: en sida som laddar snabbt, syns i sök och fortsätter fungera långt efter lansering, med ett team ansvarigt för allt.</p>
+      <div style="margin-top:30px"><a href="contact.html" class="btn btn-primary">Begär offert</a></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Vad du får</div>
+        <h2>Allt en sida behöver, på ett ställe</h2>
+      </div>
+      <div class="offer reveal">
+        <div class="item">
+          <div class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8"/></svg></div>
+          <h3>Skräddarsydd design</h3>
+          <p>En sida designad kring ditt företag och de människor du vill nå. Ren, tydlig och lätt att hitta i på varje skärm.</p>
+        </div>
+        <div class="item">
+          <div class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></div>
+          <h3>Byggd för mindre företag</h3>
+          <p>Vi specialiserar oss på små och medelstora företag, så att omfattning, tempo och pris passar hur du faktiskt jobbar, utan byråkostnader du inte behöver.</p>
+        </div>
+        <div class="item">
+          <div class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+          <h3>SEO &amp; sökuppsättning</h3>
+          <p>Byggd för att hittas från dag ett: ren struktur, snabba sidor och korrekt uppsättning av sök och analys.</p>
+        </div>
+        <div class="item">
+          <div class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3>Hosting &amp; löpande skötsel</h3>
+          <p>Vi driftar den, säkrar den, säkerhetskopierar den och gör ändringar när du växer, på ett enkelt månadsupplägg.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="proof">
+    <div class="wrap reveal">
+      <div class="star-rule" style="margin-bottom:34px"><span class="ln"></span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l1.6 9L24 12l-10.4 3L12 24l-1.6-9L0 12l10.4-3z"/></svg><span class="ln r"></span></div>
+      <blockquote>Vi säljer det vi redan driver själva. Varje metod bakom våra egna sidor är en vi gärna lägger bakom dina.</blockquote>
+      <div class="src">Se det själv i <a href="portfolio.html">vårt portfolio</a></div>
+    </div>
+  </section>
+
+  <section class="fit">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Vem det passar</div>
+        <h2>Bra passform om du vill&hellip;</h2>
+      </div>
+      <div class="fit-grid reveal">
+        <div class="col">
+          <h3>Ha en första riktig sida</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Du startar upp och behöver se trovärdig ut</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Du vill ha det rätt gjort en gång, inte ihopplockat</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Du vill helst lämna ifrån dig det tekniska</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h3>Ersätta en gammal</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Din nuvarande sida är långsam eller föråldrad</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Den syns inte i sök</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Ingen har skött den</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h3>Något skräddarsytt</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Du behöver en kalkylator, ett verktyg eller bokning</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Du vill ha inloggning eller en databas bakom</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Standardlösningar räcker helt enkelt inte</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-final">
+    <div class="wrap">
+      <div class="reveal">
+        <h2>Berätta vad du har i <em>tankarna</em>.</h2>
+        <p>Skicka en kort beskrivning så får du ett riktigt svar med ett prisförslag, oftast inom en dag eller två.</p>
+        <a href="contact.html" class="btn btn-primary">Begär offert</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="site.js"></script>
+</body>
+</html>
