@@ -24,7 +24,7 @@
 .hero .eyebrow{font-size:13px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;animation:rise .9s .1s cubic-bezier(.2,.7,.2,1) both}
 .hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(46px,7.5vw,90px);line-height:1.02;letter-spacing:.01em;max-width:15ch;margin:0 auto 26px}
 .hero h1 .l{display:inline-block;animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
-.hero h1 em{font-style:italic;color:var(--gold)}
+.hero h1 em{font-style:italic}
 .hero p{max-width:54ch;margin:0 auto 38px;color:var(--muted);font-size:19px;animation:rise .9s .5s cubic-bezier(.2,.7,.2,1) both}
 .hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;animation:rise .9s .62s cubic-bezier(.2,.7,.2,1) both}
 @keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
@@ -66,7 +66,7 @@
     <div class="wrap">
       <div class="markwrap"><img src="../assets/logo-black.png" alt="Webbitar"></div>
       <div class="eyebrow">Webbitar Företagstjänster</div>
-      <h1 id="heroTitle">Webbplatser byggda<br>för att <em>synas</em>, och<br>skötas <em>noga</em>.</h1>
+      <h1 id="heroTitle">Webbplatser byggda och<br>skötta för att <em>synas</em>.</h1>
       <p>Vi designar, bygger och driftar snabba, rena webbplatser för företag, och vi fortsätter att sköta dem långt efter lansering. Inga mallar utklädda till skräddarsytt.</p>
       <div class="hero-actions">
         <a href="contact.html" class="btn btn-primary">Begär offert</a>
@@ -124,7 +124,7 @@
 <script src="../site.js"></script>
 <script>
 (function(){
-  var words=[['Webbplatser byggda',''],['för att ','synas',', och'],['skötas\u00a0','noga','.']];
+  var words=[['Webbplatser byggda och',''],['skötta för att ','synas','.']];
   var html='';
   words.forEach(function(line,li){
     line.forEach(function(seg,si){
