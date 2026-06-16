@@ -1,41 +1,95 @@
 (function(){
+  var lang = document.documentElement.lang || 'en';
+  var isSv = lang === 'sv';
+  var prefix = isSv ? '../' : '';
   var page = document.body.getAttribute('data-page') || '';
 
-  var nav =
-  '<header><div class="wrap nav">'+
-    '<a class="brand" href="index.html"><img src="assets/logo-black.png" alt="Webbitar"><span>WEBBITAR</span></a>'+
-    '<nav class="nav-links" id="navlinks">'+
-      '<a href="about.html" data-p="about">About</a>'+
-      '<a href="portfolio.html" data-p="portfolio">Portfolio</a>'+
-      '<a href="client-services.html" data-p="client">Client Services</a>'+
-      '<a href="pricing.html" data-p="pricing">Pricing</a>'+
-      '<a href="contact.html" data-p="contact" class="nav-cta">Get a quote</a>'+
-    '</nav>'+
-    '<button class="menu-btn" id="menuBtn" aria-label="Menu">&#9776;</button>'+
-  '</div></header>';
+  // Get current page filename for switcher
+  var path = window.location.pathname;
+  var file = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
+  var langToggleUrl = isSv ? '../' + file : 'sv/' + file;
+  var langToggleText = isSv ? 'EN' : 'SV';
 
-  var foot =
-  '<footer><div class="wrap">'+
-    '<div class="foot-top">'+
-      '<div>'+
-        '<div class="foot-brand"><img src="assets/logo-white.png" alt="Webbitar"><span>WEBBITAR</span></div>'+
-        '<p style="margin-top:16px;font-size:14px;color:#8a887f;max-width:34ch">Web design, hosting, and care for businesses that want to be found.</p>'+
-      '</div>'+
-      '<div class="foot-cols">'+
-        '<div class="foot-col"><h5>Studio</h5>'+
-          '<a href="about.html">About</a>'+
-          '<a href="portfolio.html">Portfolio</a>'+
-          '<a href="client-services.html">Client Services</a>'+
-          '<a href="pricing.html">Pricing</a>'+
+  var nav = '';
+  if (isSv) {
+    nav =
+    '<header><div class="wrap nav">'+
+      '<a class="brand" href="index.html"><img src="' + prefix + 'assets/logo-black.png" alt="Webbitar"><span>WEBBITAR</span></a>'+
+      '<nav class="nav-links" id="navlinks">'+
+        '<a href="about.html" data-p="about">Om oss</a>'+
+        '<a href="portfolio.html" data-p="portfolio">Portfolio</a>'+
+        '<a href="client-services.html" data-p="client">Våra tjänster</a>'+
+        '<a href="pricing.html" data-p="pricing">Priser</a>'+
+        '<a href="contact.html" data-p="contact" class="nav-cta">Begär offert</a>'+
+        '<a href="' + langToggleUrl + '" style="border:1px solid var(--line);padding:4px 8px;border-radius:2px;font-size:12px;font-weight:600;color:var(--gold);letter-spacing:0.05em;margin-left:8px">' + langToggleText + '</a>'+
+      '</nav>'+
+      '<button class="menu-btn" id="menuBtn" aria-label="Meny">&#9776;</button>'+
+    '</div></header>';
+  } else {
+    nav =
+    '<header><div class="wrap nav">'+
+      '<a class="brand" href="index.html"><img src="' + prefix + 'assets/logo-black.png" alt="Webbitar"><span>WEBBITAR</span></a>'+
+      '<nav class="nav-links" id="navlinks">'+
+        '<a href="about.html" data-p="about">About</a>'+
+        '<a href="portfolio.html" data-p="portfolio">Portfolio</a>'+
+        '<a href="client-services.html" data-p="client">Client Services</a>'+
+        '<a href="pricing.html" data-p="pricing">Pricing</a>'+
+        '<a href="contact.html" data-p="contact" class="nav-cta">Get a quote</a>'+
+        '<a href="' + langToggleUrl + '" style="border:1px solid var(--line);padding:4px 8px;border-radius:2px;font-size:12px;font-weight:600;color:var(--gold);letter-spacing:0.05em;margin-left:8px">' + langToggleText + '</a>'+
+      '</nav>'+
+      '<button class="menu-btn" id="menuBtn" aria-label="Menu">&#9776;</button>'+
+    '</div></header>';
+  }
+
+  var foot = '';
+  var year = new Date().getFullYear();
+  if (isSv) {
+    foot =
+    '<footer><div class="wrap">'+
+      '<div class="foot-top">'+
+        '<div>'+
+          '<div class="foot-brand"><img src="' + prefix + 'assets/logo-white.png" alt="Webbitar"><span>WEBBITAR</span></div>'+
+          '<p style="margin-top:16px;font-size:14px;color:#8a887f;max-width:34ch">Webbdesign, hosting och skötsel för företag som vill synas.</p>'+
         '</div>'+
-        '<div class="foot-col"><h5>Contact</h5>'+
-          '<a href="contact.html">Get a quote</a>'+
-          '<a href="mailto:hello@webbitar.com">hello@webbitar.com</a>'+
+        '<div class="foot-cols">'+
+          '<div class="foot-col"><h5>Studio</h5>'+
+            '<a href="about.html">Om oss</a>'+
+            '<a href="portfolio.html">Portfolio</a>'+
+            '<a href="client-services.html">Våra tjänster</a>'+
+            '<a href="pricing.html">Priser</a>'+
+          '</div>'+
+          '<div class="foot-col"><h5>Kontakt</h5>'+
+            '<a href="contact.html">Begär offert</a>'+
+            '<a href="mailto:webbitar@gmail.com">webbitar@gmail.com</a>'+
+          '</div>'+
         '</div>'+
       '</div>'+
-    '</div>'+
-    '<div class="foot-bot"><span>&copy; 2026 Webbitar. All rights reserved.</span><span>Built &amp; hosted in-house.</span></div>'+
-  '</div></footer>';
+      '<div class="foot-bot"><span>&copy; ' + year + ' Webbitar. Alla rättigheter förbehållna.</span><span>Byggd &amp; driftad in-house.</span></div>'+
+    '</div></footer>';
+  } else {
+    foot =
+    '<footer><div class="wrap">'+
+      '<div class="foot-top">'+
+        '<div>'+
+          '<div class="foot-brand"><img src="' + prefix + 'assets/logo-white.png" alt="Webbitar"><span>WEBBITAR</span></div>'+
+          '<p style="margin-top:16px;font-size:14px;color:#8a887f;max-width:34ch">Web design, hosting, and care for businesses that want to be found.</p>'+
+        '</div>'+
+        '<div class="foot-cols">'+
+          '<div class="foot-col"><h5>Studio</h5>'+
+            '<a href="about.html">About</a>'+
+            '<a href="portfolio.html">Portfolio</a>'+
+            '<a href="client-services.html">Client Services</a>'+
+            '<a href="pricing.html">Pricing</a>'+
+          '</div>'+
+          '<div class="foot-col"><h5>Contact</h5>'+
+            '<a href="contact.html">Get a quote</a>'+
+            '<a href="mailto:webbitar@gmail.com">webbitar@gmail.com</a>'+
+          '</div>'+
+        '</div>'+
+      '</div>'+
+      '<div class="foot-bot"><span>&copy; ' + year + ' Webbitar. All rights reserved.</span><span>Built &amp; hosted in-house.</span></div>'+
+    '</div></footer>';
+  }
 
   document.body.insertAdjacentHTML('afterbegin', nav);
   document.body.insertAdjacentHTML('beforeend', foot);

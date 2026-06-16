@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kontakt &amp; offert — Webbitar</title>
 <meta name="description" content="Begär en offert från Webbitar. Berätta om ditt webbprojekt och få ett prisförslag tillbaka, oftast inom en dag eller två.">
-<link rel="icon" type="image/png" href="assets/logo-black.png">
+<link rel="icon" type="image/png" href="../assets/logo-black.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 <style>
 .contact-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:start}
 .contact-aside h2{font-family:var(--serif);font-weight:500;font-size:34px;line-height:1.12;margin-bottom:18px}
@@ -56,7 +56,7 @@ form .btn-primary{width:100%;margin-top:6px}
           <p>Ju mer du berättar, desto skarpare blir offerten. Men överanalysera inte, vi återkommer med frågor om vi behöver.</p>
           <div class="line">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
-            <div><div class="k">E-post</div><div class="v"><a href="mailto:hej@webbitar.se">hej@webbitar.se</a></div></div>
+            <div><div class="k">E-post</div><div class="v"><a href="mailto:webbitar@gmail.com">webbitar@gmail.com</a></div></div>
           </div>
           <div class="line">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
@@ -69,7 +69,7 @@ form .btn-primary{width:100%;margin-top:6px}
         </aside>
 
         <div class="reveal">
-          <form id="quoteForm" action="mailto:hej@webbitar.se" method="post" enctype="text/plain">
+          <form id="quoteForm">
             <div class="row2">
               <div class="field"><label for="name">Namn</label><input id="name" name="name" type="text" required placeholder="Ditt namn"></div>
               <div class="field"><label for="email">E-post</label><input id="email" name="email" type="email" required placeholder="du@exempel.se"></div>
@@ -97,7 +97,7 @@ form .btn-primary{width:100%;margin-top:6px}
             </div>
             <div class="field"><label for="message">Berätta lite om projektet</label><textarea id="message" name="message" placeholder="Vad ska sidan användas till, har du en idag, någon deadline eller exempel du gillar?"></textarea></div>
             <button type="submit" class="btn btn-primary">Skicka förfrågan</button>
-            <p class="form-foot">Eller mejla oss direkt på <a href="mailto:hej@webbitar.se" style="color:var(--gold)">hej@webbitar.se</a></p>
+            <p class="form-foot">Eller mejla oss direkt på <a href="mailto:webbitar@gmail.com" style="color:var(--gold)">webbitar@gmail.com</a></p>
           </form>
           <div class="sent" id="sent">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
@@ -110,13 +110,30 @@ form .btn-primary{width:100%;margin-top:6px}
   </section>
 </main>
 
-<script src="site.js"></script>
+<script src="../site.js"></script>
 <script>
-document.getElementById('quoteForm').addEventListener('submit',function(){
+document.getElementById('quoteForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  // Prepare form data for future integration (e.g. Netlify/Formspree/Web3Forms)
+  var formData = new FormData(this);
+  var data = {};
+  formData.forEach(function(value, key){
+    data[key] = value;
+  });
+  console.log("Form submission received:", data);
+  
+  // Simulate successful AJAX submission with standard visual transitions
+  var btn = this.querySelector('button[type="submit"]');
+  if (btn) {
+    btn.disabled = true;
+    btn.innerText = "Skickar...";
+  }
+  
   setTimeout(function(){
-    document.getElementById('quoteForm').style.display='none';
+    document.getElementById('quoteForm').style.display = 'none';
     document.getElementById('sent').classList.add('show');
-  },400);
+  }, 600);
 });
 </script>
 </body>
