@@ -138,20 +138,7 @@
   });
   document.getElementById('heroTitle').innerHTML=html;
 })();
-(function(){
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var bg=document.getElementById('heroBg');var n=14;
-  for(var i=0;i<n;i++){
-    var s=document.createElement('span');s.className='star';
-    var size=(6+Math.random()*10).toFixed(0);
-    s.innerHTML='<svg width="'+size+'" height="'+size+'" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l1.6 9L24 12l-10.4 3L12 24l-1.6-9L0 12l10.4-3z"/></svg>';
-    s.style.left=(Math.random()*100)+'%';
-    s.style.top=(Math.random()*85)+'%';
-    s.style.animationDelay=(Math.random()*4)+'s';
-    s.style.animationDuration=(3+Math.random()*3)+'s';
-    bg.appendChild(s);
-  }
-})();
+
 </script>
 </body>
 </html>
