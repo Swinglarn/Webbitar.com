@@ -1,4 +1,4 @@
-(function(){
+﻿(function(){
   var lang = document.documentElement.lang || 'en';
   var isSv = lang === 'sv';
   var prefix = isSv ? '../' : '';
@@ -49,7 +49,7 @@
       '<div class="foot-top">'+
         '<div>'+
           '<div class="foot-brand"><img src="' + prefix + 'assets/logo-white.png" alt="Webbitar"><span>WEBBITAR</span></div>'+
-          '<p style="margin-top:16px;font-size:14px;color:#8a887f;max-width:34ch">Webbdesign, hosting och skötsel för företag som vill synas.</p>'+
+          '<p style="margin-top:16px;font-size:14px;color:#94a3b8;max-width:34ch">Webbdesign, hosting och skötsel för företag som vill synas.</p>'+
         '</div>'+
         '<div class="foot-cols">'+
           '<div class="foot-col"><h5>Studio</h5>'+
@@ -72,7 +72,7 @@
       '<div class="foot-top">'+
         '<div>'+
           '<div class="foot-brand"><img src="' + prefix + 'assets/logo-white.png" alt="Webbitar"><span>WEBBITAR</span></div>'+
-          '<p style="margin-top:16px;font-size:14px;color:#8a887f;max-width:34ch">Web design, hosting, and care for businesses that want to be found.</p>'+
+          '<p style="margin-top:16px;font-size:14px;color:#94a3b8;max-width:34ch">Web design, hosting, and care for businesses that want to be found.</p>'+
         '</div>'+
         '<div class="foot-cols">'+
           '<div class="foot-col"><h5>Studio</h5>'+

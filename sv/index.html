@@ -15,6 +15,8 @@
 .hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
 .hero-bg .star{position:absolute;color:var(--gold);opacity:0;animation:twinkle 4s ease-in-out infinite}
 @keyframes twinkle{0%,100%{opacity:0;transform:scale(.6)}50%{opacity:.55;transform:scale(1)}}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.22;mix-blend-mode:multiply}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.55) 0%,rgba(255,255,255,.25) 60%,rgba(255,255,255,.75) 100%)}
 .hero .wrap{position:relative;z-index:1}
 .hero .markwrap{display:flex;justify-content:center;margin-bottom:30px}
 .hero .markwrap img{height:96px;width:auto;animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
@@ -36,23 +38,30 @@
 .svc p{color:var(--muted);font-size:15.5px}
 .split{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .split .panel{border:1px solid var(--line);border-radius:3px;padding:46px 40px;background:#fff;display:flex;flex-direction:column}
-.split .panel.dark{background:var(--ink);color:#e9e7df;border-color:var(--ink)}
+.split .panel.dark{background:var(--ink);color:#f0f4ff;border-color:var(--ink)}
 .split .panel .eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
 .split .panel h3{font-family:var(--serif);font-weight:500;font-size:30px;line-height:1.12;margin-bottom:14px}
 .split .panel.dark h3{color:#fff}
 .split .panel p{color:var(--muted);font-size:15.5px;margin-bottom:26px;flex:1}
-.split .panel.dark p{color:#b8b6ad}
+.split .panel.dark p{color:#94a3b8}
 .cta-final{text-align:center;background:var(--paper);border-top:1px solid var(--line)}
 .cta-final h2{font-family:var(--serif);font-weight:500;font-size:clamp(34px,5vw,54px);line-height:1.08;max-width:18ch;margin:0 auto 26px}
 .cta-final h2 em{font-style:italic;color:var(--gold)}
 @media(max-width:860px){.svc-grid{grid-template-columns:1fr}.split{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.hero-video{display:none}}
 </style>
 </head>
 <body data-page="home">
 
 <main>
   <section class="hero">
-    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-bg">
+      <video class="hero-video" autoplay muted loop playsinline preload="none" aria-hidden="true">
+        <source src="../assets/hero-wave.webm" type="video/webm">
+        <source src="../assets/hero-wave.mov" type="video/quicktime">
+      </video>
+      <div class="hero-overlay"></div>
+    </div>
     <div class="wrap">
       <div class="markwrap"><img src="../assets/logo-black.png" alt="Webbitar"></div>
       <div class="eyebrow">Webbitar Företagstjänster</div>
