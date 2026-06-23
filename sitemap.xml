@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Home -->
+  <url>
+    <loc>https://webbitar.com/index.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/index.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/index.html"/>
+  </url>
+  <url>
+    <loc>https://webbitar.com/sv/index.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/index.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/index.html"/>
+  </url>
+
+  <!-- About -->
+  <url>
+    <loc>https://webbitar.com/about.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/about.html"/>
+  </url>
+  <url>
+    <loc>https://webbitar.com/sv/about.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/about.html"/>
+  </url>
+
+  <!-- Client Services -->
+  <url>
+    <loc>https://webbitar.com/client-services.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/client-services.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/client-services.html"/>
+  </url>
+  <url>
+    <loc>https://webbitar.com/sv/client-services.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/client-services.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/client-services.html"/>
+  </url>
+
+  <!-- Portfolio -->
+  <url>
+    <loc>https://webbitar.com/portfolio.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/portfolio.html"/>
+  </url>
+  <url>
+    <loc>https://webbitar.com/sv/portfolio.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/portfolio.html"/>
+  </url>
+
+  <!-- Pricing -->
+  <url>
+    <loc>https://webbitar.com/pricing.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/pricing.html"/>
+  </url>
+  <url>
+    <loc>https://webbitar.com/sv/pricing.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/pricing.html"/>
+  </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://webbitar.com/contact.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/contact.html"/>
+  </url>
+  <url>
+    <loc>https://webbitar.com/sv/contact.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/contact.html"/>
+  </url>
+
+</urlset>
