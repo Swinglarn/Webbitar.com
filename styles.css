@@ -43,7 +43,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdro
 .page-head{padding:84px 0 70px;border-bottom:1px solid var(--line);background:var(--paper)}
 .page-head .eyebrow{font-size:13px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
 .page-head h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,6vw,68px);line-height:1.05;max-width:18ch}
-.page-head h1 em{font-style:italic;color:var(--gold)}
+h1 em, h2 em, h3 em{font-style:normal !important;color:inherit !important}
 .page-head p{max-width:56ch;margin-top:22px;color:var(--muted);font-size:19px}
 
 /* sections */
