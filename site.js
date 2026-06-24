@@ -1,4 +1,4 @@
-﻿(function(){
+(function(){
   var lang = document.documentElement.lang || 'en';
   var isSv = lang === 'sv';
   var prefix = isSv ? '../' : '';
@@ -60,7 +60,8 @@
           '</div>'+
           '<div class="foot-col"><h5>Kontakt</h5>'+
             '<a href="contact">Begär offert</a>'+
-            '<a href="mailto:webbitar@gmail.com">webbitar@gmail.com</a>'+
+            '<a href="mailto:quote@webbitar.com">quote@webbitar.com</a>'+
+            '<a href="privacy">Integritetspolicy</a>'+
           '</div>'+
         '</div>'+
       '</div>'+
@@ -83,7 +84,8 @@
           '</div>'+
           '<div class="foot-col"><h5>Contact</h5>'+
             '<a href="contact">Get a quote</a>'+
-            '<a href="mailto:webbitar@gmail.com">webbitar@gmail.com</a>'+
+            '<a href="mailto:quote@webbitar.com">quote@webbitar.com</a>'+
+            '<a href="privacy">Privacy Policy</a>'+
           '</div>'+
         '</div>'+
       '</div>'+
