@@ -4,110 +4,110 @@
 
   <!-- Home -->
   <url>
-    <loc>https://webbitar.com/index.html</loc>
+    <loc>https://webbitar.com/index</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/index.html"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/index"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/index"/>
   </url>
   <url>
-    <loc>https://webbitar.com/sv/index.html</loc>
+    <loc>https://webbitar.com/sv/index</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/index.html"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/index"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/index"/>
   </url>
 
   <!-- About -->
   <url>
-    <loc>https://webbitar.com/about.html</loc>
+    <loc>https://webbitar.com/about</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/about.html"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/about"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/about"/>
   </url>
   <url>
-    <loc>https://webbitar.com/sv/about.html</loc>
+    <loc>https://webbitar.com/sv/about</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/about.html"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/about"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/about"/>
   </url>
 
   <!-- Client Services -->
   <url>
-    <loc>https://webbitar.com/client-services.html</loc>
+    <loc>https://webbitar.com/client-services</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/client-services.html"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/client-services.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/client-services"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/client-services"/>
   </url>
   <url>
-    <loc>https://webbitar.com/sv/client-services.html</loc>
+    <loc>https://webbitar.com/sv/client-services</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/client-services.html"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/client-services.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/client-services"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/client-services"/>
   </url>
 
   <!-- Portfolio -->
   <url>
-    <loc>https://webbitar.com/portfolio.html</loc>
+    <loc>https://webbitar.com/portfolio</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/portfolio.html"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/portfolio"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/portfolio"/>
   </url>
   <url>
-    <loc>https://webbitar.com/sv/portfolio.html</loc>
+    <loc>https://webbitar.com/sv/portfolio</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/portfolio.html"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/portfolio"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/portfolio"/>
   </url>
 
   <!-- Pricing -->
   <url>
-    <loc>https://webbitar.com/pricing.html</loc>
+    <loc>https://webbitar.com/pricing</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/pricing.html"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/pricing"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/pricing"/>
   </url>
   <url>
-    <loc>https://webbitar.com/sv/pricing.html</loc>
+    <loc>https://webbitar.com/sv/pricing</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/pricing.html"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/pricing"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/pricing"/>
   </url>
 
   <!-- Contact -->
   <url>
-    <loc>https://webbitar.com/contact.html</loc>
+    <loc>https://webbitar.com/contact</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/contact.html"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/contact"/>
   </url>
   <url>
-    <loc>https://webbitar.com/sv/contact.html</loc>
+    <loc>https://webbitar.com/sv/contact</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/contact.html"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/contact"/>
   </url>
 
 </urlset>
