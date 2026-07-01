@@ -6,7 +6,10 @@
 
   // Get current page filename for switcher
   var path = window.location.pathname;
-  var file = path.substring(path.lastIndexOf('/') + 1) || 'index';
+  var file = path.substring(path.lastIndexOf('/') + 1);
+  if (file === '' || file === 'sv') {
+    file = path.indexOf('.html') > -1 ? 'index.html' : 'index';
+  }
   var langToggleUrl = isSv ? '../' + file : 'sv/' + file;
   var langToggleText = isSv ? 'EN' : 'SV';
 
