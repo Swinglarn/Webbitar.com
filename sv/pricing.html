@@ -26,24 +26,31 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css">
 <style>
-.plan-lead{display:grid;grid-template-columns:1.1fr 1fr;gap:30px;align-items:stretch}
-.plan-card{background:var(--ink);color:#f0f4ff;border-radius:4px;padding:46px 44px;display:flex;flex-direction:column}
-.plan-card .tag{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:16px}
-.plan-card h2{font-family:var(--serif);font-weight:500;font-size:34px;color:#fff;margin-bottom:8px;line-height:1.1}
-.plan-card .price{font-family:var(--serif);font-weight:500;font-size:60px;line-height:1;color:#fff;margin:18px 0 4px}
-.plan-card .price small{font-size:20px;color:#94a3b8}
-.plan-card .billing{font-size:13px;color:#94a3b8;margin-bottom:26px}
-.plan-card ul{list-style:none;margin-bottom:28px}
-.plan-card li{font-size:15px;padding:10px 0;border-bottom:1px solid #1e293b;display:flex;gap:11px;align-items:flex-start;color:#f0f4ff}
+.plan-lead{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;align-items:stretch}
+.plan-card{background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:4px;padding:40px 32px;display:flex;flex-direction:column;position:relative;transition:transform .25s, box-shadow .25s}
+.plan-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,0.05)}
+.plan-card.featured{background:var(--ink);color:#f0f4ff;border-color:var(--ink);transform:scale(1.03);box-shadow:0 20px 40px -15px rgba(15,23,42,0.35);z-index:2}
+.plan-card.featured:hover{transform:scale(1.03) translateY(-4px);box-shadow:0 24px 45px -12px rgba(15,23,42,0.45)}
+.plan-card .popular-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--gold);color:#fff;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;padding:4px 14px;border-radius:20px;white-space:nowrap;box-shadow:0 4px 10px rgba(26,86,219,0.3)}
+.plan-card .tag{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-weight:600}
+.plan-card.featured .tag{color:var(--gold-soft)}
+.plan-card h2{font-family:var(--serif);font-weight:500;font-size:28px;color:var(--ink);margin-bottom:6px;line-height:1.1}
+.plan-card.featured h2{color:#fff}
+.plan-card .desc{font-size:14px;color:var(--muted);margin-bottom:16px;line-height:1.4}
+.plan-card.featured .desc{color:#94a3b8}
+.plan-card .price{font-family:var(--serif);font-weight:500;font-size:52px;line-height:1;color:var(--ink);margin:14px 0 4px}
+.plan-card.featured .price{color:#fff}
+.plan-card .price small{font-size:18px;color:var(--muted);font-family:var(--sans);font-weight:400}
+.plan-card.featured .price small{color:#94a3b8}
+.plan-card .billing{font-size:12px;color:var(--muted);margin-bottom:20px}
+.plan-card.featured .billing{color:#94a3b8}
+.plan-card ul{list-style:none;margin-bottom:24px}
+.plan-card li{font-size:14.5px;padding:8px 0;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:flex-start;color:var(--ink)}
+.plan-card.featured li{border-bottom:1px solid #1e293b;color:#f0f4ff}
 .plan-card li:last-child{border-bottom:0}
-.plan-card li svg{width:15px;height:15px;flex-shrink:0;margin-top:4px;color:var(--gold-soft)}
-.plan-card .btn{text-align:center;margin-top:auto}
-.plan-aside{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:40px 38px;display:flex;flex-direction:column;justify-content:center}
-.plan-aside h3{font-family:var(--serif);font-weight:600;font-size:25px;margin-bottom:14px}
-.plan-aside p{color:var(--muted);font-size:15.5px;margin-bottom:18px}
-.plan-aside .pts{list-style:none}
-.plan-aside .pts li{font-size:14.5px;color:var(--ink);padding:8px 0;display:flex;gap:10px;align-items:flex-start}
-.plan-aside .pts li svg{width:15px;height:15px;flex-shrink:0;margin-top:4px;color:var(--gold)}
+.plan-card li svg{width:14px;height:14px;flex-shrink:0;margin-top:4px;color:var(--gold)}
+.plan-card.featured li svg{color:var(--gold-soft)}
+.plan-card .btn{text-align:center;margin-top:auto;width:100%}
 .billing-note{margin-top:14px;font-size:13px;color:var(--muted)}
 .addons{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .addon-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
@@ -76,7 +83,7 @@
 .cta-final h2{font-family:var(--serif);font-weight:500;font-size:clamp(32px,5vw,50px);line-height:1.08;max-width:18ch;margin:0 auto 16px}
 .cta-final h2 em{font-style:italic;color:var(--gold)}
 .cta-final p{color:var(--muted);max-width:48ch;margin:0 auto 26px}
-@media(max-width:860px){.plan-lead,.addon-grid,.note-grid{grid-template-columns:1fr}}
+@media(max-width:860px){.plan-lead,.addon-grid,.note-grid{grid-template-columns:1fr} .plan-lead{gap:36px} .plan-card.featured{transform:none !important;box-shadow:none}}
 </style>
 </head>
 <body data-page="pricing">
@@ -93,45 +100,61 @@
   <section>
     <div class="wrap">
       <div class="plan-lead reveal">
+        <!-- Lilla paketet -->
         <div class="plan-card">
-          <div class="tag" style="background:var(--gold);color:#fff;display:inline-block;padding:3px 9px;border-radius:2px;font-size:11px;font-weight:600;letter-spacing:0.06em">Prova 3 månader gratis</div>
-          <h2 style="margin-top:14px">En komplett 5-sidors webbplats</h2>
-          <p style="color:#94a3b8;font-size:14.5px;margin-top:6px;line-height:1.4">Prova gratis i 3 månader. Helt riskfritt — låt oss bygga den.</p>
-          <div class="price-options" style="margin:22px 0;display:flex;flex-direction:column;gap:10px">
-            <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1e293b;padding-bottom:8px">
-              <span style="color:#94a3b8;font-size:14px">Månadsvis</span>
-              <span style="font-weight:600;color:#fff;font-size:22px">899 kr<small style="font-size:13px;color:#94a3b8;font-weight:400">/mån</small></span>
-            </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1e293b;padding-bottom:8px">
-              <span style="color:#94a3b8;font-size:14px">12-månadersavtal <span style="font-size:10px;color:var(--green-soft);font-weight:600;margin-left:4px;border:1px solid var(--green-soft);padding:1px 4px;border-radius:2px;letter-spacing:0.02em">30% RABATT &middot; SPARA 3 240 KR/ÅR</span></span>
-              <span style="font-weight:600;color:#fff;font-size:22px">629 kr<small style="font-size:13px;color:#94a3b8;font-weight:400">/mån</small></span>
-            </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:4px">
-              <span style="color:#94a3b8;font-size:14px">24-månadersavtal <span style="font-size:10px;color:var(--green-soft);font-weight:600;margin-left:4px;border:1px solid var(--green-soft);padding:1px 4px;border-radius:2px;letter-spacing:0.02em">40% RABATT &middot; SPARA 4 320 KR/ÅR</span></span>
-              <span style="font-weight:600;color:#fff;font-size:22px">539 kr<small style="font-size:13px;color:#94a3b8;font-weight:400">/mån</small></span>
-            </div>
-          </div>
-          <div class="billing" style="margin-bottom:18px;font-size:13px;color:#94a3b8">Riskfritt provmedlemskap. Avsluta när du vill.</div>
+          <div class="tag">Lilla paketet</div>
+          <h2>Hemsida &amp; Hosting</h2>
+          <p class="desc">Enbart hemsidan och webbhotell. Perfekt för en ren, professionell online-närvaro utan extra verktyg.</p>
+          <div class="price">449 kr<small>/mån</small></div>
+          <div class="billing">Faktureras månadsvis. Riskfritt.</div>
           <ul>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>5 sidor: start, om oss, kontakt, jobba hos oss och priser</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>5 unika sidor</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Snabbt webbhotell &amp; drift ingår</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>SSL-säkerhet &amp; backup</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Tekniskt underhåll</li>
+            <li style="opacity: 0.55; text-decoration: line-through;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:var(--muted);"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>SEO-optimering &amp; uppsättning</li>
+            <li style="opacity: 0.55; text-decoration: line-through;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:var(--muted);"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>Google Företagsprofil</li>
+          </ul>
+          <a href="contact" class="btn btn-ghost">Begär offert</a>
+        </div>
+
+        <!-- Mellanpaketet (Featured) -->
+        <div class="plan-card featured">
+          <div class="popular-badge">De flesta kunder väljer detta</div>
+          <div class="tag">Mellanpaketet</div>
+          <h2>Tillväxtpaketet</h2>
+          <p class="desc">Vårt rekommenderade paket. Innehåller inbyggd sökmotorsoptimering och Google-profil så du blir hittad.</p>
+          <div class="price">899 kr<small>/mån</small></div>
+          <div class="billing">Faktureras månadsvis. Riskfritt.</div>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>5 unika sidor</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Snabbt webbhotell &amp; drift ingår</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>SSL-säkerhet &amp; backup</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>SEO-optimering inbyggd</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Uppsättning av Google Företagsprofil</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Hosting ingår varje månad</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Löpande skötsel och små ändringar</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Google Företagsprofil uppsatt</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Löpande support &amp; små ändringar</li>
           </ul>
           <a href="contact" class="btn btn-primary">Begär offert</a>
         </div>
-        <div class="plan-aside">
-          <h3>Varför ett abonnemang?</h3>
-          <p>En webbplats blir aldrig riktigt klar. I stället för en stor engångsavgift och sedan tystnad får du en sida som förblir driftad, säker och omhändertagen för en förutsägbar månadskostnad.</p>
-          <ul class="pts">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Ingen stor uppstartskostnad</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Hosting och skötsel ingår i priset</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Skala sidor upp eller ner när du växer</li>
+
+        <!-- Stora paketet -->
+        <div class="plan-card">
+          <div class="tag">Stora paketet</div>
+          <h2>Professionell synlighet</h2>
+          <p class="desc">Det kompletta paketet för företag som vill ha aktiv SEO-synlighet, bokning och utrymme att växa.</p>
+          <div class="price">1 449 kr<small>/mån</small></div>
+          <div class="billing">Faktureras månadsvis. Riskfritt.</div>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Upp till 10 unika sidor</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Löpande SEO &amp; månadsrapport</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Google Företagsprofil &amp; uppdatering</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Blogg eller bokningssystem inbyggt</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Prioriterad support &amp; ändringar</li>
           </ul>
-          <p class="billing-note">Domännamnet köps och ägs av dig och ingår inte i månadspriset.</p>
+          <a href="contact" class="btn btn-ghost">Begär offert</a>
         </div>
       </div>
+      <p class="billing-note" style="text-align: center; margin-top: 32px;">Domännamnet köps och ägs av dig och ingår inte i månadsabonnemanget. Riskfritt provmedlemskap. Avsluta när du vill.</p>
     </div>
   </section>
 
@@ -148,7 +171,8 @@
         <div class="addon"><div class="a-txt"><h4>Blogg / nyhetssektion</h4><p>Vi bygger och sköter sektionen, du skriver inläggen.</p></div><div class="a-price">+789 kr<small>/mån</small></div></div>
         <div class="addon"><div class="a-txt"><h4>Bokning &amp; tidsbeställning</h4><p>Låt kunder boka eller begära en tid direkt på sidan.</p></div><div class="a-price">från +250 kr<small>/mån</small></div></div>
         <div class="addon"><div class="a-txt"><h4>Webbutik</h4><p>Varukorg och kassa så du kan sälja direkt online.</p></div><div class="a-price">från +600 kr<small>/mån</small></div></div>
-        <div class="addon"><div class="a-txt"><h4>Aktiv SEO &amp; rapport</h4><p>Löpande optimering med en tydlig månadsrapport.</p></div><div class="a-price">från +350 kr<small>/mån</small></div></div>
+        <div class="addon"><div class="a-txt"><h4>Löpande SEO</h4><p>Kontinuerlig sökoptimering så att din hemsida rankar högre på Google.</p></div><div class="a-price">+339 kr<small>/mån</small></div></div>
+        <div class="addon"><div class="a-txt"><h4>Google Företagsprofil</h4><p>Uppsättning, verifiering och månatlig optimering av ditt Google-företagskonto.</p></div><div class="a-price">+239 kr<small>/mån</small></div></div>
         <div class="addon"><div class="a-txt"><h4>Prioriterad support</h4><p>Ändringar längst fram i kön och snabbare hantering.</p></div><div class="a-price">+200 kr<small>/mån</small></div></div>
         <div class="addon"><div class="a-txt"><h4>Extra språk</h4><p>En fullständigt översatt version av din sida.</p></div><div class="a-price">från +40%<small>av basen / mån</small></div></div>
       </div>
@@ -158,18 +182,20 @@
   <section>
     <div class="wrap">
       <div class="sec-head reveal">
-        <div class="eyebrow">Ett exempel</div>
+        <div class="eyebrow">Tydlig uppställning</div>
         <h2>Så blir summan</h2>
-        <p>En 5-sidors sida som senare lägger till en 6-sidors produktkatalog och ett bokningssystem.</p>
+        <p>Börja med vårt absolut billigaste baspaket för hemsida &amp; hosting och skräddarsy med exakt de tilläggstjänster du vill ha. Här ser du hur det räknas ihop.</p>
       </div>
       <div class="example reveal">
         <div class="calc">
-          <div class="row"><div class="lbl">Baspaket<small>5 sidor, SEO, Google Företagsprofil, hosting</small></div><div class="amt">899 kr</div></div>
-          <div class="row"><div class="lbl">Produktkatalog<small>6 sidor &times; 150 kr</small></div><div class="amt">+900 kr</div></div>
-          <div class="row"><div class="lbl">Bokningssystem<small>uppsättning och månatlig skötsel</small></div><div class="amt">+250 kr</div></div>
-          <div class="row total"><div class="lbl">Totalt</div><div class="amt">2 049 kr<span style="font-family:var(--sans);font-size:15px;color:var(--muted);font-weight:400"> / mån</span></div></div>
+          <div class="row"><div class="lbl">Baspaket: Hemsida &amp; hosting<small>5 unika sidor, webbhotell, SSL-certifikat, daglig backup och teknisk skötsel</small></div><div class="amt">449 kr</div></div>
+          <div class="row"><div class="lbl">Löpande SEO<small>Kontinuerlig sökoptimering på Google</small></div><div class="amt">+339 kr</div></div>
+          <div class="row"><div class="lbl">Google Företagsprofil<small>Uppsättning och optimering av företagsprofil på Google Maps</small></div><div class="amt">+239 kr</div></div>
+          <div class="row total"><div class="lbl">Totalt vid styckköp</div><div class="amt">1 027 kr<span style="font-family:var(--sans);font-size:15px;color:var(--muted);font-weight:400"> / mån</span></div></div>
         </div>
-        <p style="text-align:center;color:var(--muted);font-size:13.5px;margin-top:16px">Siffrorna är exempel. Din offert beror på exakt vilka sidor och funktioner du behöver, samt arbetet att bygga och sköta dem.</p>
+        <p style="text-align:center;color:var(--muted);font-size:14.5px;margin-top:20px;max-width:600px;margin-left:auto;margin-right:auto;">
+          <strong>Välj paket och spara:</strong> Jämför detta med vårt <strong>Mellanpaket (899 kr/mån)</strong> där allt ovan ingår — du sparar hela <strong>128 kr varje månad</strong> och får dessutom löpande support och småändringar på köpet!
+        </p>
       </div>
     </div>
   </section>

@@ -26,24 +26,31 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
-.plan-lead{display:grid;grid-template-columns:1.1fr 1fr;gap:30px;align-items:stretch}
-.plan-card{background:var(--ink);color:#f0f4ff;border-radius:4px;padding:46px 44px;display:flex;flex-direction:column}
-.plan-card .tag{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:16px}
-.plan-card h2{font-family:var(--serif);font-weight:500;font-size:34px;color:#fff;margin-bottom:8px;line-height:1.1}
-.plan-card .price{font-family:var(--serif);font-weight:500;font-size:64px;line-height:1;color:#fff;margin:18px 0 4px}
-.plan-card .price small{font-size:20px;color:#94a3b8}
-.plan-card .billing{font-size:13px;color:#94a3b8;margin-bottom:26px}
-.plan-card ul{list-style:none;margin-bottom:28px}
-.plan-card li{font-size:15px;padding:10px 0;border-bottom:1px solid #1e293b;display:flex;gap:11px;align-items:flex-start;color:#f0f4ff}
+.plan-lead{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;align-items:stretch}
+.plan-card{background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:4px;padding:40px 32px;display:flex;flex-direction:column;position:relative;transition:transform .25s, box-shadow .25s}
+.plan-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,0.05)}
+.plan-card.featured{background:var(--ink);color:#f0f4ff;border-color:var(--ink);transform:scale(1.03);box-shadow:0 20px 40px -15px rgba(15,23,42,0.35);z-index:2}
+.plan-card.featured:hover{transform:scale(1.03) translateY(-4px);box-shadow:0 24px 45px -12px rgba(15,23,42,0.45)}
+.plan-card .popular-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--gold);color:#fff;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;padding:4px 14px;border-radius:20px;white-space:nowrap;box-shadow:0 4px 10px rgba(26,86,219,0.3)}
+.plan-card .tag{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-weight:600}
+.plan-card.featured .tag{color:var(--gold-soft)}
+.plan-card h2{font-family:var(--serif);font-weight:500;font-size:28px;color:var(--ink);margin-bottom:6px;line-height:1.1}
+.plan-card.featured h2{color:#fff}
+.plan-card .desc{font-size:14px;color:var(--muted);margin-bottom:16px;line-height:1.4}
+.plan-card.featured .desc{color:#94a3b8}
+.plan-card .price{font-family:var(--serif);font-weight:500;font-size:52px;line-height:1;color:var(--ink);margin:14px 0 4px}
+.plan-card.featured .price{color:#fff}
+.plan-card .price small{font-size:18px;color:var(--muted);font-family:var(--sans);font-weight:400}
+.plan-card.featured .price small{color:#94a3b8}
+.plan-card .billing{font-size:12px;color:var(--muted);margin-bottom:20px}
+.plan-card.featured .billing{color:#94a3b8}
+.plan-card ul{list-style:none;margin-bottom:24px}
+.plan-card li{font-size:14.5px;padding:8px 0;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:flex-start;color:var(--ink)}
+.plan-card.featured li{border-bottom:1px solid #1e293b;color:#f0f4ff}
 .plan-card li:last-child{border-bottom:0}
-.plan-card li svg{width:15px;height:15px;flex-shrink:0;margin-top:4px;color:var(--gold-soft)}
-.plan-card .btn{text-align:center;margin-top:auto}
-.plan-aside{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:40px 38px;display:flex;flex-direction:column;justify-content:center}
-.plan-aside h3{font-family:var(--serif);font-weight:600;font-size:25px;margin-bottom:14px}
-.plan-aside p{color:var(--muted);font-size:15.5px;margin-bottom:18px}
-.plan-aside .pts{list-style:none}
-.plan-aside .pts li{font-size:14.5px;color:var(--ink);padding:8px 0;display:flex;gap:10px;align-items:flex-start}
-.plan-aside .pts li svg{width:15px;height:15px;flex-shrink:0;margin-top:4px;color:var(--gold)}
+.plan-card li svg{width:14px;height:14px;flex-shrink:0;margin-top:4px;color:var(--gold)}
+.plan-card.featured li svg{color:var(--gold-soft)}
+.plan-card .btn{text-align:center;margin-top:auto;width:100%}
 .billing-note{margin-top:14px;font-size:13px;color:var(--muted)}
 
 .addons{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -80,7 +87,7 @@
 .cta-final h2{font-family:var(--serif);font-weight:500;font-size:clamp(32px,5vw,50px);line-height:1.08;max-width:18ch;margin:0 auto 16px}
 .cta-final h2 em{font-style:italic;color:var(--gold)}
 .cta-final p{color:var(--muted);max-width:48ch;margin:0 auto 26px}
-@media(max-width:860px){.plan-lead,.addon-grid,.note-grid{grid-template-columns:1fr}}
+@media(max-width:860px){.plan-lead,.addon-grid,.note-grid{grid-template-columns:1fr} .plan-lead{gap:36px} .plan-card.featured{transform:none !important;box-shadow:none}}
 </style>
 </head>
 <body data-page="pricing">
@@ -97,45 +104,61 @@
   <section>
     <div class="wrap">
       <div class="plan-lead reveal">
+        <!-- Small Plan -->
         <div class="plan-card">
-          <div class="tag" style="background:var(--gold);color:#fff;display:inline-block;padding:3px 9px;border-radius:2px;font-size:11px;font-weight:600;letter-spacing:0.06em">3 Months Free Trial</div>
-          <h2 style="margin-top:14px">A complete 5-page website</h2>
-          <p style="color:#94a3b8;font-size:14.5px;margin-top:6px;line-height:1.4">Try it completely free for 3 months. Risk-free — let us build it.</p>
-          <div class="price-options" style="margin:22px 0;display:flex;flex-direction:column;gap:10px">
-            <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1e293b;padding-bottom:8px">
-              <span style="color:#94a3b8;font-size:14px">Monthly plan</span>
-              <span style="font-weight:600;color:#fff;font-size:22px">$89<small style="font-size:13px;color:#94a3b8;font-weight:400">/mo</small></span>
-            </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1e293b;padding-bottom:8px">
-              <span style="color:#94a3b8;font-size:14px">12-Month plan <span style="font-size:10px;color:var(--green-soft);font-weight:600;margin-left:4px;border:1px solid var(--green-soft);padding:1px 4px;border-radius:2px;letter-spacing:0.02em">30% OFF &middot; SAVE $324/YR</span></span>
-              <span style="font-weight:600;color:#fff;font-size:22px">$62<small style="font-size:13px;color:#94a3b8;font-weight:400">/mo</small></span>
-            </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:4px">
-              <span style="color:#94a3b8;font-size:14px">24-Month plan <span style="font-size:10px;color:var(--green-soft);font-weight:600;margin-left:4px;border:1px solid var(--green-soft);padding:1px 4px;border-radius:2px;letter-spacing:0.02em">40% OFF &middot; SAVE $432/YR</span></span>
-              <span style="font-weight:600;color:#fff;font-size:22px">$53<small style="font-size:13px;color:#94a3b8;font-weight:400">/mo</small></span>
-            </div>
-          </div>
-          <div class="billing" style="margin-bottom:18px;font-size:13px;color:#94a3b8">Risk-free trial. Cancel anytime.</div>
+          <div class="tag">Small Plan</div>
+          <h2>Website &amp; Hosting</h2>
+          <p class="desc">Just the website and hosting. Perfect for a clean, professional online presence without extra tools.</p>
+          <div class="price">$45<small>/mo</small></div>
+          <div class="billing">Billed monthly. Risk-free.</div>
           <ul>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>5 pages: home, about, contact, careers, and pricing</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>SEO optimization built in</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>5 custom pages</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>High-speed hosting included</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>SSL security &amp; backups</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Technical maintenance</li>
+            <li style="opacity: 0.55; text-decoration: line-through;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:var(--muted);"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>SEO optimization &amp; setup</li>
+            <li style="opacity: 0.55; text-decoration: line-through;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:var(--muted);"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>Google Business Profile</li>
+          </ul>
+          <a href="contact" class="btn btn-ghost">Request a quote</a>
+        </div>
+
+        <!-- Medium Plan (Featured) -->
+        <div class="plan-card featured">
+          <div class="popular-badge">Most customers choose this option</div>
+          <div class="tag">Medium Plan</div>
+          <h2>Growth Bundle</h2>
+          <p class="desc">Our recommended bundle. Includes both essential SEO and Google Profile setup to help you get found.</p>
+          <div class="price">$89<small>/mo</small></div>
+          <div class="billing">Billed monthly. Risk-free.</div>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>5 custom pages</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>High-speed hosting included</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>SSL security &amp; backups</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>SEO optimization built-in</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Google Business Profile setup</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Hosting included every month</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Ongoing care and small edits</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Ongoing care &amp; small edits</li>
           </ul>
           <a href="contact" class="btn btn-primary">Request a quote</a>
         </div>
-        <div class="plan-aside">
-          <h3>Why a subscription?</h3>
-          <p>A website is never really finished. Instead of a large one-time fee and then silence, you get a site that stays hosted, secure, and looked after for one predictable monthly cost.</p>
-          <ul class="pts">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>No large upfront build fee</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Hosting and upkeep are part of the price</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Scale pages up or down as you grow</li>
+
+        <!-- Large Plan -->
+        <div class="plan-card">
+          <div class="tag">Large Plan</div>
+          <h2>Professional Growth</h2>
+          <p class="desc">A complete package for businesses looking for active search visibility, booking tools, and scaling pages.</p>
+          <div class="price">$149<small>/mo</small></div>
+          <div class="billing">Billed monthly. Risk-free.</div>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Up to 10 custom pages</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Consistent SEO &amp; reports</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Google Business Profile &amp; updates</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Blog or booking system integration</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Priority support &amp; edits</li>
           </ul>
-          <p class="billing-note">Domain name is purchased and owned by you, and is not included in the monthly price.</p>
+          <a href="contact" class="btn btn-ghost">Request a quote</a>
         </div>
       </div>
+      <p class="billing-note" style="text-align: center; margin-top: 32px;">Domain name is purchased and owned by you, and is not included in the monthly subscription. Risk-free trial. Cancel anytime.</p>
     </div>
   </section>
 
@@ -152,7 +175,8 @@
         <div class="addon"><div class="a-txt"><h4>Blog / news section</h4><p>We build and maintain the section; you write the posts.</p></div><div class="a-price">+$79<small>/month</small></div></div>
         <div class="addon"><div class="a-txt"><h4>Booking &amp; appointments</h4><p>Let customers book or request a time right from your site.</p></div><div class="a-price">from +$25<small>/month</small></div></div>
         <div class="addon"><div class="a-txt"><h4>Online store</h4><p>Cart and checkout so you can sell directly online.</p></div><div class="a-price">from +$59<small>/month</small></div></div>
-        <div class="addon"><div class="a-txt"><h4>Active SEO &amp; reporting</h4><p>Ongoing optimization with a clear monthly report.</p></div><div class="a-price">from +$35<small>/month</small></div></div>
+        <div class="addon"><div class="a-txt"><h4>Consistent SEO</h4><p>Ongoing optimization to make sure your site stays visible in Google search.</p></div><div class="a-price">+$35<small>/month</small></div></div>
+        <div class="addon"><div class="a-txt"><h4>Google Business Profile</h4><p>Setup, verification, and monthly optimization of your local Google map listing.</p></div><div class="a-price">+$24<small>/month</small></div></div>
         <div class="addon"><div class="a-txt"><h4>Priority support</h4><p>Front-of-queue edits and faster turnaround.</p></div><div class="a-price">+$19<small>/month</small></div></div>
         <div class="addon"><div class="a-txt"><h4>Extra language</h4><p>A full translated version of your site.</p></div><div class="a-price">from +40%<small>of base / mo</small></div></div>
       </div>
@@ -162,18 +186,20 @@
   <section>
     <div class="wrap">
       <div class="sec-head reveal">
-        <div class="eyebrow">An example</div>
-        <h2>How it adds up</h2>
-        <p>A 5-page site that later adds a 6-page product catalog and a booking system.</p>
+        <div class="eyebrow">Pricing Breakdown</div>
+        <h2>How it tallies up</h2>
+        <p>Start with the absolute minimum website &amp; hosting plan, and customize it with just the addons you need. Here is how they tally up.</p>
       </div>
       <div class="example reveal">
         <div class="calc">
-          <div class="row"><div class="lbl">Base plan<small>5 pages, SEO, Google Business Profile, hosting</small></div><div class="amt">$89</div></div>
-          <div class="row"><div class="lbl">Product catalog<small>6 pages &times; $15</small></div><div class="amt">+$90</div></div>
-          <div class="row"><div class="lbl">Booking system<small>setup and monthly upkeep</small></div><div class="amt">+$25</div></div>
-          <div class="row total"><div class="lbl">Total</div><div class="amt">$204<span style="font-family:var(--sans);font-size:15px;color:var(--muted);font-weight:400"> / mo</span></div></div>
+          <div class="row"><div class="lbl">Base plan: Website &amp; hosting<small>5 custom pages, hosting, SSL, daily backups, and technical upkeep</small></div><div class="amt">$45</div></div>
+          <div class="row"><div class="lbl">Consistent SEO<small>Ongoing search engine optimization</small></div><div class="amt">+$35</div></div>
+          <div class="row"><div class="lbl">Google Business Profile<small>Setup &amp; local listing optimization</small></div><div class="amt">+$24</div></div>
+          <div class="row total"><div class="lbl">Total Tally</div><div class="amt">$104<span style="font-family:var(--sans);font-size:15px;color:var(--muted);font-weight:400"> / mo</span></div></div>
         </div>
-        <p style="text-align:center;color:var(--muted);font-size:13.5px;margin-top:16px">Figures are examples. Your quote depends on the exact pages and features you need, plus the work to build and maintain them.</p>
+        <p style="text-align:center;color:var(--muted);font-size:14.5px;margin-top:20px;max-width:600px;margin-left:auto;margin-right:auto;">
+          <strong>Bundle and save:</strong> Compare this to our <strong>Medium Plan ($89/mo)</strong> which includes all three services, saving you <strong>$15 every month</strong> while including ongoing support and edits!
+        </p>
       </div>
     </div>
   </section>
