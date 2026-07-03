@@ -102,10 +102,11 @@ form .btn-primary{width:100%;margin-top:6px}
               </div>
               <div class="field"><label for="budget">Ungefärlig budget per månad</label>
                 <select id="budget" name="budget">
-                  <option>Runt 899 kr/mån (baspaket)</option>
-                  <option>900 &ndash; 1 500 kr/mån</option>
-                  <option>1 500 &ndash; 3 000 kr/mån</option>
-                  <option>3 000+ kr/mån</option>
+                  <option>Lilla paketet (449 kr/mån exkl. moms)</option>
+                  <option>Mellanpaketet (899 kr/mån exkl. moms)</option>
+                  <option>Stora paketet (1 449 kr/mån exkl. moms)</option>
+                  <option>1 500 &ndash; 3 000 kr/mån exkl. moms (skräddarsytt)</option>
+                  <option>3 000+ kr/mån exkl. moms</option>
                   <option>Jag vill ha råd om detta</option>
                 </select>
               </div>
@@ -130,25 +131,47 @@ form .btn-primary{width:100%;margin-top:6px}
 document.getElementById('quoteForm').addEventListener('submit', function(e) {
   e.preventDefault();
   
-  // Prepare form data for future integration (e.g. Netlify/Formspree/Web3Forms)
-  var formData = new FormData(this);
-  var data = {};
-  formData.forEach(function(value, key){
-    data[key] = value;
-  });
-  console.log("Form submission received:", data);
-  
-  // Simulate successful AJAX submission with standard visual transitions
-  var btn = this.querySelector('button[type="submit"]');
+  var form = this;
+  var btn = form.querySelector('button[type="submit"]');
   if (btn) {
     btn.disabled = true;
     btn.innerText = "Skickar...";
   }
   
-  setTimeout(function(){
-    document.getElementById('quoteForm').style.display = 'none';
-    document.getElementById('sent').classList.add('show');
-  }, 600);
+  var formData = new FormData(form);
+  
+  fetch('https://formspree.io/f/xeebveay', {
+    method: 'POST',
+    body: formData,
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+  .then(function(response) {
+    if (response.ok) {
+      form.style.display = 'none';
+      document.getElementById('sent').classList.add('show');
+    } else {
+      return response.json().then(function(data) {
+        if (data.errors) {
+          alert(data.errors.map(function(error) { return error.message; }).join(", "));
+        } else {
+          alert("Hoppsan! Det uppstod ett problem med att skicka din förfrågan.");
+        }
+        if (btn) {
+          btn.disabled = false;
+          btn.innerText = "Skicka förfrågan";
+        }
+      });
+    }
+  })
+  .catch(function(error) {
+    alert("Hoppsan! Det uppstod ett problem med att skicka din förfrågan. Försök igen.");
+    if (btn) {
+      btn.disabled = false;
+      btn.innerText = "Skicka förfrågan";
+    }
+  });
 });
 </script>
 </body>

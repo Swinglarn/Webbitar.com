@@ -102,9 +102,10 @@ form .btn-primary{width:100%;margin-top:6px}
               </div>
               <div class="field"><label for="budget">Rough monthly budget</label>
                 <select id="budget" name="budget">
-                  <option>Around $89 / month (base plan)</option>
-                  <option>$90 &ndash; $150 / month</option>
-                  <option>$150 &ndash; $300 / month</option>
+                  <option>Small Plan ($45 / month)</option>
+                  <option>Medium Plan ($89 / month)</option>
+                  <option>Large Plan ($149 / month)</option>
+                  <option>$150 &ndash; $300 / month (custom additions)</option>
                   <option>$300+ / month</option>
                   <option>I'd like advice on this</option>
                 </select>
@@ -130,25 +131,47 @@ form .btn-primary{width:100%;margin-top:6px}
 document.getElementById('quoteForm').addEventListener('submit', function(e) {
   e.preventDefault();
   
-  // Prepare form data for future integration (e.g. Netlify/Formspree/Web3Forms)
-  var formData = new FormData(this);
-  var data = {};
-  formData.forEach(function(value, key){
-    data[key] = value;
-  });
-  console.log("Form submission received:", data);
-  
-  // Simulate successful AJAX submission with standard visual transitions
-  var btn = this.querySelector('button[type="submit"]');
+  var form = this;
+  var btn = form.querySelector('button[type="submit"]');
   if (btn) {
     btn.disabled = true;
     btn.innerText = "Sending...";
   }
   
-  setTimeout(function(){
-    document.getElementById('quoteForm').style.display = 'none';
-    document.getElementById('sent').classList.add('show');
-  }, 600);
+  var formData = new FormData(form);
+  
+  fetch('https://formspree.io/f/xeebveay', {
+    method: 'POST',
+    body: formData,
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+  .then(function(response) {
+    if (response.ok) {
+      form.style.display = 'none';
+      document.getElementById('sent').classList.add('show');
+    } else {
+      return response.json().then(function(data) {
+        if (data.errors) {
+          alert(data.errors.map(function(error) { return error.message; }).join(", "));
+        } else {
+          alert("Oops! There was a problem submitting your form.");
+        }
+        if (btn) {
+          btn.disabled = false;
+          btn.innerText = "Send request";
+        }
+      });
+    }
+  })
+  .catch(function(error) {
+    alert("Oops! There was a problem submitting your form. Please try again.");
+    if (btn) {
+      btn.disabled = false;
+      btn.innerText = "Send request";
+    }
+  });
 });
 </script>
 </body>

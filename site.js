@@ -13,17 +13,22 @@
   var langToggleUrl = isSv ? '../' + file : 'sv/' + file;
   var langToggleText = isSv ? 'EN' : 'SV';
 
+  // Prevent relative path breaking if pathname is exactly '/sv' without trailing slash
+  var isSvRootNoSlash = isSv && (path === '/sv' || path.endsWith('/sv'));
+  var linkPrefix = isSvRootNoSlash ? 'sv/' : '';
+  var brandUrl = isSvRootNoSlash ? 'sv' : 'index';
+
   var nav = '';
   if (isSv) {
     nav =
     '<header><div class="wrap nav">'+
-      '<a class="brand" href="index"><img src="' + prefix + 'assets/logo-black.png" alt="Webbitar"><span>WEBBITAR</span></a>'+
+      '<a class="brand" href="' + brandUrl + '"><img src="' + prefix + 'assets/logo-black.png" alt="Webbitar"><span>WEBBITAR</span></a>'+
       '<nav class="nav-links" id="navlinks">'+
-        '<a href="about" data-p="about">Om oss</a>'+
-        '<a href="portfolio" data-p="portfolio">Portfolio</a>'+
-        '<a href="client-services" data-p="client">Våra tjänster</a>'+
-        '<a href="pricing" data-p="pricing">Priser</a>'+
-        '<a href="contact" data-p="contact" class="nav-cta">Begär offert</a>'+
+        '<a href="' + linkPrefix + 'about" data-p="about">Om oss</a>'+
+        '<a href="' + linkPrefix + 'portfolio" data-p="portfolio">Portfolio</a>'+
+        '<a href="' + linkPrefix + 'client-services" data-p="client">Våra tjänster</a>'+
+        '<a href="' + linkPrefix + 'pricing" data-p="pricing">Priser</a>'+
+        '<a href="' + linkPrefix + 'contact" data-p="contact" class="nav-cta">Begär offert</a>'+
         '<a href="' + langToggleUrl + '" style="border:1px solid var(--line);padding:4px 8px;border-radius:2px;font-size:12px;font-weight:600;color:var(--gold);letter-spacing:0.05em;margin-left:8px">' + langToggleText + '</a>'+
       '</nav>'+
       '<button class="menu-btn" id="menuBtn" aria-label="Meny">&#9776;</button>'+
@@ -56,15 +61,15 @@
         '</div>'+
         '<div class="foot-cols">'+
           '<div class="foot-col"><h5>Studio</h5>'+
-            '<a href="about">Om oss</a>'+
-            '<a href="portfolio">Portfolio</a>'+
-            '<a href="client-services">Våra tjänster</a>'+
-            '<a href="pricing">Priser</a>'+
+            '<a href="' + linkPrefix + 'about">Om oss</a>'+
+            '<a href="' + linkPrefix + 'portfolio">Portfolio</a>'+
+            '<a href="' + linkPrefix + 'client-services">Våra tjänster</a>'+
+            '<a href="' + linkPrefix + 'pricing">Priser</a>'+
           '</div>'+
           '<div class="foot-col"><h5>Kontakt</h5>'+
-            '<a href="contact">Begär offert</a>'+
-            '<a href="mailto:quote@webbitar.com">quote@webbitar.com</a>'+
-            '<a href="privacy">Integritetspolicy</a>'+
+            '<a href="' + linkPrefix + 'contact">Begär offert</a>'+
+            '<a href="mailto:contact@webbitar.com">contact@webbitar.com</a>'+
+            '<a href="' + linkPrefix + 'privacy">Integritetspolicy</a>'+
           '</div>'+
         '</div>'+
       '</div>'+
@@ -87,7 +92,7 @@
           '</div>'+
           '<div class="foot-col"><h5>Contact</h5>'+
             '<a href="contact">Get a quote</a>'+
-            '<a href="mailto:quote@webbitar.com">quote@webbitar.com</a>'+
+            '<a href="mailto:contact@webbitar.com">contact@webbitar.com</a>'+
             '<a href="privacy">Privacy Policy</a>'+
           '</div>'+
         '</div>'+
