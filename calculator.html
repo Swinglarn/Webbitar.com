@@ -352,7 +352,7 @@ input:focus, textarea:focus {
           
           <!-- 1. Base Plan -->
           <div class="calc-panel">
-            <h3>1. Select your Base Plan</h3>
+            <h3>1. Select your Base Option</h3>
             <div class="option-grid">
               <!-- Small Plan -->
               <div class="option-box active" onclick="selectBasePlan('small', 45)">
@@ -384,12 +384,28 @@ input:focus, textarea:focus {
                 <div class="option-price" id="priceLabelLarge">$239<small style="font-size:12px; font-weight:400; color:var(--muted)">/mo</small></div>
               </div>
 
+              <!-- Design Makeover -->
+              <div class="option-box" onclick="selectBasePlan('makeover', 0)">
+                <input type="radio" name="basePlan" id="planMakeover" value="makeover">
+                <div class="option-details">
+                  <div class="option-title">Design Makeover (Self-hosted)</div>
+                  <div class="option-desc">Give your current site a fresh layout. Max 5 pages included.</div>
+                  
+                  <div class="qty-wrapper" id="qtyWrapperMakeover" style="display:none">
+                    Extra makeover pages (beyond 5):
+                    <input type="number" class="qty-input" id="qtyMakeover" value="0" min="0" oninput="updateCalculator(); event.stopPropagation();" onclick="event.stopPropagation();">
+                    <span style="margin-left:8px">(+$49 / page)</span>
+                  </div>
+                </div>
+                <div class="option-price">$189<small style="font-size:12px; font-weight:400; color:var(--muted)"> one-time</small></div>
+              </div>
+
               <!-- None -->
               <div class="option-box" onclick="selectBasePlan('none', 0)">
                 <input type="radio" name="basePlan" id="planNone" value="none">
                 <div class="option-details">
-                  <div class="option-title">No Monthly Base Plan</div>
-                  <div class="option-desc">Choose this if you host your own website and only need one-off services.</div>
+                  <div class="option-title">Custom / Addons Only</div>
+                  <div class="option-desc">Host your own website and choose only the monthly addons you need.</div>
                 </div>
                 <div class="option-price">$0</div>
               </div>
@@ -477,7 +493,7 @@ input:focus, textarea:focus {
                     <p>Add shopping cart, product listings, and digital checkout flow.</p>
                   </div>
                 </div>
-                <div class="addon-cost">+$59 / mo</div>
+                <div class="addon-cost">+$129 / mo</div>
               </div>
 
               <!-- SEO -->
@@ -513,35 +529,12 @@ input:focus, textarea:focus {
                     <p>Jump to the front of the support queue and get faster turnaround.</p>
                   </div>
                 </div>
-                <div class="addon-cost">+$19 / mo</div>
+                <div class="addon-cost">+$49 / mo</div>
               </div>
 
             </div>
           </div>
 
-          <!-- 4. One-Time Services -->
-          <div class="calc-panel">
-            <h3>4. One-Time Services</h3>
-            <div class="addon-list">
-              <!-- Design Makeover -->
-              <div class="addon-row">
-                <div class="addon-info">
-                  <input type="checkbox" class="addon-checkbox" id="addonMakeover" onchange="toggleAddon('makeover')">
-                  <div class="addon-meta">
-                    <h4>Design Makeover</h4>
-                    <p>Keep your current web host, but completely redesign the visual look of your site. Max 5 pages included.</p>
-                    
-                    <div class="qty-wrapper" id="qtyWrapperMakeover" style="display:none">
-                      Extra makeover pages?
-                      <input type="number" class="qty-input" id="qtyMakeover" value="0" min="0" oninput="updateCalculator()">
-                      <span style="margin-left:8px">(+$49 / page)</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="addon-cost">+$189 (one-time)</div>
-              </div>
-            </div>
-          </div>
 
         </div>
 
@@ -660,14 +653,21 @@ function selectBasePlan(plan, price) {
     }
   });
 
-  // Show/Hide billing cycle options if no plan
+  // Show/Hide billing cycle options if no monthly plan
   var billingPanel = document.getElementById('billingPanel');
-  if (plan === 'none') {
+  var makeoverQty = document.getElementById('qtyWrapperMakeover');
+  if (plan === 'none' || plan === 'makeover') {
     billingPanel.style.opacity = '0.3';
     billingPanel.style.pointerEvents = 'none';
   } else {
     billingPanel.style.opacity = '1';
     billingPanel.style.pointerEvents = 'auto';
+  }
+
+  if (plan === 'makeover') {
+    makeoverQty.style.display = 'flex';
+  } else {
+    makeoverQty.style.display = 'none';
   }
 
   // Handle auto inclusion logic
@@ -750,14 +750,14 @@ function updateCalculator() {
     state.addons.support = document.getElementById('addonSupport').checked;
   }
 
-  state.addons.makeover = document.getElementById('addonMakeover').checked;
+  state.addons.makeover = (state.basePlan === 'makeover');
   state.addons.qtyMakeover = parseInt(document.getElementById('qtyMakeover').value) || 0;
 
   // 1. Calculate Base Plan (with discount)
-  var planName = 'No Base Plan';
+  var planName = 'Custom / Addons Only';
   var basePlanCalculatedPrice = 0;
   
-  if (state.basePlan !== 'none') {
+  if (state.basePlan !== 'none' && state.basePlan !== 'makeover') {
     if (state.basePlan === 'small') {
       planName = 'Small Plan';
       if (state.cycle === 'monthly') basePlanCalculatedPrice = 45;
@@ -776,6 +776,8 @@ function updateCalculator() {
       if (state.cycle === 'annual') basePlanCalculatedPrice = 179;
       if (state.cycle === 'biennial') basePlanCalculatedPrice = 155;
     }
+  } else if (state.basePlan === 'makeover') {
+    planName = 'Design Makeover';
   }
 
   // 2. Calculate Addons Monthly Cost
@@ -787,7 +789,7 @@ function updateCalculator() {
     monthlyAddonsTotal += pCost;
     addonsList.push('Extra Pages (' + state.addons.qtyPages + 'x: +$' + pCost + '/mo)');
   }
-  if (state.addons.lang && state.basePlan !== 'none') {
+  if (state.addons.lang && state.basePlan !== 'none' && state.basePlan !== 'makeover') {
     var lCost = state.addons.qtyLang * (state.basePrice * 0.40);
     monthlyAddonsTotal += lCost;
     addonsList.push('Extra Language (' + state.addons.qtyLang + 'x: +$' + lCost.toFixed(0) + '/mo)');
@@ -801,8 +803,8 @@ function updateCalculator() {
     addonsList.push('Booking Scheduling (+$25/mo)');
   }
   if (state.addons.shop) {
-    monthlyAddonsTotal += 59;
-    addonsList.push('Online Store (+$59/mo)');
+    monthlyAddonsTotal += 129;
+    addonsList.push('Online Store (+$129/mo)');
   }
   if (state.addons.seo && state.basePlan !== 'medium' && state.basePlan !== 'large') {
     monthlyAddonsTotal += 35;
@@ -813,8 +815,8 @@ function updateCalculator() {
     addonsList.push('Google Business Profile (+$24/mo)');
   }
   if (state.addons.support && state.basePlan !== 'large') {
-    monthlyAddonsTotal += 19;
-    addonsList.push('Priority Support (+$19/mo)');
+    monthlyAddonsTotal += 49;
+    addonsList.push('Priority Support (+$49/mo)');
   }
 
   // 3. Calculate Setup / One-time cost
@@ -834,7 +836,11 @@ function updateCalculator() {
   var finalMonthlyPrice = basePlanCalculatedPrice + monthlyAddonsTotal;
 
   // 5. Update DOM elements
-  document.getElementById('estBasePlan').innerText = planName + ' ($' + basePlanCalculatedPrice.toFixed(0) + '/mo)';
+  if (state.basePlan === 'makeover') {
+    document.getElementById('estBasePlan').innerText = planName;
+  } else {
+    document.getElementById('estBasePlan').innerText = planName + ' ($' + basePlanCalculatedPrice.toFixed(0) + '/mo)';
+  }
   
   var cycleText = 'Monthly';
   if (state.cycle === 'annual') cycleText = '12 Months (25% off)';
@@ -858,7 +864,11 @@ function updateCalculator() {
   document.getElementById('totalMonthly').innerHTML = '$' + finalMonthlyPrice.toFixed(0) + '<small>/mo</small>';
 
   // 6. Update hidden inputs for Formspree submission
-  document.getElementById('hiddenBasePlan').value = planName + ' ($' + basePlanCalculatedPrice.toFixed(0) + '/mo)';
+  if (state.basePlan === 'makeover') {
+    document.getElementById('hiddenBasePlan').value = planName;
+  } else {
+    document.getElementById('hiddenBasePlan').value = planName + ' ($' + basePlanCalculatedPrice.toFixed(0) + '/mo)';
+  }
   document.getElementById('hiddenBillingCycle').value = cycleText;
   document.getElementById('hiddenMonthlyAddons').value = addonsList.join(', ') || 'None';
   document.getElementById('hiddenOneTimeAddons').value = setupList.join(', ') || 'None';

@@ -28,6 +28,7 @@
         '<a href="' + linkPrefix + 'portfolio" data-p="portfolio">Portfolio</a>'+
         '<a href="' + linkPrefix + 'client-services" data-p="client">Våra tjänster</a>'+
         '<a href="' + linkPrefix + 'pricing" data-p="pricing">Priser</a>'+
+        '<a href="' + linkPrefix + 'calculator" data-p="calculator">Kalkylator</a>'+
         '<a href="' + linkPrefix + 'support" data-p="support">Support</a>'+
         '<a href="' + linkPrefix + 'contact" data-p="contact" class="nav-cta">Begär offert</a>'+
         '<a href="' + langToggleUrl + '" style="border:1px solid var(--line);padding:4px 8px;border-radius:2px;font-size:12px;font-weight:600;color:var(--gold);letter-spacing:0.05em;margin-left:8px">' + langToggleText + '</a>'+
@@ -43,6 +44,7 @@
         '<a href="portfolio" data-p="portfolio">Portfolio</a>'+
         '<a href="client-services" data-p="client">Client Services</a>'+
         '<a href="pricing" data-p="pricing">Pricing</a>'+
+        '<a href="calculator" data-p="calculator">Calculator</a>'+
         '<a href="support" data-p="support">Support</a>'+
         '<a href="contact" data-p="contact" class="nav-cta">Get a quote</a>'+
         '<a href="' + langToggleUrl + '" style="border:1px solid var(--line);padding:4px 8px;border-radius:2px;font-size:12px;font-weight:600;color:var(--gold);letter-spacing:0.05em;margin-left:8px">' + langToggleText + '</a>'+

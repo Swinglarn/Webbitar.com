@@ -352,7 +352,7 @@ input:focus, textarea:focus {
           
           <!-- 1. Base Plan -->
           <div class="calc-panel">
-            <h3>1. Välj baspaket</h3>
+            <h3>1. Välj basalternativ</h3>
             <div class="option-grid">
               <!-- Lilla paketet -->
               <div class="option-box active" onclick="selectBasePlan('small', 449)">
@@ -384,12 +384,28 @@ input:focus, textarea:focus {
                 <div class="option-price" id="priceLabelLarge">2 399 kr<small style="font-size:12px; font-weight:400; color:var(--muted)">/mån</small></div>
               </div>
 
+              <!-- Design-makeover -->
+              <div class="option-box" onclick="selectBasePlan('makeover', 0)">
+                <input type="radio" name="basePlan" id="planMakeover" value="makeover">
+                <div class="option-details">
+                  <div class="option-title">Design-makeover (Egen hosting)</div>
+                  <div class="option-desc">Ge din nuvarande hemsida ett helt nytt, fräscht utseende. Max 5 sidor ingår.</div>
+                  
+                  <div class="qty-wrapper" id="qtyWrapperMakeover" style="display:none">
+                    Extra makeover-sidor (utöver 5 st):
+                    <input type="number" class="qty-input" id="qtyMakeover" value="0" min="0" oninput="updateCalculator(); event.stopPropagation();" onclick="event.stopPropagation();">
+                    <span style="margin-left:8px">(+499 kr / sida)</span>
+                  </div>
+                </div>
+                <div class="option-price">1 899 kr<small style="font-size:12px; font-weight:400; color:var(--muted)"> engångs</small></div>
+              </div>
+
               <!-- None -->
               <div class="option-box" onclick="selectBasePlan('none', 0)">
                 <input type="radio" name="basePlan" id="planNone" value="none">
                 <div class="option-details">
-                  <div class="option-title">Inget månatligt baspaket</div>
-                  <div class="option-desc">Välj detta om du sköter egen hosting och bara vill ha engångstjänster.</div>
+                  <div class="option-title">Skräddarsytt / Enbart tillägg</div>
+                  <div class="option-desc">Sköt din egen hosting och välj enbart de månatliga tilläggstjänster du vill ha.</div>
                 </div>
                 <div class="option-price">0 kr</div>
               </div>
@@ -477,7 +493,7 @@ input:focus, textarea:focus {
                     <p>Lägg till varukorg, produktsidor och digital kassa för direktförsäljning.</p>
                   </div>
                 </div>
-                <div class="addon-cost">+600 kr / mån</div>
+                <div class="addon-cost">+1 299 kr / mån</div>
               </div>
 
               <!-- SEO -->
@@ -513,35 +529,12 @@ input:focus, textarea:focus {
                     <p>Ändringar hamnar längst fram i kön och vi hanterar dem snabbare.</p>
                   </div>
                 </div>
-                <div class="addon-cost">+200 kr / mån</div>
+                <div class="addon-cost">+499 kr / mån</div>
               </div>
 
             </div>
           </div>
 
-          <!-- 4. One-Time Services -->
-          <div class="calc-panel">
-            <h3>4. Engångstjänster</h3>
-            <div class="addon-list">
-              <!-- Design Makeover -->
-              <div class="addon-row">
-                <div class="addon-info">
-                  <input type="checkbox" class="addon-checkbox" id="addonMakeover" onchange="toggleAddon('makeover')">
-                  <div class="addon-meta">
-                    <h4>Design-makeover</h4>
-                    <p>Behåll din nuvarande hosting, men ge hela hemsidan en helt ny, fräsch design. Max 5 sidor ingår.</p>
-                    
-                    <div class="qty-wrapper" id="qtyWrapperMakeover" style="display:none">
-                      Hur många extra sidor för makeover?
-                      <input type="number" class="qty-input" id="qtyMakeover" value="0" min="0" oninput="updateCalculator()">
-                      <span style="margin-left:8px">(+499 kr / sida)</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="addon-cost">+1 899 kr (engångs)</div>
-              </div>
-            </div>
-          </div>
 
         </div>
 
@@ -660,14 +653,21 @@ function selectBasePlan(plan, price) {
     }
   });
 
-  // Show/Hide billing cycle options if no plan
+  // Show/Hide billing cycle options if no monthly plan
   var billingPanel = document.getElementById('billingPanel');
-  if (plan === 'none') {
+  var makeoverQty = document.getElementById('qtyWrapperMakeover');
+  if (plan === 'none' || plan === 'makeover') {
     billingPanel.style.opacity = '0.3';
     billingPanel.style.pointerEvents = 'none';
   } else {
     billingPanel.style.opacity = '1';
     billingPanel.style.pointerEvents = 'auto';
+  }
+
+  if (plan === 'makeover') {
+    makeoverQty.style.display = 'flex';
+  } else {
+    makeoverQty.style.display = 'none';
   }
 
   // Handle auto inclusion logic
@@ -750,14 +750,14 @@ function updateCalculator() {
     state.addons.support = document.getElementById('addonSupport').checked;
   }
 
-  state.addons.makeover = document.getElementById('addonMakeover').checked;
+  state.addons.makeover = (state.basePlan === 'makeover');
   state.addons.qtyMakeover = parseInt(document.getElementById('qtyMakeover').value) || 0;
 
   // 1. Calculate Base Plan (with discount)
-  var planName = 'Inget baspaket';
+  var planName = 'Skräddarsytt / Enbart tillägg';
   var basePlanCalculatedPrice = 0;
   
-  if (state.basePlan !== 'none') {
+  if (state.basePlan !== 'none' && state.basePlan !== 'makeover') {
     if (state.basePlan === 'small') {
       planName = 'Lilla paketet';
       if (state.cycle === 'monthly') basePlanCalculatedPrice = 449;
@@ -776,6 +776,8 @@ function updateCalculator() {
       if (state.cycle === 'annual') basePlanCalculatedPrice = 1799;
       if (state.cycle === 'biennial') basePlanCalculatedPrice = 1559;
     }
+  } else if (state.basePlan === 'makeover') {
+    planName = 'Design-makeover';
   }
 
   // 2. Calculate Addons Monthly Cost
@@ -787,7 +789,7 @@ function updateCalculator() {
     monthlyAddonsTotal += pCost;
     addonsList.push('Extra sidor (' + state.addons.qtyPages + 'st: +' + pCost + ' kr/mån)');
   }
-  if (state.addons.lang && state.basePlan !== 'none') {
+  if (state.addons.lang && state.basePlan !== 'none' && state.basePlan !== 'makeover') {
     var lCost = state.addons.qtyLang * (state.basePrice * 0.40);
     monthlyAddonsTotal += lCost;
     addonsList.push('Extra språk (' + state.addons.qtyLang + 'st: +' + lCost.toFixed(0) + ' kr/mån)');
@@ -801,8 +803,8 @@ function updateCalculator() {
     addonsList.push('Bokning & tidsbeställning (+250 kr/mån)');
   }
   if (state.addons.shop) {
-    monthlyAddonsTotal += 600;
-    addonsList.push('Webbutik (+600 kr/mån)');
+    monthlyAddonsTotal += 1299;
+    addonsList.push('Webbutik (+1 299 kr/mån)');
   }
   if (state.addons.seo && state.basePlan !== 'medium' && state.basePlan !== 'large') {
     monthlyAddonsTotal += 339;
@@ -813,8 +815,8 @@ function updateCalculator() {
     addonsList.push('Google Företagsprofil (+239 kr/mån)');
   }
   if (state.addons.support && state.basePlan !== 'large') {
-    monthlyAddonsTotal += 200;
-    addonsList.push('Prioriterad support (+200 kr/mån)');
+    monthlyAddonsTotal += 499;
+    addonsList.push('Prioriterad support (+499 kr/mån)');
   }
 
   // 3. Calculate Setup / One-time cost
@@ -834,7 +836,11 @@ function updateCalculator() {
   var finalMonthlyPrice = basePlanCalculatedPrice + monthlyAddonsTotal;
 
   // 5. Update DOM elements
-  document.getElementById('estBasePlan').innerText = planName + ' (' + basePlanCalculatedPrice.toFixed(0) + ' kr/mån)';
+  if (state.basePlan === 'makeover') {
+    document.getElementById('estBasePlan').innerText = planName;
+  } else {
+    document.getElementById('estBasePlan').innerText = planName + ' (' + basePlanCalculatedPrice.toFixed(0) + ' kr/mån)';
+  }
   
   var cycleText = 'Månadsvis';
   if (state.cycle === 'annual') cycleText = '12 månader (25% rabatt)';
@@ -858,7 +864,11 @@ function updateCalculator() {
   document.getElementById('totalMonthly').innerHTML = finalMonthlyPrice.toFixed(0) + ' kr<small>exkl. moms /mån</small>';
 
   // 6. Update hidden inputs for Formspree submission
-  document.getElementById('hiddenBasePlan').value = planName + ' (' + basePlanCalculatedPrice.toFixed(0) + ' kr/mån)';
+  if (state.basePlan === 'makeover') {
+    document.getElementById('hiddenBasePlan').value = planName;
+  } else {
+    document.getElementById('hiddenBasePlan').value = planName + ' (' + basePlanCalculatedPrice.toFixed(0) + ' kr/mån)';
+  }
   document.getElementById('hiddenBillingCycle').value = cycleText;
   document.getElementById('hiddenMonthlyAddons').value = addonsList.join(', ') || 'Inga';
   document.getElementById('hiddenOneTimeAddons').value = setupList.join(', ') || 'Inga';
