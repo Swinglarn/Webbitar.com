@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bygg ditt paket &mdash; Webbitar</title>
+<meta name="description" content="Räkna ut vad din hemsida, hosting och SEO kommer att kosta. Bygg ett eget paket och begär offert på några minuter.">
+<link rel="icon" type="image/png" href="../assets/logo-black-square.png">
+<link rel="canonical" href="https://webbitar.com/sv/calculator">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Bygg ditt paket &mdash; Webbitar">
+<meta property="og:description" content="Räkna ut vad din hemsida, hosting och SEO kommer att kosta. Bygg ett eget paket och begär offert på några minuter.">
+<meta property="og:image" content="https://webbitar.com/assets/logo-black-square.png">
+<meta property="og:url" content="https://webbitar.com/sv/calculator">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Webbitar">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bygg ditt paket &mdash; Webbitar">
+<meta name="twitter:description" content="Räkna ut vad din hemsida, hosting och SEO kommer att kosta. Bygg ett eget paket och begär offert på några minuter.">
+<meta name="twitter:image" content="https://webbitar.com/assets/logo-black-square.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+.calc-container {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+.calc-panel {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 32px;
+  margin-bottom: 24px;
+}
+.calc-panel h3 {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 10px;
+}
+.option-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.option-box {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.option-box:hover {
+  border-color: var(--gold-soft);
+  background: var(--paper);
+}
+.option-box.active {
+  border-color: var(--gold);
+  background: rgba(26, 86, 219, 0.03);
+  box-shadow: 0 0 0 1px var(--gold);
+}
+.option-box input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+.option-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.option-title {
+  font-weight: 600;
+  font-size: 15.5px;
+  color: var(--ink);
+}
+.option-desc {
+  font-size: 13px;
+  color: var(--muted);
+}
+.option-price {
+  font-weight: 600;
+  color: var(--gold);
+  font-size: 18px;
+  white-space: nowrap;
+}
+.cycle-tabs {
+  display: flex;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 4px;
+  margin-bottom: 20px;
+}
+.cycle-tab {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: all 0.2s;
+  color: var(--muted);
+}
+.cycle-tab:hover {
+  color: var(--ink);
+}
+.cycle-tab.active {
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+.addon-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.addon-row:last-child {
+  border-bottom: none;
+}
+.addon-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.addon-checkbox {
+  margin-top: 4px;
+  width: 17px;
+  height: 17px;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+.addon-meta h4 {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.addon-meta p {
+  font-size: 12.5px;
+  color: var(--muted);
+  max-width: 42ch;
+}
+.addon-cost {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.qty-input {
+  width: 60px;
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  font-size: 13.5px;
+  text-align: center;
+  margin-left: 8px;
+}
+.qty-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.hidden-panel {
+  display: none;
+  background: var(--paper);
+  padding: 16px;
+  border-radius: 4px;
+  margin-top: 10px;
+  border: 1px solid var(--line);
+}
+.hidden-panel.show {
+  display: block;
+}
+
+/* Estimation column */
+.est-sidebar {
+  position: sticky;
+  top: 92px;
+}
+.est-box {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 30px;
+}
+.est-box h3 {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.est-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14.5px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+}
+.est-line .val {
+  font-weight: 500;
+  color: var(--ink);
+}
+.total-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 18px 0;
+  border-bottom: 2px solid var(--ink);
+}
+.total-line.no-border {
+  border-bottom: none;
+}
+.total-line .lbl {
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 16px;
+}
+.total-line .val {
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--gold);
+  font-family: var(--sans);
+}
+.total-line .val small {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
+  margin-left: 2px;
+}
+.calc-disclaimer {
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.4;
+  margin-top: 16px;
+  background: rgba(26, 86, 219, 0.02);
+  padding: 12px;
+  border-radius: 4px;
+  border-left: 3px solid var(--gold);
+}
+form {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin-top: 24px;
+}
+.field {
+  margin-bottom: 14px;
+}
+label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+input, textarea {
+  width: 100%;
+  font-family: var(--sans);
+  font-size: 14.5px;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: #fff;
+  color: var(--ink);
+}
+textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+.btn-primary {
+  width: 100%;
+  margin-top: 10px;
+  padding: 14px;
+  font-size: 15px;
+}
+.sent {
+  display: none;
+  text-align: center;
+  padding: 20px 0;
+}
+.sent.show {
+  display: block;
+}
+.sent svg {
+  width: 46px;
+  height: 46px;
+  color: var(--gold);
+  margin: 0 auto 14px;
+}
+.sent h3 {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.sent p {
+  color: var(--muted);
+  font-size: 14.5px;
+}
+@media(max-width:960px){
+  .calc-container {
+    grid-template-columns: 1fr;
+  }
+  .est-sidebar {
+    position: static;
+  }
+}
+</style>
+</head>
+<body data-page="calculator">
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <div class="eyebrow">Priskalkylator</div>
+      <h1>Bygg ditt eget <em>hemsidespaket</em>.</h1>
+      <p>Klicka i de basfunktioner och tilläggstjänster du behöver. Din prisuppskattning uppdateras direkt. Skicka in din konfiguration för att få en exakt offert.</p>
+    </div>
+  </section>
+
+  <section style="padding: 40px 0 84px;">
+    <div class="wrap">
+      <div class="calc-container">
+        
+        <!-- Left Side: Configurator -->
+        <div class="reveal">
+          
+          <!-- 1. Base Plan -->
+          <div class="calc-panel">
+            <h3>1. Välj baspaket</h3>
+            <div class="option-grid">
+              <!-- Lilla paketet -->
+              <div class="option-box active" onclick="selectBasePlan('small', 449)">
+                <input type="radio" name="basePlan" id="planSmall" value="small" checked>
+                <div class="option-details">
+                  <div class="option-title">Hemsida &amp; Hosting (Lilla paketet)</div>
+                  <div class="option-desc">5 unika sidor, webbhotell, SSL-säkerhet, backup och underhåll.</div>
+                </div>
+                <div class="option-price" id="priceLabelSmall">449 kr<small style="font-size:12px; font-weight:400; color:var(--muted)">/mån</small></div>
+              </div>
+              
+              <!-- Mellanpaketet -->
+              <div class="option-box" onclick="selectBasePlan('medium', 899)">
+                <input type="radio" name="basePlan" id="planMedium" value="medium">
+                <div class="option-details">
+                  <div class="option-title">Tillväxtpaketet (Mellanpaketet)</div>
+                  <div class="option-desc">5 sidor, hosting, SSL, inbyggd SEO, Google-profil, löpande support.</div>
+                </div>
+                <div class="option-price" id="priceLabelMedium">899 kr<small style="font-size:12px; font-weight:400; color:var(--muted)">/mån</small></div>
+              </div>
+              
+              <!-- Stora paketet -->
+              <div class="option-box" onclick="selectBasePlan('large', 2399)">
+                <input type="radio" name="basePlan" id="planLarge" value="large">
+                <div class="option-details">
+                  <div class="option-title">Professionell synlighet (Stora paketet)</div>
+                  <div class="option-desc">10 sidor, hosting, löpande SEO + rapporter, Google-profil, blogg/bokning, prioriterad support.</div>
+                </div>
+                <div class="option-price" id="priceLabelLarge">2 399 kr<small style="font-size:12px; font-weight:400; color:var(--muted)">/mån</small></div>
+              </div>
+
+              <!-- None -->
+              <div class="option-box" onclick="selectBasePlan('none', 0)">
+                <input type="radio" name="basePlan" id="planNone" value="none">
+                <div class="option-details">
+                  <div class="option-title">Inget månatligt baspaket</div>
+                  <div class="option-desc">Välj detta om du sköter egen hosting och bara vill ha engångstjänster.</div>
+                </div>
+                <div class="option-price">0 kr</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Billing Cycle -->
+          <div class="calc-panel" id="billingPanel">
+            <h3>2. Välj avtalsperiod</h3>
+            <p style="font-size:13.5px; color:var(--muted); margin-bottom:14px;">Teckna för en längre period och få en betydande rabatt på månadspriset för ditt baspaket.</p>
+            <div class="cycle-tabs">
+              <div class="cycle-tab active" onclick="selectCycle('monthly', 0)">Månadsvis</div>
+              <div class="cycle-tab" onclick="selectCycle('annual', 0.25)">12 månader (25% rabatt)</div>
+              <div class="cycle-tab" onclick="selectCycle('biennial', 0.35)">24 månader (35% rabatt)</div>
+            </div>
+          </div>
+
+          <!-- 3. Addons -->
+          <div class="calc-panel">
+            <h3>3. Tilläggstjänster</h3>
+            <div class="addon-list">
+              
+              <!-- Extra Pages -->
+              <div class="addon-row">
+                <div class="addon-info">
+                  <input type="checkbox" class="addon-checkbox" id="addonPages" onchange="toggleAddon('pages')">
+                  <div class="addon-meta">
+                    <h4>Extra sidor</h4>
+                    <p>Lägg till fler sidor utöver vad som ingår i ditt baspaket (5 eller 10 sidor ingår som standard).</p>
+                    <div class="qty-wrapper" id="qtyWrapperPages" style="display:none">
+                      Hur många extra sidor?
+                      <input type="number" class="qty-input" id="qtyPages" value="1" min="1" oninput="updateCalculator()">
+                    </div>
+                  </div>
+                </div>
+                <div class="addon-cost">+150 kr / sida / mån</div>
+              </div>
+
+              <!-- Extra Language -->
+              <div class="addon-row">
+                <div class="addon-info">
+                  <input type="checkbox" class="addon-checkbox" id="addonLang" onchange="toggleAddon('lang')">
+                  <div class="addon-meta">
+                    <h4>Extra språk</h4>
+                    <p>En fullständigt översatt version av din hemsida (+40% av ditt baspaket per språk).</p>
+                    <div class="qty-wrapper" id="qtyWrapperLang" style="display:none">
+                      Antal extra språk?
+                      <input type="number" class="qty-input" id="qtyLang" value="1" min="1" oninput="updateCalculator()">
+                    </div>
+                  </div>
+                </div>
+                <div class="addon-cost">+40% / språk / mån</div>
+              </div>
+
+              <!-- Blog -->
+              <div class="addon-row">
+                <div class="addon-info">
+                  <input type="checkbox" class="addon-checkbox" id="addonBlog" onchange="updateCalculator()">
+                  <div class="addon-meta">
+                    <h4>Blogg / Nyhetssektion</h4>
+                    <p>Vi bygger och underhåller bloggflödet, du skriver inläggen.</p>
+                  </div>
+                </div>
+                <div class="addon-cost">+789 kr / mån</div>
+              </div>
+
+              <!-- Booking -->
+              <div class="addon-row">
+                <div class="addon-info">
+                  <input type="checkbox" class="addon-checkbox" id="addonBooking" onchange="updateCalculator()">
+                  <div class="addon-meta">
+                    <h4>Bokning &amp; tidsbeställning</h4>
+                    <p>Låt dina kunder boka tider eller möten direkt på hemsidan.</p>
+                  </div>
+                </div>
+                <div class="addon-cost">+250 kr / mån</div>
+              </div>
+
+              <!-- E-commerce -->
+              <div class="addon-row">
+                <div class="addon-info">
+                  <input type="checkbox" class="addon-checkbox" id="addonShop" onchange="updateCalculator()">
+                  <div class="addon-meta">
+                    <h4>Webbutik (E-handel)</h4>
+                    <p>Lägg till varukorg, produktsidor och digital kassa för direktförsäljning.</p>
+                  </div>
+                </div>
+                <div class="addon-cost">+600 kr / mån</div>
+              </div>
+
+              <!-- SEO -->
+              <div class="addon-row" id="rowSeo">
+                <div class="addon-info">
+                  <input type="checkbox" class="addon-checkbox" id="addonSeo" onchange="updateCalculator()">
+                  <div class="addon-meta">
+                    <h4>Löpande SEO <span id="labelSeoIncl" style="color:var(--gold); font-size:11px; font-weight:600; display:none">(INGÅR I PAKETET)</span></h4>
+                    <p>Kontinuerlig sökoptimering så att din hemsida rankar högre på Google.</p>
+                  </div>
+                </div>
+                <div class="addon-cost">+339 kr / mån</div>
+              </div>
+
+              <!-- Google Business Profile -->
+              <div class="addon-row" id="rowGbp">
+                <div class="addon-info">
+                  <input type="checkbox" class="addon-checkbox" id="addonGbp" onchange="updateCalculator()">
+                  <div class="addon-meta">
+                    <h4>Google Företagsprofil <span id="labelGbpIncl" style="color:var(--gold); font-size:11px; font-weight:600; display:none">(INGÅR I PAKETET)</span></h4>
+                    <p>Uppsättning, verifiering och månatlig optimering av din lokala Google-profil.</p>
+                  </div>
+                </div>
+                <div class="addon-cost">+239 kr / mån</div>
+              </div>
+
+              <!-- Priority Support -->
+              <div class="addon-row" id="rowSupport">
+                <div class="addon-info">
+                  <input type="checkbox" class="addon-checkbox" id="addonSupport" onchange="updateCalculator()">
+                  <div class="addon-meta">
+                    <h4>Prioriterad support <span id="labelSupportIncl" style="color:var(--gold); font-size:11px; font-weight:600; display:none">(INGÅR I PAKETET)</span></h4>
+                    <p>Ändringar hamnar längst fram i kön och vi hanterar dem snabbare.</p>
+                  </div>
+                </div>
+                <div class="addon-cost">+200 kr / mån</div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- 4. One-Time Services -->
+          <div class="calc-panel">
+            <h3>4. Engångstjänster</h3>
+            <div class="addon-list">
+              <!-- Design Makeover -->
+              <div class="addon-row">
+                <div class="addon-info">
+                  <input type="checkbox" class="addon-checkbox" id="addonMakeover" onchange="toggleAddon('makeover')">
+                  <div class="addon-meta">
+                    <h4>Design-makeover</h4>
+                    <p>Behåll din nuvarande hosting, men ge hela hemsidan en helt ny, fräsch design. Max 5 sidor ingår.</p>
+                    
+                    <div class="qty-wrapper" id="qtyWrapperMakeover" style="display:none">
+                      Hur många extra sidor för makeover?
+                      <input type="number" class="qty-input" id="qtyMakeover" value="0" min="0" oninput="updateCalculator()">
+                      <span style="margin-left:8px">(+499 kr / sida)</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="addon-cost">+1 899 kr (engångs)</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Side: Estimate Sidebar & Form -->
+        <div class="est-sidebar reveal">
+          <div class="est-box">
+            <h3>Ditt paket</h3>
+            
+            <div class="est-line"><span class="lbl">Baspaket</span><span class="val" id="estBasePlan">Hemsida &amp; Hosting</span></div>
+            <div class="est-line"><span class="lbl">Avtalsperiod</span><span class="val" id="estBillingCycle">Månadsvis</span></div>
+            <div class="est-line"><span class="lbl">Månatliga tillägg</span><span class="val" id="estMonthlyAddons">0 kr / mån</span></div>
+            <div class="est-line" id="estLineOneTime" style="display:none"><span class="lbl">Engångsavgift</span><span class="val" id="estOneTimeCost">0 kr</span></div>
+            
+            <div class="total-line" id="totalLineMonthly">
+              <span class="lbl">Beräknad månadskostnad</span>
+              <span class="val" id="totalMonthly">449 kr<small>exkl. moms /mån</small></span>
+            </div>
+            
+            <div class="total-line no-border" id="totalLineSetup" style="display:none">
+              <span class="lbl">Beräknad engångskostnad</span>
+              <span class="val" id="totalSetup">0 kr<small>exkl. moms</small></span>
+            </div>
+            
+            <div class="calc-disclaimer">
+              <strong>Enbart estimat:</strong> Varje företag och sajt är unik. Vi granskar din valda setup och skickar en exakt offert med ett fast pris.
+            </div>
+
+            <!-- Form -->
+            <form id="calcForm">
+              <!-- Hidden inputs to structure data for Formspree email -->
+              <input type="hidden" name="_subject" value="Ny paketförfrågan från Kalkylatorn">
+              <input type="hidden" name="Valt baspaket" id="hiddenBasePlan" value="Hemsida & Hosting (449 kr/mån)">
+              <input type="hidden" name="Avtalsperiod" id="hiddenBillingCycle" value="Månadsvis">
+              <input type="hidden" name="Månatliga tilläggstjänster" id="hiddenMonthlyAddons" value="Inga">
+              <input type="hidden" name="Setup- / Engångstjänster" id="hiddenOneTimeAddons" value="Inga">
+              <input type="hidden" name="Total månadskostnad (Estimat)" id="hiddenMonthlyTotal" value="449 kr/mån">
+              <input type="hidden" name="Total engångskostnad (Estimat)" id="hiddenSetupTotal" value="0 kr">
+              <input type="hidden" name="Paketsammanfattning" id="hiddenSummary" value="">
+
+              <div class="field">
+                <label for="name">Namn</label>
+                <input type="text" id="name" name="name" required placeholder="Ditt namn">
+              </div>
+              
+              <div class="field">
+                <label for="email">E-postadress</label>
+                <input type="email" id="email" name="email" required placeholder="du@exempel.se">
+              </div>
+              
+              <div class="field">
+                <label for="company">Företag / Nuvarande Hemsida</label>
+                <input type="text" id="company" name="company" placeholder="t.ex. foretagsnamn.se">
+              </div>
+              
+              <div class="field">
+                <label for="comments">Extra behov eller kommentarer</label>
+                <textarea id="comments" name="comments" placeholder="Beskriv eventuella specialfunktioner, designönskemål eller integrationsbehov..."></textarea>
+              </div>
+
+              <!-- Combined hidden message that compiles everything nicely -->
+              <input type="hidden" name="message" id="combinedMessage">
+
+              <button type="submit" class="btn btn-primary">Begär offert</button>
+            </form>
+
+            <div class="sent" id="sent">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+              <h3>Förfrågan skickad!</h3>
+              <p>Vi granskar ditt paket och återkommer via e-post med en exakt offert inom en dag eller två.</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="../site.js"></script>
+<script>
+// State
+var state = {
+  basePlan: 'small',
+  basePrice: 449,
+  cycle: 'monthly',
+  discountRate: 0,
+  addons: {
+    pages: false,
+    qtyPages: 1,
+    lang: false,
+    qtyLang: 1,
+    blog: false,
+    booking: false,
+    shop: false,
+    seo: false,
+    gbp: false,
+    support: false,
+    makeover: false,
+    qtyMakeover: 0
+  }
+};
+
+function selectBasePlan(plan, price) {
+  state.basePlan = plan;
+  state.basePrice = price;
+  
+  // Update active styling
+  document.querySelectorAll('input[name="basePlan"]').forEach(function(radio) {
+    var card = radio.closest('.option-box');
+    if (radio.value === plan) {
+      radio.checked = true;
+      card.classList.add('active');
+    } else {
+      card.classList.remove('active');
+    }
+  });
+
+  // Show/Hide billing cycle options if no plan
+  var billingPanel = document.getElementById('billingPanel');
+  if (plan === 'none') {
+    billingPanel.style.opacity = '0.3';
+    billingPanel.style.pointerEvents = 'none';
+  } else {
+    billingPanel.style.opacity = '1';
+    billingPanel.style.pointerEvents = 'auto';
+  }
+
+  // Handle auto inclusion logic
+  var seoChk = document.getElementById('addonSeo');
+  var gbpChk = document.getElementById('addonGbp');
+  var supportChk = document.getElementById('addonSupport');
+  
+  var seoLabel = document.getElementById('labelSeoIncl');
+  var gbpLabel = document.getElementById('labelGbpIncl');
+  var supportLabel = document.getElementById('labelSupportIncl');
+
+  if (plan === 'medium') {
+    seoChk.checked = true; seoChk.disabled = true; seoLabel.style.display = 'inline';
+    gbpChk.checked = true; gbpChk.disabled = true; gbpLabel.style.display = 'inline';
+    supportChk.disabled = false; supportLabel.style.display = 'none';
+  } else if (plan === 'large') {
+    seoChk.checked = true; seoChk.disabled = true; seoLabel.style.display = 'inline';
+    gbpChk.checked = true; gbpChk.disabled = true; gbpLabel.style.display = 'inline';
+    supportChk.checked = true; supportChk.disabled = true; supportLabel.style.display = 'inline';
+  } else {
+    seoChk.disabled = false; seoLabel.style.display = 'none';
+    gbpChk.disabled = false; gbpLabel.style.display = 'none';
+    supportChk.disabled = false; supportLabel.style.display = 'none';
+  }
+
+  updateCalculator();
+}
+
+function selectCycle(cycle, discount) {
+  state.cycle = cycle;
+  state.discountRate = discount;
+
+  var tabs = document.querySelectorAll('.cycle-tab');
+  tabs.forEach(function(tab, i) {
+    if ((cycle === 'monthly' && i === 0) || (cycle === 'annual' && i === 1) || (cycle === 'biennial' && i === 2)) {
+      tab.classList.add('active');
+    } else {
+      tab.classList.remove('active');
+    }
+  });
+
+  updateCalculator();
+}
+
+function toggleAddon(addon) {
+  var chk = document.getElementById('addon' + addon.charAt(0).toUpperCase() + addon.slice(1));
+  var wrapper = document.getElementById('qtyWrapper' + addon.charAt(0).toUpperCase() + addon.slice(1));
+  
+  if (chk.checked) {
+    wrapper.style.display = 'flex';
+  } else {
+    wrapper.style.display = 'none';
+  }
+  
+  updateCalculator();
+}
+
+function updateCalculator() {
+  // Sync checkbox state
+  state.addons.pages = document.getElementById('addonPages').checked;
+  state.addons.qtyPages = parseInt(document.getElementById('qtyPages').value) || 1;
+  state.addons.lang = document.getElementById('addonLang').checked;
+  state.addons.qtyLang = parseInt(document.getElementById('qtyLang').value) || 1;
+  state.addons.blog = document.getElementById('addonBlog').checked;
+  state.addons.booking = document.getElementById('addonBooking').checked;
+  state.addons.shop = document.getElementById('addonShop').checked;
+  
+  // Auto override based on base plan
+  if (state.basePlan === 'medium' || state.basePlan === 'large') {
+    state.addons.seo = true;
+    state.addons.gbp = true;
+  } else {
+    state.addons.seo = document.getElementById('addonSeo').checked;
+    state.addons.gbp = document.getElementById('addonGbp').checked;
+  }
+  
+  if (state.basePlan === 'large') {
+    state.addons.support = true;
+  } else {
+    state.addons.support = document.getElementById('addonSupport').checked;
+  }
+
+  state.addons.makeover = document.getElementById('addonMakeover').checked;
+  state.addons.qtyMakeover = parseInt(document.getElementById('qtyMakeover').value) || 0;
+
+  // 1. Calculate Base Plan (with discount)
+  var planName = 'Inget baspaket';
+  var basePlanCalculatedPrice = 0;
+  
+  if (state.basePlan !== 'none') {
+    if (state.basePlan === 'small') {
+      planName = 'Lilla paketet';
+      if (state.cycle === 'monthly') basePlanCalculatedPrice = 449;
+      if (state.cycle === 'annual') basePlanCalculatedPrice = 336;
+      if (state.cycle === 'biennial') basePlanCalculatedPrice = 291;
+    }
+    if (state.basePlan === 'medium') {
+      planName = 'Mellanpaketet';
+      if (state.cycle === 'monthly') basePlanCalculatedPrice = 899;
+      if (state.cycle === 'annual') basePlanCalculatedPrice = 674;
+      if (state.cycle === 'biennial') basePlanCalculatedPrice = 584;
+    }
+    if (state.basePlan === 'large') {
+      planName = 'Stora paketet';
+      if (state.cycle === 'monthly') basePlanCalculatedPrice = 2399;
+      if (state.cycle === 'annual') basePlanCalculatedPrice = 1799;
+      if (state.cycle === 'biennial') basePlanCalculatedPrice = 1559;
+    }
+  }
+
+  // 2. Calculate Addons Monthly Cost
+  var monthlyAddonsTotal = 0;
+  var addonsList = [];
+
+  if (state.addons.pages) {
+    var pCost = state.addons.qtyPages * 150;
+    monthlyAddonsTotal += pCost;
+    addonsList.push('Extra sidor (' + state.addons.qtyPages + 'st: +' + pCost + ' kr/mån)');
+  }
+  if (state.addons.lang && state.basePlan !== 'none') {
+    var lCost = state.addons.qtyLang * (state.basePrice * 0.40);
+    monthlyAddonsTotal += lCost;
+    addonsList.push('Extra språk (' + state.addons.qtyLang + 'st: +' + lCost.toFixed(0) + ' kr/mån)');
+  }
+  if (state.addons.blog) {
+    monthlyAddonsTotal += 789;
+    addonsList.push('Blogg / nyhetssektion (+789 kr/mån)');
+  }
+  if (state.addons.booking) {
+    monthlyAddonsTotal += 250;
+    addonsList.push('Bokning & tidsbeställning (+250 kr/mån)');
+  }
+  if (state.addons.shop) {
+    monthlyAddonsTotal += 600;
+    addonsList.push('Webbutik (+600 kr/mån)');
+  }
+  if (state.addons.seo && state.basePlan !== 'medium' && state.basePlan !== 'large') {
+    monthlyAddonsTotal += 339;
+    addonsList.push('Löpande SEO (+339 kr/mån)');
+  }
+  if (state.addons.gbp && state.basePlan !== 'medium' && state.basePlan !== 'large') {
+    monthlyAddonsTotal += 239;
+    addonsList.push('Google Företagsprofil (+239 kr/mån)');
+  }
+  if (state.addons.support && state.basePlan !== 'large') {
+    monthlyAddonsTotal += 200;
+    addonsList.push('Prioriterad support (+200 kr/mån)');
+  }
+
+  // 3. Calculate Setup / One-time cost
+  var oneTimeTotal = 0;
+  var setupList = [];
+  if (state.addons.makeover) {
+    var baseMakeover = 1899;
+    var extraMakeoverCost = state.addons.qtyMakeover * 499;
+    oneTimeTotal = baseMakeover + extraMakeoverCost;
+    setupList.push('Design-makeover (+1 899 kr)');
+    if (state.addons.qtyMakeover > 0) {
+      setupList.push('Extra makeover-sidor (' + state.addons.qtyMakeover + 'st: +' + extraMakeoverCost + ' kr)');
+    }
+  }
+
+  // 4. Calculate Final Totals
+  var finalMonthlyPrice = basePlanCalculatedPrice + monthlyAddonsTotal;
+
+  // 5. Update DOM elements
+  document.getElementById('estBasePlan').innerText = planName + ' (' + basePlanCalculatedPrice.toFixed(0) + ' kr/mån)';
+  
+  var cycleText = 'Månadsvis';
+  if (state.cycle === 'annual') cycleText = '12 månader (25% rabatt)';
+  if (state.cycle === 'biennial') cycleText = '24 månader (35% rabatt)';
+  document.getElementById('estBillingCycle').innerText = cycleText;
+
+  document.getElementById('estMonthlyAddons').innerText = monthlyAddonsTotal.toFixed(0) + ' kr / mån';
+
+  if (oneTimeTotal > 0) {
+    document.getElementById('estLineOneTime').style.display = 'flex';
+    document.getElementById('estOneTimeCost').innerText = oneTimeTotal.toFixed(0) + ' kr';
+    document.getElementById('totalLineSetup').style.display = 'flex';
+    document.getElementById('totalSetup').innerHTML = oneTimeTotal.toFixed(0) + ' kr<small>exkl. moms</small>';
+    document.getElementById('totalLineMonthly').classList.remove('no-border');
+  } else {
+    document.getElementById('estLineOneTime').style.display = 'none';
+    document.getElementById('totalLineSetup').style.display = 'none';
+    document.getElementById('totalLineMonthly').classList.add('no-border');
+  }
+
+  document.getElementById('totalMonthly').innerHTML = finalMonthlyPrice.toFixed(0) + ' kr<small>exkl. moms /mån</small>';
+
+  // 6. Update hidden inputs for Formspree submission
+  document.getElementById('hiddenBasePlan').value = planName + ' (' + basePlanCalculatedPrice.toFixed(0) + ' kr/mån)';
+  document.getElementById('hiddenBillingCycle').value = cycleText;
+  document.getElementById('hiddenMonthlyAddons').value = addonsList.join(', ') || 'Inga';
+  document.getElementById('hiddenOneTimeAddons').value = setupList.join(', ') || 'Inga';
+  document.getElementById('hiddenMonthlyTotal').value = finalMonthlyPrice.toFixed(0) + ' kr/mån';
+  document.getElementById('hiddenSetupTotal').value = oneTimeTotal.toFixed(0) + ' kr';
+
+  // Compile detailed text breakdown
+  var summaryText = '--- PRISKALKYLATOR BYGG SAMMANFATTNING ---\n';
+  summaryText += 'Baspaket: ' + planName + ' (' + basePlanCalculatedPrice.toFixed(0) + ' kr/mån)\n';
+  summaryText += 'Avtalsperiod: ' + cycleText + '\n';
+  summaryText += 'Månatliga tilläggstjänster: ' + (addonsList.join(', ') || 'Inga') + '\n';
+  summaryText += 'Setup- / Engångstjänster: ' + (setupList.join(', ') || 'Inga') + '\n';
+  summaryText += '-----------------------------\n';
+  summaryText += 'UPPSKATTAD MÅNADSKOSTNAD: ' + finalMonthlyPrice.toFixed(0) + ' kr/mån exkl. moms\n';
+  summaryText += 'UPPSKATTAD ENGÅNGSKOSTNAD: ' + oneTimeTotal.toFixed(0) + ' kr exkl. moms\n';
+  summaryText += '-----------------------------';
+  document.getElementById('hiddenSummary').value = summaryText;
+}
+
+// Form Submission handling
+document.getElementById('calcForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  var form = this;
+  var btn = form.querySelector('button[type="submit"]');
+  if (btn) {
+    btn.disabled = true;
+    btn.innerText = "Skickar...";
+  }
+
+  // Populate combined message (breakdown + user comments)
+  var summary = document.getElementById('hiddenSummary').value;
+  var comments = document.getElementById('comments').value || 'Inga kommentarer angivna.';
+  document.getElementById('combinedMessage').value = summary + '\n\nKundens kommentarer/extra behov:\n' + comments;
+
+  var formData = new FormData(form);
+  
+  fetch('https://formspree.io/f/mvzjdzbg', {
+    method: 'POST',
+    body: formData,
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+  .then(function(response) {
+    if (response.ok) {
+      form.style.display = 'none';
+      document.getElementById('sent').classList.add('show');
+    } else {
+      return response.json().then(function(data) {
+        if (data.errors) {
+          alert(data.errors.map(function(error) { return error.message; }).join(", "));
+        } else {
+          alert("Hoppsan! Det uppstod ett problem när formuläret skulle skickas.");
+        }
+        if (btn) {
+          btn.disabled = false;
+          btn.innerText = "Begär offert";
+        }
+      });
+    }
+  })
+  .catch(function(error) {
+    alert("Hoppsan! Det uppstod ett problem när formuläret skulle skickas. Vänligen försök igen.");
+    if (btn) {
+      btn.disabled = false;
+      btn.innerText = "Begär offert";
+    }
+  });
+});
+
+// Run calculation once on load
+updateCalculator();
+</script>
+</body>
+</html>

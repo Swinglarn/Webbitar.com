@@ -67,6 +67,7 @@
             '<a href="' + linkPrefix + 'portfolio">Portfolio</a>'+
             '<a href="' + linkPrefix + 'client-services">Våra tjänster</a>'+
             '<a href="' + linkPrefix + 'pricing">Priser</a>'+
+            '<a href="' + linkPrefix + 'calculator">Priskalkylator</a>'+
           '</div>'+
           '<div class="foot-col"><h5>Kontakt</h5>'+
             '<a href="' + linkPrefix + 'contact">Begär offert</a>'+
@@ -92,6 +93,7 @@
             '<a href="portfolio">Portfolio</a>'+
             '<a href="client-services">Client Services</a>'+
             '<a href="pricing">Pricing</a>'+
+            '<a href="calculator">Pricing Calculator</a>'+
           '</div>'+
           '<div class="foot-col"><h5>Contact</h5>'+
             '<a href="contact">Get a quote</a>'+

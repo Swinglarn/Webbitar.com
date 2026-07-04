@@ -128,5 +128,24 @@
     <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/support"/>
   </url>
 
+  <!-- Calculator -->
+  <url>
+    <loc>https://webbitar.com/calculator</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/calculator"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/calculator"/>
+  </url>
+  <url>
+    <loc>https://webbitar.com/sv/calculator</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/calculator"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/calculator"/>
+  </url>
+
 </urlset>
+
 
