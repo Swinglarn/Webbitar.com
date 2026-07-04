@@ -68,6 +68,7 @@
           '</div>'+
           '<div class="foot-col"><h5>Kontakt</h5>'+
             '<a href="' + linkPrefix + 'contact">Begär offert</a>'+
+            '<a href="' + linkPrefix + 'support">Support</a>'+
             '<a href="mailto:contact@webbitar.com">contact@webbitar.com</a>'+
             '<a href="' + linkPrefix + 'privacy">Integritetspolicy</a>'+
           '</div>'+
@@ -92,6 +93,7 @@
           '</div>'+
           '<div class="foot-col"><h5>Contact</h5>'+
             '<a href="contact">Get a quote</a>'+
+            '<a href="support">Support</a>'+
             '<a href="mailto:contact@webbitar.com">contact@webbitar.com</a>'+
             '<a href="privacy">Privacy Policy</a>'+
           '</div>'+

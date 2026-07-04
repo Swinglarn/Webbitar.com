@@ -110,4 +110,23 @@
     <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/contact"/>
   </url>
 
+  <!-- Support -->
+  <url>
+    <loc>https://webbitar.com/support</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/support"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/support"/>
+  </url>
+  <url>
+    <loc>https://webbitar.com/sv/support</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/support"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/support"/>
+  </url>
+
 </urlset>
+
