@@ -4,20 +4,22 @@
 
   <!-- Home -->
   <url>
-    <loc>https://webbitar.com/index</loc>
-    <lastmod>2026-06-23</lastmod>
+    <loc>https://webbitar.com/</loc>
+    <lastmod>2026-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/index"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/index"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webbitar.com/"/>
   </url>
   <url>
-    <loc>https://webbitar.com/sv/index</loc>
-    <lastmod>2026-06-23</lastmod>
+    <loc>https://webbitar.com/sv</loc>
+    <lastmod>2026-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/index"/>
-    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/index"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webbitar.com/"/>
   </url>
 
   <!-- About -->
@@ -28,6 +30,7 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/about"/>
     <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webbitar.com/about"/>
   </url>
   <url>
     <loc>https://webbitar.com/sv/about</loc>
@@ -36,6 +39,7 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/about"/>
     <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webbitar.com/about"/>
   </url>
 
   <!-- Client Services -->
@@ -46,6 +50,7 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/client-services"/>
     <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/client-services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webbitar.com/client-services"/>
   </url>
   <url>
     <loc>https://webbitar.com/sv/client-services</loc>
@@ -54,6 +59,7 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/client-services"/>
     <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/client-services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webbitar.com/client-services"/>
   </url>
 
   <!-- Portfolio -->
@@ -64,6 +70,7 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/portfolio"/>
     <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/portfolio"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webbitar.com/portfolio"/>
   </url>
   <url>
     <loc>https://webbitar.com/sv/portfolio</loc>
@@ -72,6 +79,7 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/portfolio"/>
     <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/portfolio"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webbitar.com/portfolio"/>
   </url>
 
   <!-- Pricing -->
@@ -82,6 +90,7 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/pricing"/>
     <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/pricing"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webbitar.com/pricing"/>
   </url>
   <url>
     <loc>https://webbitar.com/sv/pricing</loc>
@@ -90,6 +99,7 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/pricing"/>
     <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/pricing"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webbitar.com/pricing"/>
   </url>
 
   <!-- Contact -->
@@ -100,6 +110,7 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/contact"/>
     <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webbitar.com/contact"/>
   </url>
   <url>
     <loc>https://webbitar.com/sv/contact</loc>
@@ -108,6 +119,7 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/contact"/>
     <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webbitar.com/contact"/>
   </url>
 
   <!-- Support -->
@@ -118,6 +130,7 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/support"/>
     <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/support"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webbitar.com/support"/>
   </url>
   <url>
     <loc>https://webbitar.com/sv/support</loc>
@@ -126,6 +139,7 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/support"/>
     <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/support"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webbitar.com/support"/>
   </url>
 
   <!-- Calculator -->
@@ -136,6 +150,7 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/calculator"/>
     <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webbitar.com/calculator"/>
   </url>
   <url>
     <loc>https://webbitar.com/sv/calculator</loc>
@@ -144,8 +159,27 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/calculator"/>
     <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/calculator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webbitar.com/calculator"/>
+  </url>
+
+  <!-- Privacy -->
+  <url>
+    <loc>https://webbitar.com/privacy</loc>
+    <lastmod>2026-07-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/privacy"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webbitar.com/privacy"/>
+  </url>
+  <url>
+    <loc>https://webbitar.com/sv/privacy</loc>
+    <lastmod>2026-07-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/privacy"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webbitar.com/privacy"/>
   </url>
 
 </urlset>
-
-

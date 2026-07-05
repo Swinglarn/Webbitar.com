@@ -6,23 +6,20 @@
 
   // Get current page filename for switcher
   var path = window.location.pathname;
-  var file = path.substring(path.lastIndexOf('/') + 1);
-  if (file === '' || file === 'sv') {
-    file = path.indexOf('.html') > -1 ? 'index.html' : 'index';
-  }
-  var langToggleUrl = isSv ? '../' + file : 'sv/' + file;
+  var file = path.substring(path.lastIndexOf('/') + 1).replace('.html', '');
+  if (file === 'sv' || file === 'index') file = '';
+  var langToggleUrl = isSv ? '/' + file : (file ? '/sv/' + file : '/sv');
   var langToggleText = isSv ? 'EN' : 'SV';
 
   // Prevent relative path breaking if pathname is exactly '/sv' without trailing slash
   var isSvRootNoSlash = isSv && (path === '/sv' || path.endsWith('/sv'));
   var linkPrefix = isSvRootNoSlash ? 'sv/' : '';
-  var brandUrl = isSvRootNoSlash ? 'sv' : 'index';
 
   var nav = '';
   if (isSv) {
     nav =
     '<header><div class="wrap nav">'+
-      '<a class="brand" href="' + brandUrl + '"><img src="' + prefix + 'assets/logo-black.png" alt="Webbitar"><span>WEBBITAR</span></a>'+
+      '<a class="brand" href="/sv"><img src="' + prefix + 'assets/logo-black.png" alt="Webbitar"><span>WEBBITAR</span></a>'+
       '<nav class="nav-links" id="navlinks">'+
         '<a href="' + linkPrefix + 'about" data-p="about">Om oss</a>'+
         '<a href="' + linkPrefix + 'portfolio" data-p="portfolio">Portfolio</a>'+
@@ -38,7 +35,7 @@
   } else {
     nav =
     '<header><div class="wrap nav">'+
-      '<a class="brand" href="index"><img src="' + prefix + 'assets/logo-black.png" alt="Webbitar"><span>WEBBITAR</span></a>'+
+      '<a class="brand" href="/"><img src="' + prefix + 'assets/logo-black.png" alt="Webbitar"><span>WEBBITAR</span></a>'+
       '<nav class="nav-links" id="navlinks">'+
         '<a href="about" data-p="about">About</a>'+
         '<a href="portfolio" data-p="portfolio">Portfolio</a>'+
