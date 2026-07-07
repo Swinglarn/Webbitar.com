@@ -23,6 +23,7 @@ h1,h2,h3{text-wrap:balance}
 
 /* nav */
 header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{max-width:100%;padding:0 40px}
 .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
 .brand{display:flex;align-items:center;gap:12px}
 .brand img{height:38px;width:auto}
