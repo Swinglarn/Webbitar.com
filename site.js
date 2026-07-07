@@ -21,15 +21,19 @@
     '<header><div class="wrap nav">'+
       '<a class="brand" href="/sv"><img src="' + prefix + 'assets/logo-black.png" alt="Webbitar"><span>WEBBITAR</span></a>'+
       '<nav class="nav-links" id="navlinks">'+
-        '<a href="' + linkPrefix + 'about" data-p="about">Om oss</a>'+
-        '<a href="' + linkPrefix + 'portfolio" data-p="portfolio">Portfolio</a>'+
-        '<a href="' + linkPrefix + 'client-services" data-p="client">Våra tjänster</a>'+
-        '<a href="' + linkPrefix + 'marketing" data-p="marketing">Marknadsföring</a>'+
-        '<a href="' + linkPrefix + 'pricing" data-p="pricing">Priser</a>'+
-        '<a href="' + linkPrefix + 'calculator" data-p="calculator">Kalkylator</a>'+
-        '<a href="' + linkPrefix + 'support" data-p="support">Support</a>'+
-        '<a href="' + linkPrefix + 'contact" data-p="contact" class="nav-cta">Begär offert</a>'+
-        '<a href="' + langToggleUrl + '" style="border:1px solid var(--line);padding:4px 8px;border-radius:2px;font-size:12px;font-weight:600;color:var(--gold);letter-spacing:0.05em;margin-left:8px">' + langToggleText + '</a>'+
+        '<div class="nav-mid">'+
+          '<a href="' + linkPrefix + 'about" data-p="about">Om oss</a>'+
+          '<a href="' + linkPrefix + 'portfolio" data-p="portfolio">Portfolio</a>'+
+          '<a href="' + linkPrefix + 'client-services" data-p="client">Våra tjänster</a>'+
+          '<a href="' + linkPrefix + 'marketing" data-p="marketing">Marknadsföring</a>'+
+          '<a href="' + linkPrefix + 'pricing" data-p="pricing">Priser</a>'+
+          '<a href="' + linkPrefix + 'calculator" data-p="calculator">Kalkylator</a>'+
+          '<a href="' + linkPrefix + 'support" data-p="support">Support</a>'+
+        '</div>'+
+        '<div class="nav-right">'+
+          '<a href="' + linkPrefix + 'contact" data-p="contact" class="nav-cta">Begär offert</a>'+
+          '<a href="' + langToggleUrl + '" style="border:1px solid var(--line);padding:4px 8px;border-radius:2px;font-size:12px;font-weight:600;color:var(--gold);letter-spacing:0.05em;margin-left:8px">' + langToggleText + '</a>'+
+        '</div>'+
       '</nav>'+
       '<button class="menu-btn" id="menuBtn" aria-label="Meny">&#9776;</button>'+
     '</div></header>';
@@ -38,15 +42,19 @@
     '<header><div class="wrap nav">'+
       '<a class="brand" href="/"><img src="' + prefix + 'assets/logo-black.png" alt="Webbitar"><span>WEBBITAR</span></a>'+
       '<nav class="nav-links" id="navlinks">'+
-        '<a href="about" data-p="about">About</a>'+
-        '<a href="portfolio" data-p="portfolio">Portfolio</a>'+
-        '<a href="client-services" data-p="client">Client Services</a>'+
-        '<a href="marketing" data-p="marketing">Marketing</a>'+
-        '<a href="pricing" data-p="pricing">Pricing</a>'+
-        '<a href="calculator" data-p="calculator">Calculator</a>'+
-        '<a href="support" data-p="support">Support</a>'+
-        '<a href="contact" data-p="contact" class="nav-cta">Get a quote</a>'+
-        '<a href="' + langToggleUrl + '" style="border:1px solid var(--line);padding:4px 8px;border-radius:2px;font-size:12px;font-weight:600;color:var(--gold);letter-spacing:0.05em;margin-left:8px">' + langToggleText + '</a>'+
+        '<div class="nav-mid">'+
+          '<a href="about" data-p="about">About</a>'+
+          '<a href="portfolio" data-p="portfolio">Portfolio</a>'+
+          '<a href="client-services" data-p="client">Client Services</a>'+
+          '<a href="marketing" data-p="marketing">Marketing</a>'+
+          '<a href="pricing" data-p="pricing">Pricing</a>'+
+          '<a href="calculator" data-p="calculator">Calculator</a>'+
+          '<a href="support" data-p="support">Support</a>'+
+        '</div>'+
+        '<div class="nav-right">'+
+          '<a href="contact" data-p="contact" class="nav-cta">Get a quote</a>'+
+          '<a href="' + langToggleUrl + '" style="border:1px solid var(--line);padding:4px 8px;border-radius:2px;font-size:12px;font-weight:600;color:var(--gold);letter-spacing:0.05em;margin-left:8px">' + langToggleText + '</a>'+
+        '</div>'+
       '</nav>'+
       '<button class="menu-btn" id="menuBtn" aria-label="Menu">&#9776;</button>'+
     '</div></header>';
