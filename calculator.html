@@ -535,6 +535,47 @@ input:focus, textarea:focus {
             </div>
           </div>
 
+          <!-- 4. Paid Ads & Growth -->
+          <div class="calc-panel">
+            <h3>4. Paid Ads &amp; Growth</h3>
+            <div class="addon-list">
+              <!-- Setup / Consulting -->
+              <div class="addon-row">
+                <div class="addon-info">
+                  <input type="checkbox" class="addon-checkbox" id="addonAdsSetup" onchange="updateCalculator()">
+                  <div class="addon-meta">
+                    <h4>Setup &amp; Consulting</h4>
+                    <p>Audit, Tag Manager tracking pixel installations (Meta, Google, Pinterest, X), and 1-hour strategy consultation.</p>
+                  </div>
+                </div>
+                <div class="addon-cost">+$490 (one-time)</div>
+              </div>
+
+              <!-- Single Channel -->
+              <div class="addon-row">
+                <div class="addon-info">
+                  <input type="checkbox" class="addon-checkbox" id="addonAdsSingle" onchange="updateCalculator()">
+                  <div class="addon-meta">
+                    <h4>Single Channel Ads Management</h4>
+                    <p>Full-service management &amp; optimization of either Google Ads or Meta Ads.</p>
+                  </div>
+                </div>
+                <div class="addon-cost">+$349 / mo</div>
+              </div>
+
+              <!-- Omnichannel -->
+              <div class="addon-row">
+                <div class="addon-info">
+                  <input type="checkbox" class="addon-checkbox" id="addonAdsMulti" onchange="updateCalculator()">
+                  <div class="addon-meta">
+                    <h4>Omnichannel Growth Management</h4>
+                    <p>Full-service management of campaigns across Google, Meta, Pinterest, and X.</p>
+                  </div>
+                </div>
+                <div class="addon-cost">+$699 / mo</div>
+              </div>
+            </div>
+          </div>
 
         </div>
 
@@ -635,7 +676,10 @@ var state = {
     gbp: false,
     support: false,
     makeover: false,
-    qtyMakeover: 0
+    qtyMakeover: 0,
+    adsSetup: false,
+    adsSingle: false,
+    adsMulti: false
   }
 };
 
@@ -735,6 +779,9 @@ function updateCalculator() {
   state.addons.blog = document.getElementById('addonBlog').checked;
   state.addons.booking = document.getElementById('addonBooking').checked;
   state.addons.shop = document.getElementById('addonShop').checked;
+  state.addons.adsSetup = document.getElementById('addonAdsSetup').checked;
+  state.addons.adsSingle = document.getElementById('addonAdsSingle').checked;
+  state.addons.adsMulti = document.getElementById('addonAdsMulti').checked;
   
   // Auto override based on base plan
   if (state.basePlan === 'medium' || state.basePlan === 'large') {
@@ -819,6 +866,14 @@ function updateCalculator() {
     monthlyAddonsTotal += 49;
     addonsList.push('Priority Support (+$49/mo)');
   }
+  if (state.addons.adsSingle) {
+    monthlyAddonsTotal += 349;
+    addonsList.push('Single Channel Ads Management (+$349/mo)');
+  }
+  if (state.addons.adsMulti) {
+    monthlyAddonsTotal += 699;
+    addonsList.push('Omnichannel Ads Management (+$699/mo)');
+  }
 
   // 3. Calculate Setup / One-time cost
   var oneTimeTotal = 0;
@@ -831,6 +886,10 @@ function updateCalculator() {
     if (state.addons.qtyMakeover > 0) {
       setupList.push('Extra Makeover Pages (' + state.addons.qtyMakeover + 'x: +$' + extraMakeoverCost + ')');
     }
+  }
+  if (state.addons.adsSetup) {
+    oneTimeTotal += 490;
+    setupList.push('Ads Setup & Consulting (+$490)');
   }
 
   // 4. Calculate Final Totals

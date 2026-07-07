@@ -535,6 +535,47 @@ input:focus, textarea:focus {
             </div>
           </div>
 
+          <!-- 4. Annonsering & Tillväxt -->
+          <div class="calc-panel">
+            <h3>4. Annonsering &amp; Tillväxt</h3>
+            <div class="addon-list">
+              <!-- Setup / Consulting -->
+              <div class="addon-row">
+                <div class="addon-info">
+                  <input type="checkbox" class="addon-checkbox" id="addonAdsSetup" onchange="updateCalculator()">
+                  <div class="addon-meta">
+                    <h4>Uppsättning &amp; Rådgivning</h4>
+                    <p>Genomgång, GTM-spårningspixlar (Meta, Google, Pinterest, X) samt 1-timmars rådgivningsmöte.</p>
+                  </div>
+                </div>
+                <div class="addon-cost">+4 990 kr (engångs)</div>
+              </div>
+
+              <!-- Single Channel -->
+              <div class="addon-row">
+                <div class="addon-info">
+                  <input type="checkbox" class="addon-checkbox" id="addonAdsSingle" onchange="updateCalculator()">
+                  <div class="addon-meta">
+                    <h4>Enkel Kanal</h4>
+                    <p>Helhetshantering och optimering av antingen Google Ads eller Meta Ads.</p>
+                  </div>
+                </div>
+                <div class="addon-cost">+3 499 kr / mån</div>
+              </div>
+
+              <!-- Omnichannel -->
+              <div class="addon-row">
+                <div class="addon-info">
+                  <input type="checkbox" class="addon-checkbox" id="addonAdsMulti" onchange="updateCalculator()">
+                  <div class="addon-meta">
+                    <h4>Omnichannel Growth</h4>
+                    <p>Helhetshantering och optimering av kampanjer på Google, Meta, Pinterest och X.</p>
+                  </div>
+                </div>
+                <div class="addon-cost">+6 999 kr / mån</div>
+              </div>
+            </div>
+          </div>
 
         </div>
 
@@ -635,7 +676,10 @@ var state = {
     gbp: false,
     support: false,
     makeover: false,
-    qtyMakeover: 0
+    qtyMakeover: 0,
+    adsSetup: false,
+    adsSingle: false,
+    adsMulti: false
   }
 };
 
@@ -735,6 +779,9 @@ function updateCalculator() {
   state.addons.blog = document.getElementById('addonBlog').checked;
   state.addons.booking = document.getElementById('addonBooking').checked;
   state.addons.shop = document.getElementById('addonShop').checked;
+  state.addons.adsSetup = document.getElementById('addonAdsSetup').checked;
+  state.addons.adsSingle = document.getElementById('addonAdsSingle').checked;
+  state.addons.adsMulti = document.getElementById('addonAdsMulti').checked;
   
   // Auto override based on base plan
   if (state.basePlan === 'medium' || state.basePlan === 'large') {
@@ -819,6 +866,14 @@ function updateCalculator() {
     monthlyAddonsTotal += 499;
     addonsList.push('Prioriterad support (+499 kr/mån)');
   }
+  if (state.addons.adsSingle) {
+    monthlyAddonsTotal += 3499;
+    addonsList.push('Enkel Kanal annonsering (+3 499 kr/mån)');
+  }
+  if (state.addons.adsMulti) {
+    monthlyAddonsTotal += 6999;
+    addonsList.push('Omnichannel Growth annonsering (+6 999 kr/mån)');
+  }
 
   // 3. Calculate Setup / One-time cost
   var oneTimeTotal = 0;
@@ -831,6 +886,10 @@ function updateCalculator() {
     if (state.addons.qtyMakeover > 0) {
       setupList.push('Extra makeover-sidor (' + state.addons.qtyMakeover + 'st: +' + extraMakeoverCost + ' kr)');
     }
+  }
+  if (state.addons.adsSetup) {
+    oneTimeTotal += 4990;
+    setupList.push('Uppsättning & Rådgivning (+4 990 kr)');
   }
 
   // 4. Calculate Final Totals

@@ -161,6 +161,25 @@
     <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/calculator"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webbitar.com/calculator"/>
   </url>
+  <!-- Marketing -->
+  <url>
+    <loc>https://webbitar.com/marketing</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/marketing"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/marketing"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webbitar.com/marketing"/>
+  </url>
+  <url>
+    <loc>https://webbitar.com/sv/marketing</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/marketing"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/marketing"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webbitar.com/marketing"/>
+  </url>
 
   <!-- Privacy -->
   <url>
