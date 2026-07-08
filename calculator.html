@@ -801,6 +801,11 @@ function updateCalculator() {
   state.addons.makeover = (state.basePlan === 'makeover');
   state.addons.qtyMakeover = parseInt(document.getElementById('qtyMakeover').value) || 0;
 
+  var discountRate = 0;
+  if (state.basePlan !== 'none' && state.basePlan !== 'makeover') {
+    discountRate = state.discountRate || 0;
+  }
+
   // 1. Calculate Base Plan (with discount)
   var planName = 'Custom / Addons Only';
   var basePlanCalculatedPrice = 0;
@@ -808,21 +813,15 @@ function updateCalculator() {
   if (state.basePlan !== 'none' && state.basePlan !== 'makeover') {
     if (state.basePlan === 'small') {
       planName = 'Small Plan';
-      if (state.cycle === 'monthly') basePlanCalculatedPrice = 45;
-      if (state.cycle === 'annual') basePlanCalculatedPrice = 33;
-      if (state.cycle === 'biennial') basePlanCalculatedPrice = 29;
+      basePlanCalculatedPrice = Math.floor(45 * (1 - discountRate));
     }
     if (state.basePlan === 'medium') {
       planName = 'Medium Plan';
-      if (state.cycle === 'monthly') basePlanCalculatedPrice = 89;
-      if (state.cycle === 'annual') basePlanCalculatedPrice = 66;
-      if (state.cycle === 'biennial') basePlanCalculatedPrice = 57;
+      basePlanCalculatedPrice = Math.floor(89 * (1 - discountRate));
     }
     if (state.basePlan === 'large') {
       planName = 'Large Plan';
-      if (state.cycle === 'monthly') basePlanCalculatedPrice = 239;
-      if (state.cycle === 'annual') basePlanCalculatedPrice = 179;
-      if (state.cycle === 'biennial') basePlanCalculatedPrice = 155;
+      basePlanCalculatedPrice = Math.floor(239 * (1 - discountRate));
     }
   } else if (state.basePlan === 'makeover') {
     planName = 'Design Makeover';
@@ -893,7 +892,8 @@ function updateCalculator() {
   }
 
   // 4. Calculate Final Totals
-  var finalMonthlyPrice = basePlanCalculatedPrice + monthlyAddonsTotal;
+  var discountedAddonsTotal = Math.floor(monthlyAddonsTotal * (1 - discountRate));
+  var finalMonthlyPrice = basePlanCalculatedPrice + discountedAddonsTotal;
 
   // 5. Update DOM elements
   if (state.basePlan === 'makeover') {
@@ -907,7 +907,7 @@ function updateCalculator() {
   if (state.cycle === 'biennial') cycleText = '24 Months (35% off)';
   document.getElementById('estBillingCycle').innerText = cycleText;
 
-  document.getElementById('estMonthlyAddons').innerText = '$' + monthlyAddonsTotal.toFixed(0) + ' / mo';
+  document.getElementById('estMonthlyAddons').innerText = '$' + discountedAddonsTotal.toFixed(0) + ' / mo';
 
   if (oneTimeTotal > 0) {
     document.getElementById('estLineOneTime').style.display = 'flex';
@@ -937,9 +937,17 @@ function updateCalculator() {
 
   // Compile detailed text breakdown
   var summaryText = '--- CUSTOM PACKAGE ESTIMATE BUILD ---\n';
-  summaryText += 'Base Plan: ' + planName + ' ($' + basePlanCalculatedPrice.toFixed(0) + '/mo)\n';
+  if (state.basePlan === 'makeover') {
+    summaryText += 'Base Plan: ' + planName + '\n';
+  } else {
+    summaryText += 'Base Plan: ' + planName + ' ($' + basePlanCalculatedPrice.toFixed(0) + '/mo)\n';
+  }
   summaryText += 'Billing Cycle: ' + cycleText + '\n';
   summaryText += 'Monthly Add-ons: ' + (addonsList.join(', ') || 'None') + '\n';
+  if (discountRate > 0) {
+    summaryText += 'Discount Applied: ' + (discountRate * 100) + '% off on all monthly fees (including add-ons)\n';
+    summaryText += 'Monthly Add-ons (discounted): $' + discountedAddonsTotal.toFixed(0) + '/mo\n';
+  }
   summaryText += 'One-time Setup: ' + (setupList.join(', ') || 'None') + '\n';
   summaryText += '-----------------------------\n';
   summaryText += 'TOTAL ESTIMATED MONTHLY COST: $' + finalMonthlyPrice.toFixed(0) + '/mo\n';

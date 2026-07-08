@@ -801,6 +801,11 @@ function updateCalculator() {
   state.addons.makeover = (state.basePlan === 'makeover');
   state.addons.qtyMakeover = parseInt(document.getElementById('qtyMakeover').value) || 0;
 
+  var discountRate = 0;
+  if (state.basePlan !== 'none' && state.basePlan !== 'makeover') {
+    discountRate = state.discountRate || 0;
+  }
+
   // 1. Calculate Base Plan (with discount)
   var planName = 'Skräddarsytt / Enbart tillägg';
   var basePlanCalculatedPrice = 0;
@@ -808,21 +813,15 @@ function updateCalculator() {
   if (state.basePlan !== 'none' && state.basePlan !== 'makeover') {
     if (state.basePlan === 'small') {
       planName = 'Lilla paketet';
-      if (state.cycle === 'monthly') basePlanCalculatedPrice = 449;
-      if (state.cycle === 'annual') basePlanCalculatedPrice = 336;
-      if (state.cycle === 'biennial') basePlanCalculatedPrice = 291;
+      basePlanCalculatedPrice = Math.floor(449 * (1 - discountRate));
     }
     if (state.basePlan === 'medium') {
       planName = 'Mellanpaketet';
-      if (state.cycle === 'monthly') basePlanCalculatedPrice = 899;
-      if (state.cycle === 'annual') basePlanCalculatedPrice = 674;
-      if (state.cycle === 'biennial') basePlanCalculatedPrice = 584;
+      basePlanCalculatedPrice = Math.floor(899 * (1 - discountRate));
     }
     if (state.basePlan === 'large') {
       planName = 'Stora paketet';
-      if (state.cycle === 'monthly') basePlanCalculatedPrice = 2399;
-      if (state.cycle === 'annual') basePlanCalculatedPrice = 1799;
-      if (state.cycle === 'biennial') basePlanCalculatedPrice = 1559;
+      basePlanCalculatedPrice = Math.floor(2399 * (1 - discountRate));
     }
   } else if (state.basePlan === 'makeover') {
     planName = 'Design-makeover';
@@ -893,7 +892,8 @@ function updateCalculator() {
   }
 
   // 4. Calculate Final Totals
-  var finalMonthlyPrice = basePlanCalculatedPrice + monthlyAddonsTotal;
+  var discountedAddonsTotal = Math.floor(monthlyAddonsTotal * (1 - discountRate));
+  var finalMonthlyPrice = basePlanCalculatedPrice + discountedAddonsTotal;
 
   // 5. Update DOM elements
   if (state.basePlan === 'makeover') {
@@ -907,7 +907,7 @@ function updateCalculator() {
   if (state.cycle === 'biennial') cycleText = '24 månader (35% rabatt)';
   document.getElementById('estBillingCycle').innerText = cycleText;
 
-  document.getElementById('estMonthlyAddons').innerText = monthlyAddonsTotal.toFixed(0) + ' kr / mån';
+  document.getElementById('estMonthlyAddons').innerText = discountedAddonsTotal.toFixed(0) + ' kr / mån';
 
   if (oneTimeTotal > 0) {
     document.getElementById('estLineOneTime').style.display = 'flex';
@@ -937,9 +937,17 @@ function updateCalculator() {
 
   // Compile detailed text breakdown
   var summaryText = '--- PRISKALKYLATOR BYGG SAMMANFATTNING ---\n';
-  summaryText += 'Baspaket: ' + planName + ' (' + basePlanCalculatedPrice.toFixed(0) + ' kr/mån)\n';
+  if (state.basePlan === 'makeover') {
+    summaryText += 'Baspaket: ' + planName + '\n';
+  } else {
+    summaryText += 'Baspaket: ' + planName + ' (' + basePlanCalculatedPrice.toFixed(0) + ' kr/mån)\n';
+  }
   summaryText += 'Avtalsperiod: ' + cycleText + '\n';
   summaryText += 'Månatliga tilläggstjänster: ' + (addonsList.join(', ') || 'Inga') + '\n';
+  if (discountRate > 0) {
+    summaryText += 'Rabatt applicerad: ' + (discountRate * 100) + '% rabatt på alla månatliga avgifter (inklusive tillägg)\n';
+    summaryText += 'Månatliga tilläggstjänster (rabatterade): ' + discountedAddonsTotal.toFixed(0) + ' kr/mån\n';
+  }
   summaryText += 'Setup- / Engångstjänster: ' + (setupList.join(', ') || 'Inga') + '\n';
   summaryText += '-----------------------------\n';
   summaryText += 'UPPSKATTAD MÅNADSKOSTNAD: ' + finalMonthlyPrice.toFixed(0) + ' kr/mån exkl. moms\n';

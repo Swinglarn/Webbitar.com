@@ -118,3 +118,8 @@ footer{background:var(--ink);color:#cbd5e1;padding:56px 0 40px}
   .reveal{opacity:1;transform:none;transition:none}
   html{scroll-behavior:auto}
 }
+
+/* global cta actions */
+.cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.cta-final .btn-ghost{border-color:var(--gold);color:inherit}
+.cta-final .btn-ghost:hover{background:rgba(255,255,255,0.08);border-color:#fff}
