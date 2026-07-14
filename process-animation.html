@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Webbitar — From first message to live website</title>
+<title>Webbitar — From first message to growing your business</title>
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/png" href="assets/logo-black-square.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -370,19 +370,28 @@ body{
 @media(prefers-reduced-motion:reduce){
   .scene,.scene *{animation:none !important;transition:none !important}
 }
+/* embedded in an iframe on the site: fill the frame, no border */
+.embedded .stage{width:100%;border:none !important}
 </style>
+<script>if(window.self!==window.top)document.documentElement.classList.add('embedded');</script>
 </head>
 <body>
 
 <div class="stage" id="stage">
   <div class="progress" id="progress"></div>
 
+  <!-- hook -->
+  <section class="scene center" data-dur="4600">
+    <div class="intro-eyebrow" style="animation-delay:.15s">Webbitar</div>
+    <h1 class="intro-title" style="animation-delay:.35s">Could you take on <em>more customers</em> than you already have?</h1>
+  </section>
+
   <!-- intro -->
   <section class="scene center" data-dur="4200">
     <img class="mark" src="assets/logo-black.png" alt="Webbitar">
     <div class="rule"><span class="ln"></span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l1.6 9L24 12l-10.4 3L12 24l-1.6-9L0 12l10.4-3z"/></svg><span class="ln r"></span></div>
     <div class="intro-eyebrow">How it works</div>
-    <h1 class="intro-title">From first message to <em>live</em> website.</h1>
+    <h1 class="intro-title">From first message to <em>growing</em> your business.</h1>
   </section>
 
   <!-- 1 · contact -->

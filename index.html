@@ -70,6 +70,8 @@
 .cta-final h2 em{font-style:italic;color:var(--gold)}
 /* process timeline */
 .process{border-top:1px solid var(--line)}
+.process-anim{max-width:960px;margin:0 auto 64px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 34px 80px -44px rgba(15,23,42,.18)}
+.process-anim iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
 .timeline{display:grid;grid-template-columns:repeat(6,1fr);gap:0;position:relative;counter-reset:step}
 .step{position:relative;text-align:center;padding:0 14px}
 .step-dot{width:52px;height:52px;border-radius:50%;background:#fff;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;position:relative;z-index:2;transition:border-color .3s,background .3s,transform .3s}
@@ -182,8 +184,11 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div class="eyebrow">How it works</div>
-        <h2>From first message to live website</h2>
+        <h2>From first message to growing your business</h2>
         <p>A simple, hassle-free process. No surprises, no tech headaches.</p>
+      </div>
+      <div class="process-anim reveal">
+        <iframe src="process-animation" title="How Webbitar works, from first message to growing your business" loading="lazy"></iframe>
       </div>
       <div class="timeline reveal">
 

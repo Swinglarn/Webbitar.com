@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Webbitar — Från första meddelande till ett växande företag</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="assets/logo-black-square.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff;
+  --ink:#0f172a;
+  --muted:#64748b;
+  --line:#e2e8f0;
+  --accent:#1a56db;
+  --paper:#f8fafc;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  background:var(--bg);color:var(--ink);font-family:var(--sans);
+  display:flex;align-items:center;justify-content:center;
+  -webkit-font-smoothing:antialiased;overflow:hidden;
+}
+
+/* ---------- stage ---------- */
+.stage{
+  position:relative;width:min(1100px,96vw);aspect-ratio:16/9;
+  background:var(--bg);overflow:hidden;
+}
+@media(min-width:1160px){.stage{border:1px solid var(--line)}}
+.progress{
+  position:absolute;left:0;bottom:0;height:2px;width:0;
+  background:var(--accent);z-index:20;transition:none;
+}
+
+/* ---------- scenes ---------- */
+.scene{
+  position:absolute;inset:0;display:grid;grid-template-columns:5fr 7fr;
+  align-items:center;padding:0 6%;gap:4%;
+  opacity:0;visibility:hidden;transition:opacity .55s ease,visibility 0s .55s;
+}
+.scene.active{opacity:1;visibility:visible;transition:opacity .55s ease}
+.scene.center{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:0}
+
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pop{0%{opacity:0;transform:scale(.6)}70%{transform:scale(1.06)}100%{opacity:1;transform:scale(1)}}
+
+/* caption block, hidden until scene active */
+.cap .eyebrow,.cap h2,.cap p{opacity:0}
+.cap .eyebrow{
+  font-size:12px;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:18px;
+}
+.cap .eyebrow::before{
+  content:"";display:inline-block;width:26px;height:1px;background:var(--accent);
+  vertical-align:middle;margin-right:12px;opacity:.7;
+}
+.cap h2{
+  font-family:var(--serif);font-weight:500;font-size:clamp(28px,3.6vw,44px);
+  line-height:1.1;margin-bottom:16px;letter-spacing:.01em;
+}
+.cap p{color:var(--muted);font-size:clamp(13px,1.4vw,16px);line-height:1.6;max-width:34ch}
+.scene.active .cap .eyebrow{animation:rise .8s .15s cubic-bezier(.2,.7,.2,1) both}
+.scene.active .cap h2{animation:rise .8s .3s cubic-bezier(.2,.7,.2,1) both}
+.scene.active .cap p{animation:rise .8s .45s cubic-bezier(.2,.7,.2,1) both}
+
+.vis{display:flex;align-items:center;justify-content:center;min-width:0}
+
+/* ---------- intro / outro ---------- */
+.mark{height:clamp(80px,14vw,130px);width:auto;opacity:0}
+.scene.active .mark{animation:rise 1s .1s cubic-bezier(.2,.7,.2,1) both}
+.rule{display:flex;align-items:center;gap:18px;color:var(--accent);margin:26px 0;opacity:0}
+.scene.active .rule{animation:fadeIn 1s .5s both}
+.rule .ln{height:1px;width:70px;background:linear-gradient(90deg,transparent,var(--line))}
+.rule .ln.r{background:linear-gradient(90deg,var(--line),transparent)}
+.rule svg{width:14px;height:14px}
+.intro-eyebrow{font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;opacity:0}
+.scene.active .intro-eyebrow{animation:rise .9s .45s cubic-bezier(.2,.7,.2,1) both}
+.intro-title{
+  font-family:var(--serif);font-weight:500;font-size:clamp(30px,4.4vw,54px);
+  line-height:1.1;max-width:20ch;opacity:0;
+}
+.intro-title em{font-style:italic}
+.scene.active .intro-title{animation:rise .9s .6s cubic-bezier(.2,.7,.2,1) both}
+.outro-cta{margin-top:28px;opacity:0;font-size:14px;letter-spacing:.06em;color:var(--muted)}
+.outro-cta strong{color:var(--ink);font-weight:600;letter-spacing:.1em}
+.scene.active .outro-cta{animation:rise .9s .95s cubic-bezier(.2,.7,.2,1) both}
+
+/* ---------- scene 1 · contact ---------- */
+.chat{
+  width:min(380px,100%);background:#fff;border:1px solid var(--line);border-radius:12px;
+  padding:26px 24px;box-shadow:0 24px 60px -30px rgba(15,23,42,.18);
+}
+.chat-head{display:flex;align-items:center;gap:10px;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:18px}
+.chat-head .avatar{
+  width:30px;height:30px;border-radius:50%;border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;background:var(--paper);
+}
+.chat-head .avatar img{height:16px;width:auto}
+.chat-head span{font-size:12.5px;font-weight:600;letter-spacing:.14em}
+.bubble{
+  max-width:78%;padding:11px 15px;border-radius:12px;font-size:13.5px;line-height:1.45;
+  opacity:0;margin-bottom:12px;
+}
+.bubble.you{margin-left:auto;background:var(--ink);color:#fff;border-bottom-right-radius:3px}
+.bubble.us{background:var(--paper);border:1px solid var(--line);border-bottom-left-radius:3px}
+.typing{display:inline-flex;gap:4px;align-items:center;height:10px}
+.typing i{width:5px;height:5px;border-radius:50%;background:var(--muted);opacity:.5}
+.scene.active .typing i{animation:blink 1s infinite}
+.scene.active .typing i:nth-child(2){animation-delay:.18s}
+.scene.active .typing i:nth-child(3){animation-delay:.36s}
+@keyframes blink{0%,100%{opacity:.25;transform:translateY(0)}50%{opacity:1;transform:translateY(-2px)}}
+.scene.active .bubble.you{animation:pop .5s .9s cubic-bezier(.2,.7,.2,1) both}
+.scene.active .bubble.us.dots{animation:pop .4s 1.9s both,fadeOutB .3s 3s forwards}
+.scene.active .bubble.us.reply{animation:pop .5s 3.2s cubic-bezier(.2,.7,.2,1) both}
+@keyframes fadeOutB{to{opacity:0;height:0;padding:0;margin:0;overflow:hidden}}
+
+/* ---------- browser chrome (shared) ---------- */
+.browser{
+  width:min(520px,100%);background:#fff;border:1px solid var(--line);border-radius:10px;
+  box-shadow:0 30px 70px -34px rgba(15,23,42,.22);overflow:hidden;position:relative;
+}
+.bar{
+  display:flex;align-items:center;gap:12px;padding:10px 14px;
+  border-bottom:1px solid var(--line);background:var(--paper);
+}
+.bar .wdots{display:flex;gap:5px}
+.bar .wdots i{width:8px;height:8px;border-radius:50%;border:1px solid var(--line);background:#fff}
+.bar .url{
+  flex:1;height:22px;border:1px solid var(--line);border-radius:11px;background:#fff;
+  display:flex;align-items:center;gap:6px;padding:0 12px;
+  font-size:10.5px;color:var(--muted);letter-spacing:.03em;
+}
+.bar .url svg{width:9px;height:9px;flex:none}
+.canvas{padding:22px 26px 26px;position:relative;min-height:230px}
+
+/* wireframe blocks */
+.wf-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.wf-logo{width:64px;height:10px;border-radius:5px;background:var(--ink)}
+.wf-links{display:flex;gap:10px}
+.wf-links i{width:30px;height:7px;border-radius:4px;background:var(--line)}
+.wf-h1{height:16px;border-radius:6px;background:var(--ink);width:72%;margin-bottom:10px}
+.wf-h1.b{width:48%;margin-bottom:16px}
+.wf-p{height:7px;border-radius:4px;background:var(--line);width:84%;margin-bottom:7px}
+.wf-p.b{width:64%;margin-bottom:18px}
+.wf-row{display:flex;gap:12px;align-items:flex-start}
+.wf-btn{width:92px;height:26px;border-radius:4px;background:var(--ink)}
+.wf-btn.ghost{background:#fff;border:1px solid var(--line)}
+.wf-img{
+  margin-left:auto;width:150px;height:104px;border-radius:6px;border:1px solid var(--line);
+  background:var(--paper);position:relative;overflow:hidden;margin-top:-58px;
+}
+.wf-img svg{position:absolute;inset:0;width:100%;height:100%}
+.wf-img svg line{stroke:var(--line);stroke-width:1}
+
+/* scene 2 · assemble */
+.s-build .wf-nav,.s-build .wf-h1,.s-build .wf-h1.b,.s-build .wf-p,.s-build .wf-p.b,
+.s-build .wf-row,.s-build .wf-img{opacity:0}
+.scene.active.s-build .browser{animation:rise .8s .1s cubic-bezier(.2,.7,.2,1) both}
+.scene.active.s-build .wf-nav{animation:rise .6s 1s cubic-bezier(.2,.7,.2,1) both}
+.scene.active.s-build .wf-h1{animation:rise .6s 1.5s cubic-bezier(.2,.7,.2,1) both}
+.scene.active.s-build .wf-h1.b{animation:rise .6s 1.75s cubic-bezier(.2,.7,.2,1) both}
+.scene.active.s-build .wf-p{animation:rise .6s 2.1s cubic-bezier(.2,.7,.2,1) both}
+.scene.active.s-build .wf-p.b{animation:rise .6s 2.3s cubic-bezier(.2,.7,.2,1) both}
+.scene.active.s-build .wf-row{animation:rise .6s 2.7s cubic-bezier(.2,.7,.2,1) both}
+.scene.active.s-build .wf-img{animation:pop .7s 3.3s cubic-bezier(.2,.7,.2,1) both}
+
+/* scene 3 · refine */
+.s-refine .browser{opacity:0}
+.scene.active.s-refine .browser{animation:fadeIn .6s .1s both}
+.cursor{
+  position:absolute;left:0;top:0;z-index:6;width:16px;height:16px;opacity:0;
+  filter:drop-shadow(0 2px 4px rgba(15,23,42,.3));
+}
+.scene.active.s-refine .cursor{animation:cursorPath 4.4s .8s cubic-bezier(.45,.05,.35,1) both}
+@keyframes cursorPath{
+  0%{opacity:0;transform:translate(420px,220px)}
+  8%{opacity:1}
+  30%{transform:translate(150px,64px)}
+  38%{transform:translate(150px,64px) scale(.88)}
+  42%{transform:translate(150px,64px) scale(1)}
+  68%{transform:translate(360px,140px)}
+  76%{transform:translate(360px,140px) scale(.88)}
+  80%{transform:translate(360px,140px) scale(1)}
+  100%{opacity:1;transform:translate(290px,185px)}
+}
+.click{
+  position:absolute;z-index:5;width:34px;height:34px;border-radius:50%;
+  border:1.5px solid var(--accent);opacity:0;pointer-events:none;
+}
+.click.c1{left:132px;top:46px}
+.click.c2{left:342px;top:122px}
+.scene.active.s-refine .click.c1{animation:ripple .7s 2.35s ease-out both}
+.scene.active.s-refine .click.c2{animation:ripple .7s 4.1s ease-out both}
+@keyframes ripple{0%{opacity:.9;transform:scale(.3)}100%{opacity:0;transform:scale(1.5)}}
+.s-refine .wf-h1{transition:width .6s cubic-bezier(.2,.7,.2,1) 2.55s}
+.scene.active.s-refine .wf-h1{width:58%}
+.s-refine .wf-img .fill{
+  position:absolute;inset:0;background:linear-gradient(135deg,var(--ink) 0%,#334155 100%);
+  opacity:0;transition:opacity .6s ease 4.3s;
+}
+.scene.active.s-refine .wf-img .fill{opacity:1}
+.wf-img .fill svg{position:absolute;left:50%;top:50%;width:34px;height:34px;transform:translate(-50%,-50%)}
+.wf-img .fill svg path,.wf-img .fill svg circle{stroke:#fff;fill:none;stroke-width:1.4}
+
+/* scene 4 · connect */
+.connect{width:min(400px,100%);display:flex;flex-direction:column;gap:14px}
+.domain{
+  display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);
+  border-radius:26px;padding:13px 20px;box-shadow:0 20px 50px -28px rgba(15,23,42,.2);opacity:0;
+}
+.scene.active .domain{animation:rise .7s .2s cubic-bezier(.2,.7,.2,1) both}
+.domain svg{width:13px;height:13px;color:var(--accent);flex:none}
+.domain .txt{
+  font-size:14px;letter-spacing:.04em;color:var(--ink);white-space:nowrap;overflow:hidden;
+  width:0;border-right:1.5px solid var(--ink);
+}
+.scene.active .domain .txt{animation:type 1.3s steps(14,end) 1s forwards,caretOff .1s 2.4s forwards}
+@keyframes type{from{width:0}to{width:14.2ch}}
+@keyframes caretOff{to{border-color:transparent}}
+.check-row{
+  display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);
+  border-radius:8px;padding:12px 18px;font-size:13px;color:var(--ink);opacity:0;
+}
+.check-row .ck{width:20px;height:20px;flex:none}
+.check-row .ck circle{stroke:var(--line);fill:none;stroke-width:1.4}
+.check-row .ck path{
+  stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:14;stroke-dashoffset:14;
+}
+.scene.active .check-row.r1{animation:rise .6s 2.5s cubic-bezier(.2,.7,.2,1) both}
+.scene.active .check-row.r2{animation:rise .6s 3.1s cubic-bezier(.2,.7,.2,1) both}
+.scene.active .check-row.r3{animation:rise .6s 3.7s cubic-bezier(.2,.7,.2,1) both}
+.scene.active .check-row.r1 .ck path{animation:draw .5s 3s ease both}
+.scene.active .check-row.r2 .ck path{animation:draw .5s 3.6s ease both}
+.scene.active .check-row.r3 .ck path{animation:draw .5s 4.2s ease both}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+/* scene 5 · sign */
+.doc{
+  width:min(330px,100%);background:#fff;border:1px solid var(--line);border-radius:6px;
+  padding:30px 30px 26px;box-shadow:0 26px 60px -30px rgba(15,23,42,.2);opacity:0;
+}
+.scene.active .doc{animation:rise .8s .15s cubic-bezier(.2,.7,.2,1) both}
+.doc h3{font-family:var(--serif);font-weight:600;font-size:22px;margin-bottom:4px}
+.doc .sub{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.doc .dline{height:6px;border-radius:3px;background:var(--line);margin-bottom:8px;opacity:0}
+.doc .dline.w1{width:92%}.doc .dline.w2{width:78%}.doc .dline.w3{width:85%}
+.scene.active .doc .dline.w1{animation:fadeIn .4s .8s both}
+.scene.active .doc .dline.w2{animation:fadeIn .4s 1s both}
+.scene.active .doc .dline.w3{animation:fadeIn .4s 1.2s both}
+.doc .total{
+  display:flex;justify-content:space-between;align-items:center;gap:14px;
+  border-top:1px solid var(--line);margin-top:18px;padding-top:14px;
+  font-size:10px;letter-spacing:.08em;color:var(--muted);opacity:0;white-space:nowrap;
+}
+.doc .total b{font-family:var(--serif);font-size:17px;color:var(--ink);letter-spacing:.02em}
+.scene.active .doc .total{animation:fadeIn .5s 1.5s both}
+.sig{margin-top:20px;position:relative}
+.sig .siglabel{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.sig svg{width:150px;height:44px;display:block;margin:2px 0 0 4px}
+.sig svg path{
+  stroke:var(--ink);fill:none;stroke-width:1.6;stroke-linecap:round;
+  stroke-dasharray:220;stroke-dashoffset:220;
+}
+.scene.active .sig svg path{animation:sigdraw 1.5s 2.2s cubic-bezier(.5,0,.4,1) both}
+@keyframes sigdraw{to{stroke-dashoffset:0}}
+.sig .baseline{height:1px;background:var(--ink);width:170px;opacity:.5}
+.doc .approved{
+  position:absolute;right:24px;bottom:30px;width:34px;height:34px;opacity:0;
+}
+.doc .approved circle{stroke:var(--accent);fill:none;stroke-width:1.4}
+.doc .approved path{stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.scene.active .doc .approved{animation:pop .5s 3.9s cubic-bezier(.2,.7,.2,1) both}
+
+/* scene 6 · live */
+.s-live .browser{opacity:0}
+.scene.active.s-live .browser{animation:pop .9s .2s cubic-bezier(.2,.7,.2,1) both}
+.live-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px}
+.live-nav b{font-family:var(--serif);font-weight:600;font-size:13px;letter-spacing:.2em}
+.live-nav span{display:flex;gap:14px;font-size:9.5px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+.live-h1{font-family:var(--serif);font-weight:500;font-size:27px;line-height:1.1;max-width:60%;margin-bottom:8px}
+.live-h1 em{font-style:italic}
+.live-p{font-size:10.5px;color:var(--muted);max-width:52%;line-height:1.5;margin-bottom:16px}
+.live-btn{
+  display:inline-block;background:var(--accent);color:#fff;font-size:10px;font-weight:600;
+  letter-spacing:.08em;padding:8px 16px;border-radius:3px;
+}
+.live-img{
+  position:absolute;right:26px;top:64px;width:150px;height:110px;border-radius:6px;
+  background:linear-gradient(135deg,var(--ink),#334155);overflow:hidden;
+}
+.live-img svg{position:absolute;left:50%;top:50%;width:36px;height:36px;transform:translate(-50%,-50%)}
+.live-img svg path,.live-img svg circle{stroke:#fff;fill:none;stroke-width:1.4}
+.pulse{
+  position:absolute;left:50%;top:50%;width:100%;height:100%;border-radius:14px;
+  border:1.5px solid var(--accent);transform:translate(-50%,-50%);opacity:0;pointer-events:none;
+}
+.scene.active.s-live .pulse.p1{animation:livePulse 1.6s 1.2s ease-out both}
+.scene.active.s-live .pulse.p2{animation:livePulse 1.6s 1.7s ease-out both}
+@keyframes livePulse{0%{opacity:.7;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.16)}}
+.live-badge{
+  position:absolute;top:-13px;left:50%;transform:translateX(-50%);z-index:8;
+  background:var(--ink);color:#fff;font-size:10px;font-weight:600;letter-spacing:.18em;
+  text-transform:uppercase;padding:7px 16px;border-radius:14px;opacity:0;white-space:nowrap;
+}
+.viswrap{position:relative}
+.scene.active.s-live .live-badge{animation:pop .6s 1.3s cubic-bezier(.2,.7,.2,1) both}
+
+/* scene 7 · grow (ads & marketing) */
+.grow{display:flex;gap:18px;align-items:center;width:min(460px,100%)}
+.ad{
+  width:190px;flex:none;background:#fff;border:1px solid var(--line);border-radius:10px;
+  overflow:hidden;box-shadow:0 24px 60px -30px rgba(15,23,42,.2);opacity:0;
+}
+.scene.active .ad{animation:rise .8s .2s cubic-bezier(.2,.7,.2,1) both}
+.ad-top{display:flex;align-items:center;gap:8px;padding:10px 12px}
+.ad-top .avatar{width:22px;height:22px;border-radius:50%;border:1px solid var(--line);background:var(--paper);flex:none;display:flex;align-items:center;justify-content:center}
+.ad-top .avatar img{height:12px;width:auto}
+.ad-top .who i{display:block;height:6px;width:64px;border-radius:3px;background:var(--ink);margin-bottom:4px}
+.ad-top .who em{font-style:normal;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.ad-img{height:86px;background:linear-gradient(135deg,var(--ink),#334155);position:relative}
+.ad-img svg{position:absolute;left:50%;top:50%;width:28px;height:28px;transform:translate(-50%,-50%)}
+.ad-img svg path,.ad-img svg circle{stroke:#fff;fill:none;stroke-width:1.4}
+.ad-body{padding:11px 12px 13px}
+.ad-body i{display:block;height:6px;border-radius:3px;background:var(--line);margin-bottom:5px}
+.ad-body i.w1{width:88%}.ad-body i.w2{width:64%;margin-bottom:10px}
+.ad-cta{
+  display:inline-block;background:var(--accent);color:#fff;font-size:8.5px;font-weight:600;
+  letter-spacing:.1em;padding:6px 12px;border-radius:3px;
+}
+.chartcard{
+  flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px 14px;
+  box-shadow:0 24px 60px -30px rgba(15,23,42,.2);opacity:0;position:relative;
+}
+.scene.active .chartcard{animation:rise .8s .5s cubic-bezier(.2,.7,.2,1) both}
+.chartcard .ct{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.chartcard svg{width:100%;height:auto;display:block}
+.chartcard .grid{stroke:var(--line);stroke-width:1}
+.chartcard .curve{
+  stroke:var(--accent);stroke-width:2;fill:none;stroke-linecap:round;
+  stroke-dasharray:290;stroke-dashoffset:290;
+}
+.scene.active .chartcard .curve{animation:sigdraw 1.6s 1.3s cubic-bezier(.4,0,.3,1) both}
+.chartcard .area{fill:var(--accent);opacity:0}
+.scene.active .chartcard .area{animation:areaIn 1s 2.4s both}
+@keyframes areaIn{to{opacity:.06}}
+.chartcard .stat{
+  position:absolute;top:12px;right:16px;font-size:11px;font-weight:600;color:var(--ink);
+  letter-spacing:.04em;opacity:0;
+}
+.chartcard .stat b{color:var(--accent);font-weight:600}
+.scene.active .chartcard .stat{animation:pop .6s 2.9s cubic-bezier(.2,.7,.2,1) both}
+
+/* responsive: stack on narrow screens */
+@media(max-width:720px){
+  .scene{grid-template-columns:1fr;align-content:center;justify-items:center;text-align:center;padding:0 8%;gap:26px}
+  .cap .eyebrow::before{display:none}
+  .cap p{margin:0 auto}
+  .cap{order:2}.vis{order:1}
+  .canvas{min-height:190px}
+}
+@media(prefers-reduced-motion:reduce){
+  .scene,.scene *{animation:none !important;transition:none !important}
+}
+/* embedded in an iframe on the site: fill the frame, no border */
+.embedded .stage{width:100%;border:none !important}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add('embedded');</script>
+</head>
+<body>
+
+<div class="stage" id="stage">
+  <div class="progress" id="progress"></div>
+
+  <!-- hook -->
+  <section class="scene center" data-dur="4600">
+    <div class="intro-eyebrow" style="animation-delay:.15s">Webbitar</div>
+    <h1 class="intro-title" style="animation-delay:.35s">Skulle du kunna ta emot <em>fler kunder</em> än du har idag?</h1>
+  </section>
+
+  <!-- intro -->
+  <section class="scene center" data-dur="4200">
+    <img class="mark" src="assets/logo-black.png" alt="Webbitar">
+    <div class="rule"><span class="ln"></span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l1.6 9L24 12l-10.4 3L12 24l-1.6-9L0 12l10.4-3z"/></svg><span class="ln r"></span></div>
+    <div class="intro-eyebrow">Så fungerar det</div>
+    <h1 class="intro-title">Från första meddelande till ett <em>växande</em> företag.</h1>
+  </section>
+
+  <!-- 1 · contact -->
+  <section class="scene" data-dur="5600">
+    <div class="cap">
+      <div class="eyebrow">Kontakta oss</div>
+      <h2>Berätta vad du behöver.</h2>
+      <p>Ett meddelande räcker. Vi svarar med några korta frågor för att förstå dina mål och visioner.</p>
+    </div>
+    <div class="vis">
+      <div class="chat">
+        <div class="chat-head">
+          <span class="avatar"><img src="assets/logo-black-square.png" alt=""></span>
+          <span>WEBBITAR</span>
+        </div>
+        <div class="bubble you">Vi behöver en ny hemsida till vårt företag.</div>
+        <div class="bubble us dots"><span class="typing"><i></i><i></i><i></i></span></div>
+        <div class="bubble us reply">Vad kul att höra från dig. Berätta gärna lite om vad ni gör.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · build -->
+  <section class="scene s-build" data-dur="6200">
+    <div class="cap">
+      <div class="eyebrow">Design &amp; bygge</div>
+      <h2>Vi bygger hemsidan.</h2>
+      <p>Din hemsida designas och utvecklas kring ditt varumärke. Snabb, ren och tydlig på varje skärm.</p>
+    </div>
+    <div class="vis">
+      <div class="browser">
+        <div class="bar">
+          <span class="wdots"><i></i><i></i><i></i></span>
+          <span class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>dittforetag.se</span>
+        </div>
+        <div class="canvas">
+          <div class="wf-nav">
+            <div class="wf-logo"></div>
+            <div class="wf-links"><i></i><i></i><i></i></div>
+          </div>
+          <div class="wf-h1"></div>
+          <div class="wf-h1 b"></div>
+          <div class="wf-p"></div>
+          <div class="wf-p b"></div>
+          <div class="wf-row">
+            <div class="wf-btn"></div>
+            <div class="wf-btn ghost"></div>
+            <div class="wf-img">
+              <svg preserveAspectRatio="none" viewBox="0 0 150 104"><line x1="0" y1="0" x2="150" y2="104"/><line x1="150" y1="0" x2="0" y2="104"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · refine -->
+  <section class="scene s-refine" data-dur="6000">
+    <div class="cap">
+      <div class="eyebrow">Granska &amp; finjustera</div>
+      <h2>Vi finjusterar den tillsammans.</h2>
+      <p>Vi går igenom sidan med dig, lyssnar på din feedback och gör varje ändring tills allt känns helt rätt.</p>
+    </div>
+    <div class="vis">
+      <div class="browser">
+        <div class="bar">
+          <span class="wdots"><i></i><i></i><i></i></span>
+          <span class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>dittforetag.se</span>
+        </div>
+        <div class="canvas">
+          <div class="wf-nav">
+            <div class="wf-logo"></div>
+            <div class="wf-links"><i></i><i></i><i></i></div>
+          </div>
+          <div class="wf-h1"></div>
+          <div class="wf-h1 b"></div>
+          <div class="wf-p"></div>
+          <div class="wf-p b"></div>
+          <div class="wf-row">
+            <div class="wf-btn"></div>
+            <div class="wf-btn ghost"></div>
+            <div class="wf-img">
+              <svg preserveAspectRatio="none" viewBox="0 0 150 104"><line x1="0" y1="0" x2="150" y2="104"/><line x1="150" y1="0" x2="0" y2="104"/></svg>
+              <div class="fill">
+                <svg viewBox="0 0 24 24"><circle cx="8.5" cy="8.5" r="2"/><path d="M2 17l5.5-6 4 4.5L15 12l7 8"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="click c1"></div>
+          <div class="click c2"></div>
+          <svg class="cursor" viewBox="0 0 24 24"><path d="M4 2l16 11.5-6.5 1L17 21l-3 1.5-3.5-6.5L6 20z" fill="#0f172a" stroke="#fff" stroke-width="1.2"/></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · connect -->
+  <section class="scene" data-dur="5800">
+    <div class="cap">
+      <div class="eyebrow">Uppsättning &amp; koppling</div>
+      <h2>Allt kopplat och klart.</h2>
+      <p>Din domän, SEO och alla tillval konfigureras och kopplas. Inget tekniskt strul för dig.</p>
+    </div>
+    <div class="vis">
+      <div class="connect">
+        <div class="domain">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <span class="txt">dittforetag.se</span>
+        </div>
+        <div class="check-row r1">
+          <svg class="ck" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.5"/><path d="M7.5 12.5l3 3 6-6.5"/></svg>
+          Domän kopplad
+        </div>
+        <div class="check-row r2">
+          <svg class="ck" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.5"/><path d="M7.5 12.5l3 3 6-6.5"/></svg>
+          SEO konfigurerad
+        </div>
+        <div class="check-row r3">
+          <svg class="ck" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.5"/><path d="M7.5 12.5l3 3 6-6.5"/></svg>
+          Statistik igång
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · sign -->
+  <section class="scene" data-dur="5800">
+    <div class="cap">
+      <div class="eyebrow">Godkänn &amp; signera</div>
+      <h2>En tydlig offert.</h2>
+      <p>En transparent offert och ett avtal via mejl. Bekräfta med ett svar. Inget pappersarbete, inga överraskningar.</p>
+    </div>
+    <div class="vis">
+      <div class="doc">
+        <h3>Offert</h3>
+        <div class="sub">Webbitar Företagstjänster</div>
+        <div class="dline w1"></div>
+        <div class="dline w2"></div>
+        <div class="dline w3"></div>
+        <div class="total"><span>ALLT INKLUDERAT</span><b>Ett fast pris</b></div>
+        <div class="sig">
+          <span class="siglabel">Godkänd av</span>
+          <svg viewBox="0 0 150 44"><path d="M6 32 C14 10, 22 8, 24 20 C26 30, 18 38, 28 33 C40 27, 44 12, 52 16 C58 19, 55 32, 64 28 C74 23, 80 14, 92 18 C104 22, 112 30, 128 24 L142 20"/></svg>
+          <div class="baseline"></div>
+        </div>
+        <svg class="approved" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.5"/><path d="M7.5 12.5l3 3 6-6.5"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · live -->
+  <section class="scene s-live" data-dur="6000">
+    <div class="cap">
+      <div class="eyebrow">Lansering</div>
+      <h2>Sajten är live.</h2>
+      <p>Din hemsida är ute i världen, hostad och omhändertagen av oss. Och det är bara början.</p>
+    </div>
+    <div class="vis">
+      <div class="viswrap">
+        <div class="live-badge">Live</div>
+        <div class="browser">
+          <div class="pulse p1"></div>
+          <div class="pulse p2"></div>
+          <div class="bar">
+            <span class="wdots"><i></i><i></i><i></i></span>
+            <span class="url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>dittforetag.se</span>
+          </div>
+          <div class="canvas">
+            <div class="live-nav">
+              <b>DITTFÖRETAG</b>
+              <span><span>Tjänster</span><span>Om oss</span><span>Kontakt</span></span>
+            </div>
+            <div class="live-h1">Ditt företag, <em>online</em>.</div>
+            <p class="live-p">En snabb, ren hemsida som gör sitt jobb, byggd och skött av människor du kan nå.</p>
+            <span class="live-btn">KOM IGÅNG</span>
+            <div class="live-img">
+              <svg viewBox="0 0 24 24"><circle cx="8.5" cy="8.5" r="2"/><path d="M2 17l5.5-6 4 4.5L15 12l7 8"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · grow -->
+  <section class="scene" data-dur="6200">
+    <div class="cap">
+      <div class="eyebrow">Annonser &amp; marknadsföring</div>
+      <h2>Sedan får vi den att växa.</h2>
+      <p>Annonser, kampanjer, SEO och ärlig rådgivning. Din hemsida och din marknadsföring, som en helhet från ett och samma team.</p>
+    </div>
+    <div class="vis">
+      <div class="grow">
+        <div class="ad">
+          <div class="ad-top">
+            <span class="avatar"><img src="assets/logo-black-square.png" alt=""></span>
+            <span class="who"><i></i><em>Sponsrad</em></span>
+          </div>
+          <div class="ad-img">
+            <svg viewBox="0 0 24 24"><circle cx="8.5" cy="8.5" r="2"/><path d="M2 17l5.5-6 4 4.5L15 12l7 8"/></svg>
+          </div>
+          <div class="ad-body">
+            <i class="w1"></i><i class="w2"></i>
+            <span class="ad-cta">LÄS MER</span>
+          </div>
+        </div>
+        <div class="chartcard">
+          <div class="ct">Kampanj</div>
+          <div class="stat"><b>+128%</b> klick</div>
+          <svg viewBox="0 0 220 110">
+            <line class="grid" x1="0" y1="104" x2="220" y2="104"/>
+            <line class="grid" x1="0" y1="66" x2="220" y2="66" stroke-dasharray="3 5"/>
+            <line class="grid" x1="0" y1="28" x2="220" y2="28" stroke-dasharray="3 5"/>
+            <path class="area" d="M4 96 C40 92, 62 80, 92 70 C122 60, 140 48, 168 32 C186 22, 200 16, 216 12 L216 104 L4 104 Z"/>
+            <path class="curve" d="M4 96 C40 92, 62 80, 92 70 C122 60, 140 48, 168 32 C186 22, 200 16, 216 12"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- outro -->
+  <section class="scene center" data-dur="5200">
+    <img class="mark" src="assets/logo-black.png" alt="Webbitar">
+    <div class="rule"><span class="ln"></span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l1.6 9L24 12l-10.4 3L12 24l-1.6-9L0 12l10.4-3z"/></svg><span class="ln r"></span></div>
+    <div class="intro-eyebrow">Webbdesign, hosting &amp; marknadsföring</div>
+    <h1 class="intro-title">Vi bygger, driftar &amp; växer hemsidor som <em>levererar</em>.</h1>
+    <div class="outro-cta">Begär offert på <strong>WEBBITAR.COM</strong></div>
+  </section>
+</div>
+
+<script>
+(function(){
+  var scenes=Array.prototype.slice.call(document.querySelectorAll('.scene'));
+  var progress=document.getElementById('progress');
+  var total=scenes.reduce(function(s,el){return s+(+el.dataset.dur)},0);
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if(reduced){
+    scenes[scenes.length-1].classList.add('active');
+    return;
+  }
+
+  var i=0;
+  function startProgress(){
+    progress.style.transition='none';
+    progress.style.width='0';
+    void progress.offsetWidth;
+    progress.style.transition='width '+total+'ms linear';
+    progress.style.width='100%';
+  }
+  function show(n){
+    scenes.forEach(function(s,j){s.classList.toggle('active',j===n)});
+  }
+  function step(){
+    if(i===0) startProgress();
+    show(i);
+    setTimeout(function(){
+      i=(i+1)%scenes.length;
+      step();
+    },+scenes[i].dataset.dur);
+  }
+  step();
+})();
+</script>
+</body>
+</html>
