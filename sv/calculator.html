@@ -359,7 +359,7 @@ input:focus, textarea:focus {
                 <input type="radio" name="basePlan" id="planSmall" value="small" checked>
                 <div class="option-details">
                   <div class="option-title">Hemsida &amp; Hosting (Lilla paketet)</div>
-                  <div class="option-desc">5 unika sidor, webbhotell, SSL-säkerhet, backup och underhåll.</div>
+                  <div class="option-desc">5 unika sidor, webbhotell, SSL-säkerhet, backup, underhåll, engångs SEO-uppsättning.</div>
                 </div>
                 <div class="option-price" id="priceLabelSmall">449 kr<small style="font-size:12px; font-weight:400; color:var(--muted)">/mån</small></div>
               </div>
@@ -369,7 +369,7 @@ input:focus, textarea:focus {
                 <input type="radio" name="basePlan" id="planMedium" value="medium">
                 <div class="option-details">
                   <div class="option-title">Tillväxtpaketet (Mellanpaketet)</div>
-                  <div class="option-desc">5 sidor, hosting, SSL, inbyggd SEO, Google-profil, löpande support.</div>
+                  <div class="option-desc">5 sidor, hosting, löpande SEO, uppsättning av Google-profil, löpande support.</div>
                 </div>
                 <div class="option-price" id="priceLabelMedium">899 kr<small style="font-size:12px; font-weight:400; color:var(--muted)">/mån</small></div>
               </div>
@@ -379,7 +379,7 @@ input:focus, textarea:focus {
                 <input type="radio" name="basePlan" id="planLarge" value="large">
                 <div class="option-details">
                   <div class="option-title">Professionell synlighet (Stora paketet)</div>
-                  <div class="option-desc">10 sidor, hosting, löpande SEO + rapporter, Google-profil, blogg/bokning, prioriterad support.</div>
+                  <div class="option-desc">10 sidor, hosting, löpande SEO + rapporter, skött Google-profil, blogg/bokning, prioriterad support.</div>
                 </div>
                 <div class="option-price" id="priceLabelLarge">2 399 kr<small style="font-size:12px; font-weight:400; color:var(--muted)">/mån</small></div>
               </div>
@@ -513,8 +513,8 @@ input:focus, textarea:focus {
                 <div class="addon-info">
                   <input type="checkbox" class="addon-checkbox" id="addonGbp" onchange="updateCalculator()">
                   <div class="addon-meta">
-                    <h4>Google Företagsprofil <span id="labelGbpIncl" style="color:var(--gold); font-size:11px; font-weight:600; display:none">(INGÅR I PAKETET)</span></h4>
-                    <p>Uppsättning, verifiering och månatlig optimering av din lokala Google-profil.</p>
+                    <h4>Skötsel av Google Företagsprofil <span id="labelGbpIncl" style="color:var(--gold); font-size:11px; font-weight:600; display:none">(INGÅR I PAKETET)</span></h4>
+                    <p>Löpande skötsel och månatlig optimering av din lokala Google-profil. (Uppsättning ingår från Mellanpaketet och uppåt.)</p>
                   </div>
                 </div>
                 <div class="addon-cost">+239 kr / mån</div>
@@ -726,7 +726,7 @@ function selectBasePlan(plan, price) {
 
   if (plan === 'medium') {
     seoChk.checked = true; seoChk.disabled = true; seoLabel.style.display = 'inline';
-    gbpChk.checked = true; gbpChk.disabled = true; gbpLabel.style.display = 'inline';
+    gbpChk.checked = false; gbpChk.disabled = false; gbpLabel.style.display = 'none';
     supportChk.disabled = false; supportLabel.style.display = 'none';
   } else if (plan === 'large') {
     seoChk.checked = true; seoChk.disabled = true; seoLabel.style.display = 'inline';
@@ -786,9 +786,13 @@ function updateCalculator() {
   // Auto override based on base plan
   if (state.basePlan === 'medium' || state.basePlan === 'large') {
     state.addons.seo = true;
-    state.addons.gbp = true;
   } else {
     state.addons.seo = document.getElementById('addonSeo').checked;
+  }
+  // GBP-skötsel ingår bara i Stora paketet; i Mellanpaketet är det ett betalt tillägg
+  if (state.basePlan === 'large') {
+    state.addons.gbp = true;
+  } else {
     state.addons.gbp = document.getElementById('addonGbp').checked;
   }
   
@@ -857,9 +861,9 @@ function updateCalculator() {
     monthlyAddonsTotal += 339;
     addonsList.push('Löpande SEO (+339 kr/mån)');
   }
-  if (state.addons.gbp && state.basePlan !== 'medium' && state.basePlan !== 'large') {
+  if (state.addons.gbp && state.basePlan !== 'large') {
     monthlyAddonsTotal += 239;
-    addonsList.push('Google Företagsprofil (+239 kr/mån)');
+    addonsList.push('Skötsel av Google Företagsprofil (+239 kr/mån)');
   }
   if (state.addons.support && state.basePlan !== 'large') {
     monthlyAddonsTotal += 499;

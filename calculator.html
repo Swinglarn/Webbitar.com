@@ -359,7 +359,7 @@ input:focus, textarea:focus {
                 <input type="radio" name="basePlan" id="planSmall" value="small" checked>
                 <div class="option-details">
                   <div class="option-title">Website &amp; Hosting (Small Plan)</div>
-                  <div class="option-desc">5 custom pages, secure hosting, SSL &amp; backups, maintenance.</div>
+                  <div class="option-desc">5 custom pages, secure hosting, SSL &amp; backups, maintenance, one-time SEO setup.</div>
                 </div>
                 <div class="option-price" id="priceLabelSmall">$45<small style="font-size:12px; font-weight:400; color:var(--muted)">/mo</small></div>
               </div>
@@ -369,7 +369,7 @@ input:focus, textarea:focus {
                 <input type="radio" name="basePlan" id="planMedium" value="medium">
                 <div class="option-details">
                   <div class="option-title">Growth Bundle (Medium Plan)</div>
-                  <div class="option-desc">5 pages, hosting, built-in SEO, Google Business Profile, ongoing edits.</div>
+                  <div class="option-desc">5 pages, hosting, ongoing SEO, Google Business Profile setup, ongoing edits.</div>
                 </div>
                 <div class="option-price" id="priceLabelMedium">$89<small style="font-size:12px; font-weight:400; color:var(--muted)">/mo</small></div>
               </div>
@@ -379,7 +379,7 @@ input:focus, textarea:focus {
                 <input type="radio" name="basePlan" id="planLarge" value="large">
                 <div class="option-details">
                   <div class="option-title">Professional Growth (Large Plan)</div>
-                  <div class="option-desc">10 pages, hosting, ongoing SEO + reports, Google Profile, blog/booking, priority support.</div>
+                  <div class="option-desc">10 pages, hosting, ongoing SEO + reports, managed Google Business Profile, blog/booking, priority support.</div>
                 </div>
                 <div class="option-price" id="priceLabelLarge">$239<small style="font-size:12px; font-weight:400; color:var(--muted)">/mo</small></div>
               </div>
@@ -513,8 +513,8 @@ input:focus, textarea:focus {
                 <div class="addon-info">
                   <input type="checkbox" class="addon-checkbox" id="addonGbp" onchange="updateCalculator()">
                   <div class="addon-meta">
-                    <h4>Google Business Profile <span id="labelGbpIncl" style="color:var(--gold); font-size:11px; font-weight:600; display:none">(INCLUDED IN BUNDLE)</span></h4>
-                    <p>Verification, map placement, and monthly optimization of Google profile.</p>
+                    <h4>Google Business Profile management <span id="labelGbpIncl" style="color:var(--gold); font-size:11px; font-weight:600; display:none">(INCLUDED IN BUNDLE)</span></h4>
+                    <p>Ongoing management and monthly optimization of your Google profile. (Setup is included from the Medium plan up.)</p>
                   </div>
                 </div>
                 <div class="addon-cost">+$24 / mo</div>
@@ -726,7 +726,7 @@ function selectBasePlan(plan, price) {
 
   if (plan === 'medium') {
     seoChk.checked = true; seoChk.disabled = true; seoLabel.style.display = 'inline';
-    gbpChk.checked = true; gbpChk.disabled = true; gbpLabel.style.display = 'inline';
+    gbpChk.checked = false; gbpChk.disabled = false; gbpLabel.style.display = 'none';
     supportChk.disabled = false; supportLabel.style.display = 'none';
   } else if (plan === 'large') {
     seoChk.checked = true; seoChk.disabled = true; seoLabel.style.display = 'inline';
@@ -786,9 +786,13 @@ function updateCalculator() {
   // Auto override based on base plan
   if (state.basePlan === 'medium' || state.basePlan === 'large') {
     state.addons.seo = true;
-    state.addons.gbp = true;
   } else {
     state.addons.seo = document.getElementById('addonSeo').checked;
+  }
+  // GBP management is only bundled in Large; on Medium it stays a paid add-on
+  if (state.basePlan === 'large') {
+    state.addons.gbp = true;
+  } else {
     state.addons.gbp = document.getElementById('addonGbp').checked;
   }
   
@@ -857,9 +861,9 @@ function updateCalculator() {
     monthlyAddonsTotal += 35;
     addonsList.push('Consistent SEO (+$35/mo)');
   }
-  if (state.addons.gbp && state.basePlan !== 'medium' && state.basePlan !== 'large') {
+  if (state.addons.gbp && state.basePlan !== 'large') {
     monthlyAddonsTotal += 24;
-    addonsList.push('Google Business Profile (+$24/mo)');
+    addonsList.push('Google Business Profile management (+$24/mo)');
   }
   if (state.addons.support && state.basePlan !== 'large') {
     monthlyAddonsTotal += 49;
