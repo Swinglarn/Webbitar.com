@@ -15,6 +15,32 @@
   var isSvRootNoSlash = isSv && (path === '/sv' || path.endsWith('/sv'));
   var linkPrefix = isSvRootNoSlash ? 'sv/' : '';
 
+  // Language memory & default routing
+  try {
+    var storedLang = localStorage.getItem('webbitar_lang');
+    if (isSv) {
+      localStorage.setItem('webbitar_lang', 'sv');
+    } else {
+      var isRootPath = (path === '/' || path === '/index' || path === '/index.html' || path === '');
+      if (isRootPath) {
+        if (storedLang === 'sv') {
+          window.location.replace('/sv');
+          return;
+        } else if (!storedLang) {
+          var ref = (document.referrer || '').toLowerCase();
+          var isSearchEng = ref.indexOf('google.') > -1 || ref.indexOf('bing.') > -1 || ref.indexOf('duckduckgo.') > -1 || ref.indexOf('yahoo.') > -1;
+          var userLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+          var isEngUser = userLang.indexOf('en') === 0;
+
+          if (!(isSearchEng && isEngUser)) {
+            window.location.replace('/sv');
+            return;
+          }
+        }
+      }
+    }
+  } catch(e) {}
+
   var nav = '';
   if (isSv) {
     nav =
@@ -32,7 +58,7 @@
         '</div>'+
         '<div class="nav-right">'+
           '<a href="' + linkPrefix + 'contact" data-p="contact" class="nav-cta">Begär offert</a>'+
-          '<a href="' + langToggleUrl + '" style="border:1px solid var(--line);padding:4px 8px;border-radius:2px;font-size:12px;font-weight:600;color:var(--gold);letter-spacing:0.05em;margin-left:8px">' + langToggleText + '</a>'+
+          '<a id="langToggle" href="' + langToggleUrl + '" style="border:1px solid var(--line);padding:4px 8px;border-radius:2px;font-size:12px;font-weight:600;color:var(--gold);letter-spacing:0.05em;margin-left:8px">' + langToggleText + '</a>'+
         '</div>'+
       '</nav>'+
       '<button class="menu-btn" id="menuBtn" aria-label="Meny">&#9776;</button>'+
@@ -53,7 +79,7 @@
         '</div>'+
         '<div class="nav-right">'+
           '<a href="contact" data-p="contact" class="nav-cta">Get a quote</a>'+
-          '<a href="' + langToggleUrl + '" style="border:1px solid var(--line);padding:4px 8px;border-radius:2px;font-size:12px;font-weight:600;color:var(--gold);letter-spacing:0.05em;margin-left:8px">' + langToggleText + '</a>'+
+          '<a id="langToggle" href="' + langToggleUrl + '" style="border:1px solid var(--line);padding:4px 8px;border-radius:2px;font-size:12px;font-weight:600;color:var(--gold);letter-spacing:0.05em;margin-left:8px">' + langToggleText + '</a>'+
         '</div>'+
       '</nav>'+
       '<button class="menu-btn" id="menuBtn" aria-label="Menu">&#9776;</button>'+
@@ -138,4 +164,14 @@
     entries.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);} });
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+  // language toggle click listener
+  var lb = document.getElementById('langToggle');
+  if (lb) {
+    lb.addEventListener('click', function(){
+      try {
+        localStorage.setItem('webbitar_lang', isSv ? 'en' : 'sv');
+      } catch(e) {}
+    });
+  }
 })();

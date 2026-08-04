@@ -3,13 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+(function(){
+  try {
+    var p = window.location.pathname;
+    if (p === '/' || p === '/index' || p === '/index.html' || p === '') {
+      var s = localStorage.getItem('webbitar_lang');
+      if (s === 'sv') { window.location.replace('/sv'); }
+      else if (!s) {
+        var r = (document.referrer || '').toLowerCase();
+        var se = r.indexOf('google.') > -1 || r.indexOf('bing.') > -1 || r.indexOf('duckduckgo.') > -1 || r.indexOf('yahoo.') > -1;
+        var ul = (navigator.language || '').toLowerCase();
+        if (!(se && ul.indexOf('en') === 0)) { window.location.replace('/sv'); }
+      }
+    }
+  } catch(e) {}
+})();
+</script>
 <title>Webbitar — Web Design, Hosting &amp; Care</title>
 <meta name="description" content="Webbitar builds and maintains fast, clean websites for businesses. Custom design, hosting, and ongoing care. Request a quote.">
 <link rel="icon" type="image/png" href="assets/logo-black-square.png">
 <link rel="canonical" href="https://webbitar.com/">
 <link rel="alternate" hreflang="en" href="https://webbitar.com/">
 <link rel="alternate" hreflang="sv" href="https://webbitar.com/sv">
-<link rel="alternate" hreflang="x-default" href="https://webbitar.com/">
+<link rel="alternate" hreflang="x-default" href="https://webbitar.com/sv">
 
 <!-- Open Graph -->
 <meta property="og:title" content="Webbitar — Web Design, Hosting &amp; Care">
