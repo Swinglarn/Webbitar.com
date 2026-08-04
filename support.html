@@ -81,7 +81,11 @@ form .btn-primary{width:100%;margin-top:6px}
             <div><div class="k">Reply time</div><div class="v">Usually within a few hours</div></div>
           </div>
           <div class="line">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div><div class="k">Phone callback</div><div class="v">Enter your phone number below if you want to be called back.</div></div>
+          </div>
+          <div class="line">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 3-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
             <div><div class="k">Urgent issues</div><div class="v">For offline sites, select 'Urgent' below.</div></div>
           </div>
         </aside>
@@ -93,7 +97,10 @@ form .btn-primary{width:100%;margin-top:6px}
               <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" required placeholder="Your name"></div>
               <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required placeholder="you@example.com"></div>
             </div>
-            <div class="field"><label for="website">Website / Project Name</label><input id="website" name="website" type="text" required placeholder="yourdomain.com"></div>
+            <div class="row2">
+              <div class="field"><label for="website">Website / Project Name</label><input id="website" name="website" type="text" required placeholder="yourdomain.com"></div>
+              <div class="field"><label for="phone">Phone number <span style="font-weight:normal;opacity:0.75;font-size:12px">(Optional — for callback)</span></label><input id="phone" name="phone" type="tel" placeholder="+46 70 123 45 67"></div>
+            </div>
             <div class="row2">
               <div class="field"><label for="subject">How can we help?</label>
                 <select id="subject" name="subject">
