@@ -19,7 +19,7 @@
   if (isSv) {
     nav =
     '<header><div class="wrap nav">'+
-      '<a class="brand" href="/sv"><img src="' + prefix + 'assets/logo-black.png" alt="Webbitar"><span>WEBBITAR</span></a>'+
+      '<a class="brand" href="/sv"><span>WEBBITAR</span></a>'+
       '<nav class="nav-links" id="navlinks">'+
         '<div class="nav-mid">'+
           '<a href="' + linkPrefix + 'about" data-p="about">Om oss</a>'+
@@ -40,7 +40,7 @@
   } else {
     nav =
     '<header><div class="wrap nav">'+
-      '<a class="brand" href="/"><img src="' + prefix + 'assets/logo-black.png" alt="Webbitar"><span>WEBBITAR</span></a>'+
+      '<a class="brand" href="/"><span>WEBBITAR</span></a>'+
       '<nav class="nav-links" id="navlinks">'+
         '<div class="nav-mid">'+
           '<a href="about" data-p="about">About</a>'+
@@ -67,7 +67,7 @@
     '<footer><div class="wrap">'+
       '<div class="foot-top">'+
         '<div>'+
-          '<div class="foot-brand"><img src="' + prefix + 'assets/logo-white.png" alt="Webbitar"><span>WEBBITAR</span></div>'+
+          '<div class="foot-brand"><span>WEBBITAR</span></div>'+
           '<p style="margin-top:16px;font-size:14px;color:#94a3b8;max-width:34ch">Webbdesign, hosting och skötsel för företag som vill synas.</p>'+
         '</div>'+
         '<div class="foot-cols">'+
@@ -94,7 +94,7 @@
     '<footer><div class="wrap">'+
       '<div class="foot-top">'+
         '<div>'+
-          '<div class="foot-brand"><img src="' + prefix + 'assets/logo-white.png" alt="Webbitar"><span>WEBBITAR</span></div>'+
+          '<div class="foot-brand"><span>WEBBITAR</span></div>'+
           '<p style="margin-top:16px;font-size:14px;color:#94a3b8;max-width:34ch">Web design, hosting, and care for businesses that want to be found.</p>'+
         '</div>'+
         '<div class="foot-cols">'+
