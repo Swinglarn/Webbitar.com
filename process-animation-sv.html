@@ -358,18 +358,203 @@ body{
 .scene.active .chartcard .stat{animation:pop .6s 2.9s cubic-bezier(.2,.7,.2,1) both}
 
 /* responsive: stack on narrow screens */
-@media(max-width:720px){
-  .scene{grid-template-columns:1fr;align-content:center;justify-items:center;text-align:center;padding:0 8%;gap:26px}
+@media(max-width:768px){
+  .scene{
+    grid-template-columns:1fr;
+    grid-template-rows:auto auto;
+    align-content:center;
+    justify-items:center;
+    text-align:center;
+    padding:16px 20px 24px;
+    gap:14px;
+  }
+  .scene.center{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+    gap:0;
+  }
+  .cap{
+    order:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    max-width:380px;
+  }
+  .vis{
+    order:2;
+    width:100%;
+    max-width:360px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+  .cap .eyebrow{
+    font-size:11px;
+    letter-spacing:.28em;
+    margin-bottom:6px;
+  }
   .cap .eyebrow::before{display:none}
-  .cap p{margin:0 auto}
-  .cap{order:2}.vis{order:1}
-  .canvas{min-height:190px}
+  .cap h2{
+    font-size:22px;
+    line-height:1.15;
+    margin-bottom:6px;
+  }
+  .cap p{
+    font-size:12.5px;
+    line-height:1.45;
+    max-width:32ch;
+    margin:0 auto;
+  }
+
+  /* Intro / Outro */
+  .mark{font-size:32px;letter-spacing:.2em}
+  .rule{margin:16px 0;gap:12px}
+  .rule .ln{width:45px}
+  .intro-eyebrow{font-size:11px;letter-spacing:.26em;margin-bottom:12px}
+  .intro-title{font-size:23px;line-height:1.18;max-width:17ch}
+  .outro-cta{margin-top:18px;font-size:12px}
+
+  /* Scene 1: Chat */
+  .chat{
+    width:min(320px,100%);
+    padding:16px 18px;
+    border-radius:10px;
+    box-shadow:0 14px 34px -16px rgba(15,23,42,.15);
+  }
+  .chat-head{margin-bottom:12px;padding-bottom:10px;gap:8px}
+  .chat-head .avatar{width:26px;height:26px;font-size:12px}
+  .chat-head span{font-size:11.5px}
+  .bubble{font-size:12px;padding:8px 12px;margin-bottom:8px;max-width:84%}
+
+  /* Scene 2, 3, 6: Browser */
+  .browser{
+    width:min(340px,100%);
+    border-radius:8px;
+    box-shadow:0 16px 40px -20px rgba(15,23,42,.18);
+  }
+  .bar{padding:6px 10px;gap:8px}
+  .bar .wdots{gap:4px}
+  .bar .wdots i{width:6px;height:6px}
+  .bar .url{height:18px;font-size:9.5px;padding:0 8px;gap:5px}
+  .bar .url svg{width:8px;height:8px}
+  .canvas{padding:14px 16px 16px;min-height:140px}
+  .wf-nav{margin-bottom:14px}
+  .wf-logo{width:48px;height:8px}
+  .wf-links{gap:6px}
+  .wf-links i{width:22px;height:5px}
+  .wf-h1{height:12px;margin-bottom:6px;width:70%}
+  .wf-h1.b{width:45%;margin-bottom:10px}
+  .wf-p{height:5px;margin-bottom:5px;width:82%}
+  .wf-p.b{width:60%;margin-bottom:12px}
+  .wf-row{gap:8px}
+  .wf-btn{width:70px;height:20px;border-radius:3px}
+  .wf-img{width:105px;height:72px;margin-top:-40px;border-radius:4px}
+
+  /* Scene 3: Refine Cursor & Clicks */
+  .cursor{width:14px;height:14px}
+  @keyframes cursorPath{
+    0%{opacity:0;transform:translate(240px,120px)}
+    8%{opacity:1}
+    30%{transform:translate(80px,36px)}
+    38%{transform:translate(80px,36px) scale(.88)}
+    42%{transform:translate(80px,36px) scale(1)}
+    68%{transform:translate(220px,80px)}
+    76%{transform:translate(220px,80px) scale(.88)}
+    80%{transform:translate(220px,80px) scale(1)}
+    100%{opacity:1;transform:translate(170px,110px)}
+  }
+  .click{width:24px;height:24px}
+  .click.c1{left:68px;top:24px}
+  .click.c2{left:208px;top:68px}
+
+  /* Scene 4: Connect */
+  .connect{width:min(310px,100%);gap:9px}
+  .domain{padding:9px 14px;border-radius:20px}
+  .domain svg{width:11px;height:11px}
+  .domain .txt{font-size:12px}
+  .check-row{padding:8px 14px;font-size:11.5px;gap:9px;border-radius:6px}
+  .check-row .ck{width:17px;height:17px}
+
+  /* Scene 5: Sign */
+  .doc{
+    width:min(280px,100%);
+    padding:18px 20px 16px;
+    border-radius:6px;
+    box-shadow:0 16px 40px -20px rgba(15,23,42,.18);
+  }
+  .doc h3{font-size:18px;margin-bottom:2px}
+  .doc .sub{font-size:9px;margin-bottom:12px}
+  .doc .dline{height:4px;margin-bottom:6px;border-radius:2px}
+  .doc .total{margin-top:12px;padding-top:10px;font-size:8.5px}
+  .doc .total b{font-size:13.5px}
+  .sig{margin-top:10px}
+  .sig .siglabel{font-size:8.5px}
+  .sig svg{width:115px;height:34px}
+  .sig .baseline{width:125px}
+  .doc .approved{right:16px;bottom:18px;width:26px;height:26px}
+
+  /* Scene 6: Live */
+  .live-nav{margin-bottom:12px}
+  .live-nav b{font-size:10.5px}
+  .live-nav span{gap:8px;font-size:7.5px}
+  .live-h1{font-size:17px;margin-bottom:5px;max-width:55%}
+  .live-p{font-size:8.5px;max-width:52%;margin-bottom:10px;line-height:1.4}
+  .live-btn{font-size:7.5px;padding:5px 10px}
+  .live-img{right:14px;top:40px;width:95px;height:68px;border-radius:4px}
+  .live-img svg{width:24px;height:24px}
+  .live-badge{top:-9px;font-size:8px;padding:4px 10px;border-radius:10px}
+
+  /* Scene 7: Grow (Ads & marketing) */
+  .grow{
+    width:min(340px,100%);
+    gap:10px;
+    align-items:stretch;
+  }
+  .ad{
+    width:135px;
+    border-radius:8px;
+    box-shadow:0 14px 34px -16px rgba(15,23,42,.16);
+  }
+  .ad-top{padding:6px 8px;gap:6px}
+  .ad-top .avatar{width:18px;height:18px;font-size:9px}
+  .ad-top .who i{height:4px;width:40px;margin-bottom:2px}
+  .ad-top .who em{font-size:7px}
+  .ad-img{height:52px}
+  .ad-img svg{width:20px;height:20px}
+  .ad-body{padding:8px 8px 9px}
+  .ad-body i{height:4px;margin-bottom:4px}
+  .ad-cta{font-size:7px;padding:4px 8px}
+
+  .chartcard{
+    padding:10px 12px 10px;
+    border-radius:8px;
+    box-shadow:0 14px 34px -16px rgba(15,23,42,.16);
+  }
+  .chartcard .ct{font-size:7.5px;margin-bottom:6px}
+  .chartcard .stat{top:8px;right:10px;font-size:8.5px}
 }
+
+@media(max-width:380px){
+  .scene{padding:12px 14px 18px;gap:10px}
+  .cap h2{font-size:19px}
+  .cap p{font-size:11.5px}
+  .browser{max-width:290px}
+  .canvas{padding:10px 12px 12px;min-height:125px}
+  .wf-img{width:88px;height:60px;margin-top:-36px}
+  .grow{gap:6px}
+  .ad{width:120px}
+}
+
 @media(prefers-reduced-motion:reduce){
   .scene,.scene *{animation:none !important;transition:none !important}
 }
 /* embedded in an iframe on the site: fill the frame, no border */
-.embedded .stage{width:100%;border:none !important}
+.embedded html, .embedded body{height:100%;width:100%;overflow:hidden}
+.embedded .stage{width:100%;height:100%;max-width:100%;aspect-ratio:auto !important;border:none !important}
 </style>
 <script>if(window.self!==window.top)document.documentElement.classList.add('embedded');</script>
 </head>

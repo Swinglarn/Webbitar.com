@@ -30,8 +30,6 @@
 <link rel="stylesheet" href="../styles.css">
 <style>
 .hero{position:relative;overflow:hidden;padding:120px 0 110px;text-align:center;background:var(--bg)}
-.hero-bg .star{position:absolute;color:var(--gold);opacity:0;animation:twinkle 4s ease-in-out infinite}
-@keyframes twinkle{0%,100%{opacity:0;transform:scale(.6)}50%{opacity:.55;transform:scale(1)}}
 .hero .wrap{position:relative;z-index:1}
 .hero .markwrap{display:flex;justify-content:center;margin-bottom:30px}
 .hero .markwrap img{height:96px;width:auto;animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
@@ -91,8 +89,21 @@
 .step:hover .step-arrow{color:var(--gold)}
 .step:last-child .step-arrow{display:none}
 
-@media(max-width:860px){.svc-grid{grid-template-columns:1fr}.split{grid-template-columns:1fr}.hero-cards{grid-template-columns:repeat(2,1fr)}.timeline{grid-template-columns:repeat(3,1fr);gap:32px}.step::after{display:none}.step-arrow{display:none}}
-@media(max-width:480px){.hero-cards{grid-template-columns:1fr}.timeline{grid-template-columns:1fr;gap:28px;max-width:320px;margin:0 auto}}
+@media(max-width:860px){
+  .svc-grid{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr}
+  .hero-cards{grid-template-columns:repeat(2,1fr)}
+  .timeline{grid-template-columns:repeat(3,1fr);gap:32px}
+  .step::after{display:none}
+  .step-arrow{display:none}
+  .process-anim{margin-bottom:48px}
+  .process-anim iframe{aspect-ratio:auto;height:520px;min-height:480px}
+}
+@media(max-width:480px){
+  .hero-cards{grid-template-columns:1fr}
+  .timeline{grid-template-columns:1fr;gap:28px;max-width:320px;margin:0 auto}
+  .process-anim iframe{height:500px}
+}
 @media(prefers-reduced-motion:reduce){.hero-video{display:none}}
 </style>
 <script type="application/ld+json">
@@ -127,7 +138,7 @@
 <main>
   <section class="hero">
     <div class="hero-bg">
-      <video class="hero-video" autoplay muted loop playsinline preload="none" poster="../assets/webbitar-web-design-bg-poster.jpg" aria-hidden="true">
+      <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="../assets/webbitar-web-design-bg-poster.jpg" aria-hidden="true">
         <source src="../assets/webbitar-web-design-bg.webm" type="video/webm">
         <source src="../assets/webbitar-web-design-bg.mov" type="video/quicktime">
       </video>

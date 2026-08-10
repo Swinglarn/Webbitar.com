@@ -174,4 +174,29 @@
       } catch(e) {}
     });
   }
+
+  // hero background video playback on mobile
+  var heroVideos = document.querySelectorAll('.hero-video');
+  if (heroVideos.length > 0) {
+    var playVideos = function() {
+      heroVideos.forEach(function(vid){
+        vid.muted = true;
+        vid.defaultMuted = true;
+        var p = vid.play();
+        if (p !== undefined) {
+          p.catch(function(){});
+        }
+      });
+    };
+    playVideos();
+    var unlockVideos = function() {
+      playVideos();
+      window.removeEventListener('touchstart', unlockVideos);
+      window.removeEventListener('scroll', unlockVideos);
+      window.removeEventListener('click', unlockVideos);
+    };
+    window.addEventListener('touchstart', unlockVideos, {passive: true, once: true});
+    window.addEventListener('scroll', unlockVideos, {passive: true, once: true});
+    window.addEventListener('click', unlockVideos, {passive: true, once: true});
+  }
 })();
