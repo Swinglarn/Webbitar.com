@@ -500,6 +500,15 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
+.payment-note {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
 /* ── Footer ───────────────────────────────────── */
 .invoice-footer {
   display: flex;
@@ -649,6 +658,8 @@ body {
           <span class="value" contenteditable="true" data-field="due-date">2026-09-03</span><br>
           <span class="label">Betalningsvillkor</span><br>
           <span class="value" contenteditable="true" data-field="payment-terms">30 dagar netto</span><br>
+          <span class="label">Dröjsmålsränta</span><br>
+          <span class="value" contenteditable="true" data-field="late-interest">10 %</span><br>
           <span class="label">Er referens</span><br>
           <span class="value" contenteditable="true" data-field="client-reference">Inköpsnr / kontakt</span>
         </div>
@@ -764,6 +775,7 @@ body {
           <div class="value" contenteditable="true" data-field="account">510 770 258</div>
         </div>
       </div>
+      <div class="payment-note" contenteditable="true" data-field="payment-note">Betalning ska vara oss tillhanda senast på förfallodagen. Vid försenad betalning debiteras dröjsmålsränta med 10 % per år.</div>
     </div>
 
     <!-- ═══ FOOTER ═══ -->

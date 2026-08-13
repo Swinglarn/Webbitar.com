@@ -95,6 +95,10 @@ footer{background:var(--ink);color:#cbd5e1;padding:56px 0 40px}
 .foot-brand{display:flex;align-items:center;gap:10px}
 .foot-brand img{height:54px;width:auto;margin-left:-6px}
 .foot-brand span{font-family:var(--serif);font-size:22px;letter-spacing:.22em;color:#fff}
+.foot-social{display:flex;gap:12px;margin-top:20px}
+.foot-social a{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid #1e293b;border-radius:3px;color:#94a3b8;transition:color .2s,border-color .2s,transform .2s}
+.foot-social a:hover{color:#fff;border-color:var(--gold-soft);transform:translateY(-2px)}
+.foot-social svg{width:17px;height:17px}
 .foot-cols{display:flex;gap:60px;flex-wrap:wrap}
 .foot-col h5{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:14px}
 .foot-col a{display:block;font-size:14px;color:#cbd5e1;padding:5px 0;transition:color .2s,transform .2s}

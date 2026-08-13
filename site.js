@@ -88,6 +88,12 @@
 
   var foot = '';
   var year = new Date().getFullYear();
+  var social =
+    '<div class="foot-social">'+
+      '<a href="https://www.linkedin.com/company/webbitar" target="_blank" rel="noopener" aria-label="' + (isSv ? 'Webbitar på LinkedIn' : 'Webbitar on LinkedIn') + '">'+
+        '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.3-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21h-4z"/></svg>'+
+      '</a>'+
+    '</div>';
   if (isSv) {
     foot =
     '<footer><div class="wrap">'+
@@ -95,6 +101,7 @@
         '<div>'+
           '<div class="foot-brand"><img src="/assets/Webbitar_White.svg" alt="" width="54" height="54"><span>WEBBITAR</span></div>'+
           '<p style="margin-top:16px;font-size:14px;color:#94a3b8;max-width:36ch">Webbdesign, annonsering och IT-support för företag som vill synas och växa.</p>'+
+          social+
         '</div>'+
         '<div class="foot-cols">'+
           '<div class="foot-col"><h5>Studio</h5>'+
@@ -122,6 +129,7 @@
         '<div>'+
           '<div class="foot-brand"><img src="/assets/Webbitar_White.svg" alt="" width="54" height="54"><span>WEBBITAR</span></div>'+
           '<p style="margin-top:16px;font-size:14px;color:#94a3b8;max-width:36ch">Web design, advertising, and IT support for businesses that want to grow.</p>'+
+          social+
         '</div>'+
         '<div class="foot-cols">'+
           '<div class="foot-col"><h5>Studio</h5>'+
