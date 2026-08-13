@@ -92,8 +92,8 @@ section{padding:84px 0}
 /* footer */
 footer{background:var(--ink);color:#cbd5e1;padding:56px 0 40px}
 .foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:30px;flex-wrap:wrap;margin-bottom:40px}
-.foot-brand{display:flex;align-items:center;gap:12px}
-.foot-brand img{height:42px}
+.foot-brand{display:flex;align-items:center;gap:10px}
+.foot-brand img{height:54px;width:auto;margin-left:-6px}
 .foot-brand span{font-family:var(--serif);font-size:22px;letter-spacing:.22em;color:#fff}
 .foot-cols{display:flex;gap:60px;flex-wrap:wrap}
 .foot-col h5{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:14px}

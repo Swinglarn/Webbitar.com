@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Webbitar — From first message to growing your business</title>
 <meta name="robots" content="noindex">
-<link rel="icon" type="image/png" href="assets/logo-black-square.png">
+<link rel="icon" type="image/png" href="assets/Webbitar_Favicon_512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -74,6 +74,9 @@ body{
 .vis{display:flex;align-items:center;justify-content:center;min-width:0}
 
 /* ---------- intro / outro ---------- */
+.mark-logo{height:118px;width:auto;opacity:0;margin-bottom:-10px}
+.scene.active .mark-logo{animation:rise 1s cubic-bezier(.2,.7,.2,1) both}
+.avatar img{width:88%;height:auto;display:block}
 .mark{font-family:var(--serif);font-size:clamp(40px,7vw,72px);font-weight:600;letter-spacing:.22em;color:var(--ink);opacity:0}
 .scene.active .mark{animation:rise 1s .1s cubic-bezier(.2,.7,.2,1) both}
 .rule{display:flex;align-items:center;gap:18px;color:var(--accent);margin:26px 0;opacity:0}
@@ -411,6 +414,7 @@ body{
   }
 
   /* Intro / Outro */
+  .mark-logo{height:74px;margin-bottom:-6px}
   .mark{font-size:32px;letter-spacing:.2em}
   .rule{margin:16px 0;gap:12px}
   .rule .ln{width:45px}
@@ -571,6 +575,7 @@ body{
 
   <!-- intro -->
   <section class="scene center" data-dur="4200">
+    <img class="mark-logo" src="assets/Webbitar_Primary_Navy.svg" alt="" width="118" height="118">
     <div class="mark">WEBBITAR</div>
     <div class="rule"><span class="ln"></span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l1.6 9L24 12l-10.4 3L12 24l-1.6-9L0 12l10.4-3z"/></svg><span class="ln r"></span></div>
     <div class="intro-eyebrow">How it works</div>
@@ -587,7 +592,7 @@ body{
     <div class="vis">
       <div class="chat">
         <div class="chat-head">
-          <span class="avatar">W</span>
+          <span class="avatar"><img src="assets/Webbitar_White.svg" alt=""></span>
           <span>WEBBITAR</span>
         </div>
         <div class="bubble you">We need a new website for our business.</div>
@@ -770,7 +775,7 @@ body{
       <div class="grow">
         <div class="ad">
           <div class="ad-top">
-            <span class="avatar">W</span>
+            <span class="avatar"><img src="assets/Webbitar_White.svg" alt=""></span>
             <span class="who"><i></i><em>Sponsored</em></span>
           </div>
           <div class="ad-img">
@@ -798,6 +803,7 @@ body{
 
   <!-- outro -->
   <section class="scene center" data-dur="5200">
+    <img class="mark-logo" src="assets/Webbitar_Primary_Navy.svg" alt="" width="118" height="118">
     <div class="mark">WEBBITAR</div>
     <div class="rule"><span class="ln"></span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l1.6 9L24 12l-10.4 3L12 24l-1.6-9L0 12l10.4-3z"/></svg><span class="ln r"></span></div>
     <div class="intro-eyebrow">Web design, ads &amp; IT support</div>

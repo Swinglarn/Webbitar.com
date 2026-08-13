@@ -93,7 +93,7 @@
     '<footer><div class="wrap">'+
       '<div class="foot-top">'+
         '<div>'+
-          '<div class="foot-brand"><span>WEBBITAR</span></div>'+
+          '<div class="foot-brand"><img src="/assets/Webbitar_White.svg" alt="" width="54" height="54"><span>WEBBITAR</span></div>'+
           '<p style="margin-top:16px;font-size:14px;color:#94a3b8;max-width:36ch">Webbdesign, annonsering och IT-support för företag som vill synas och växa.</p>'+
         '</div>'+
         '<div class="foot-cols">'+
@@ -120,7 +120,7 @@
     '<footer><div class="wrap">'+
       '<div class="foot-top">'+
         '<div>'+
-          '<div class="foot-brand"><span>WEBBITAR</span></div>'+
+          '<div class="foot-brand"><img src="/assets/Webbitar_White.svg" alt="" width="54" height="54"><span>WEBBITAR</span></div>'+
           '<p style="margin-top:16px;font-size:14px;color:#94a3b8;max-width:36ch">Web design, advertising, and IT support for businesses that want to grow.</p>'+
         '</div>'+
         '<div class="foot-cols">'+
