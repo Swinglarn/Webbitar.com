@@ -55,7 +55,7 @@
         '<div class="nav-mid">'+
           '<a href="' + linkPrefix + 'about" data-p="about">Om oss</a>'+
           '<a href="' + linkPrefix + 'portfolio" data-p="portfolio">Portfolio</a>'+
-          '<a href="' + linkPrefix + 'client-services" data-p="client">Våra tjänster</a>'+
+          '<a href="' + linkPrefix + 'client-services" data-p="client">Tjänster</a>'+
           '<a href="' + linkPrefix + 'tjansteomraden" data-p="tjansteomraden">Tjänsteområden</a>'+
           '<a href="' + linkPrefix + 'marketing" data-p="marketing">Marknadsföring</a>'+
           '<a href="' + linkPrefix + 'pricing" data-p="pricing">Priser</a>'+
@@ -77,7 +77,7 @@
         '<div class="nav-mid">'+
           '<a href="about" data-p="about">About</a>'+
           '<a href="portfolio" data-p="portfolio">Portfolio</a>'+
-          '<a href="client-services" data-p="client">Client Services</a>'+
+          '<a href="client-services" data-p="client">Services</a>'+
           '<a href="service-areas" data-p="service-areas">Service Areas</a>'+
           '<a href="marketing" data-p="marketing">Marketing</a>'+
           '<a href="pricing" data-p="pricing">Pricing</a>'+

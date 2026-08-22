@@ -22,21 +22,21 @@ h1,h2,h3{text-wrap:balance}
 .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
 
 /* nav */
-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-header .wrap{max-width:100%;padding:0 40px}
-.nav{display:flex;align-items:center;justify-content:space-between;height:72px;position:relative}
-.brand{display:flex;align-items:center;gap:12px}
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+header .wrap{max-width:1440px;padding:0 32px}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px;position:relative;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
 .brand img{height:38px;width:auto}
 .brand span{font-family:var(--serif);font-weight:600;font-size:22px;letter-spacing:.22em}
-.nav-links{display:flex;align-items:center;flex-grow:1;justify-content:space-between;margin-left:40px}
-.nav-mid{display:flex;gap:32px;align-items:center;position:absolute;left:50%;transform:translateX(-50%)}
-.nav-right{display:flex;align-items:center;gap:16px;margin-left:auto}
-.nav-links a{font-size:15px;font-weight:500;color:#334155;letter-spacing:.02em;transition:color .2s;position:relative}
+.nav-links{display:flex;align-items:center;flex-grow:1;justify-content:space-between;margin-left:24px}
+.nav-mid{display:flex;gap:clamp(10px, 1.25vw, 20px);align-items:center;margin:0 auto;white-space:nowrap}
+.nav-right{display:flex;align-items:center;gap:12px;margin-left:auto;flex-shrink:0}
+.nav-links a{font-size:13.5px;font-weight:500;color:#334155;letter-spacing:.01em;transition:color .2s;position:relative;white-space:nowrap}
 .nav-links a:hover{color:var(--ink)}
-.nav-links a.active{color:var(--ink)}
+.nav-links a.active{color:var(--ink);font-weight:600}
 .nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .3s cubic-bezier(.22,.7,.2,1)}
 .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);transform-origin:left}
-.nav-cta{font-family:var(--sans);font-size:14px;font-weight:500;color:#fff !important;background:var(--ink);padding:10px 20px;border-radius:3px;transition:background .2s,box-shadow .2s}
+.nav-cta{font-family:var(--sans);font-size:13.5px;font-weight:500;color:#fff !important;background:var(--ink);padding:9px 18px;border-radius:3px;transition:background .2s,box-shadow .2s;white-space:nowrap}
 .nav-cta:hover{background:var(--gold);box-shadow:0 6px 16px -8px rgba(26,86,219,.55)}
 .nav-cta::after{display:none !important}
 .menu-btn{display:none;background:none;border:0;font-size:24px;cursor:pointer;color:var(--ink)}
@@ -109,16 +109,18 @@ footer{background:var(--ink);color:#cbd5e1;padding:56px 0 40px}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.22,.7,.2,1),transform .8s cubic-bezier(.22,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
 
-@media(max-width:860px){
+@media(max-width:1160px){
   header .wrap{padding:0 24px}
   .nav-links{display:none;margin-left:0}
   .menu-btn{display:block}
-  .grid-3,.grid-2{grid-template-columns:1fr}
   .nav-links.open{display:flex;position:absolute;top:72px;left:0;right:0;flex-direction:column;background:#fff;border-bottom:1px solid var(--line);padding:22px 24px 26px;gap:18px;box-shadow:0 20px 40px -20px rgba(15,23,42,.28);z-index:100}
   .nav-links.open a::after{display:none}
-  .nav-links.open .nav-mid{display:flex;flex-direction:column;position:static;transform:none;gap:16px;width:100%;align-items:flex-start}
+  .nav-links.open .nav-mid{display:flex;flex-direction:column;position:static;transform:none;gap:16px;width:100%;align-items:flex-start;margin:0}
   .nav-links.open .nav-right{display:flex;align-items:center;justify-content:space-between;width:100%;margin-left:0;padding-top:14px;border-top:1px solid var(--line)}
   .nav-links.open .nav-cta{display:inline-block;text-align:center}
+}
+@media(max-width:860px){
+  .grid-3,.grid-2{grid-template-columns:1fr}
   input, select, textarea{font-size:16px !important}
   section{padding:64px 0}
   .page-head{padding:68px 0 54px}
