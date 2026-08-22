@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Service Areas &amp; On-Site IT Support — Webbitar</title>
+<meta name="description" content="Webbitar Service Areas: Nationwide digital services alongside on-site IT technicians in Dalarna, Gästrikland, Västerås, and Linköping.">
+<link rel="icon" type="image/png" href="assets/Webbitar_Favicon_512.png">
+<link rel="canonical" href="https://webbitar.com/service-areas">
+<link rel="alternate" hreflang="en" href="https://webbitar.com/service-areas">
+<link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/tjansteomraden">
+<link rel="alternate" hreflang="x-default" href="https://webbitar.com/sv/tjansteomraden">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Service Areas &amp; On-Site IT Support — Webbitar">
+<meta property="og:description" content="Nationwide digital services alongside dedicated on-site IT support across Dalarna, Gästrikland, Västerås, and Linköping.">
+<meta property="og:image" content="https://webbitar.com/assets/webbitar-coverage-map-clean.jpg">
+<meta property="og:url" content="https://webbitar.com/service-areas">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Webbitar">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Service Areas &amp; On-Site IT Support — Webbitar">
+<meta name="twitter:description" content="Nationwide digital services alongside dedicated on-site IT support across Dalarna, Gästrikland, Västerås, and Linköping.">
+<meta name="twitter:image" content="https://webbitar.com/assets/webbitar-coverage-map-clean.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.map-section{padding:90px 0;background:#fff}
+.map-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:start}
+.map-card{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:24px;box-shadow:0 20px 40px -20px rgba(15,23,42,.08);position:sticky;top:100px;text-align:center}
+.map-card img{width:100%;max-width:440px;height:auto;margin:0 auto;display:block;border-radius:4px;filter:drop-shadow(0 12px 24px rgba(15,23,42,0.06))}
+.map-card .badge-live{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--line);padding:6px 14px;border-radius:20px;font-size:12.5px;font-weight:600;color:var(--ink);letter-spacing:.04em;margin-bottom:18px}
+.map-card .badge-live::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(16,185,129,.2);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.2);opacity:.7}}
+.map-card .caption{font-size:13px;color:var(--muted);margin-top:16px}
+
+.regions-list{display:flex;flex-direction:column;gap:18px}
+.region-box{border:1px solid var(--line);border-radius:6px;padding:26px 28px;background:#fff;transition:border-color .2s,box-shadow .2s,transform .2s}
+.region-box:hover{border-color:var(--gold);box-shadow:0 12px 28px -10px rgba(26,86,219,.12);transform:translateY(-2px)}
+.region-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.region-title{display:flex;align-items:center;gap:10px}
+.region-title svg{width:20px;height:20px;color:var(--gold);flex-shrink:0}
+.region-title h3{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--ink);margin:0}
+.region-badge{font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:4px 10px;border-radius:2px;background:var(--paper);color:var(--gold);border:1px solid var(--line)}
+.region-cities{font-size:14px;color:var(--gold-soft);font-weight:500;margin-bottom:10px}
+.region-desc{font-size:15px;color:var(--muted);line-height:1.55;margin:0}
+
+.matrix-sec{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:90px 0}
+.matrix-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.matrix-col{background:#fff;border:1px solid var(--line);border-radius:6px;padding:38px 34px;display:flex;flex-direction:column}
+.matrix-col .col-tag{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.matrix-col h3{font-family:var(--serif);font-weight:600;font-size:26px;margin-bottom:12px}
+.matrix-col p.lead{font-size:15.5px;color:var(--muted);margin-bottom:24px}
+.matrix-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.matrix-list li{font-size:15px;color:var(--ink);display:flex;align-items:flex-start;gap:12px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.matrix-list li:last-child{border-bottom:0;padding-bottom:0}
+.matrix-list li svg{width:18px;height:18px;color:var(--green);flex-shrink:0;margin-top:2px}
+
+.reasons{padding:90px 0;background:#fff}
+.reasons-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.reason-card{border:1px solid var(--line);border-radius:4px;padding:32px 28px;background:#fff}
+.reason-card .mk{color:var(--gold);margin-bottom:16px}
+.reason-card .mk svg{width:26px;height:26px}
+.reason-card h4{font-family:var(--serif);font-size:22px;font-weight:600;margin-bottom:10px}
+.reason-card p{font-size:15px;color:var(--muted);line-height:1.55;margin:0}
+
+.cta-final{text-align:center;background:var(--ink);color:#f0f4ff;padding:90px 0}
+.cta-final h2{font-family:var(--serif);font-weight:500;font-size:clamp(32px,5vw,52px);line-height:1.08;max-width:18ch;margin:0 auto 16px;color:#fff}
+.cta-final h2 em{font-style:italic;color:var(--gold-soft)}
+.cta-final p{color:#94a3b8;max-width:52ch;margin:0 auto 28px;font-size:17px}
+
+@media(max-width:920px){
+  .map-grid{grid-template-columns:1fr;gap:36px}
+  .map-card{position:static}
+  .matrix-grid{grid-template-columns:1fr}
+  .reasons-grid{grid-template-columns:1fr}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Webbitar",
+  "url": "https://webbitar.com/service-areas",
+  "logo": "https://webbitar.com/assets/Webbitar_Primary_Navy_1024.png",
+  "image": "https://webbitar.com/assets/webbitar-coverage-map-clean.jpg",
+  "description": "Nationwide websites, hosting, and SEO along with on-site IT support and technicians across Dalarna, Gästrikland, Västerås, Linköping, and Jönköping.",
+  "areaServed": [
+    { "@type": "AdministrativeArea", "name": "Dalarna" },
+    { "@type": "AdministrativeArea", "name": "Gästrikland" },
+    { "@type": "AdministrativeArea", "name": "Västmanland" },
+    { "@type": "AdministrativeArea", "name": "Östergötland" },
+    { "@type": "AdministrativeArea", "name": "Jönköping" },
+    { "@type": "Country", "name": "Sweden" }
+  ]
+}
+</script>
+</head>
+<body data-page="service-areas">
+
+<main>
+  <section class="page-head">
+    <div class="hero-bg">
+      <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="assets/webbitar-web-design-bg-poster.jpg" aria-hidden="true">
+        <source src="assets/webbitar-web-design-bg.webm" type="video/webm">
+        <source src="assets/webbitar-web-design-bg.mov" type="video/quicktime">
+      </video>
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="wrap">
+      <div class="eyebrow">Service Areas &amp; Reach</div>
+      <h1>Nationwide digital services, on-site technicians in <em>five key regions</em>.</h1>
+      <p>Webbitar designs, hosts, and scales websites and ad campaigns for businesses throughout Sweden and globally. When office hardware, networks, or Wi-Fi act up, we also have dedicated technicians on site.</p>
+      <div style="margin-top:30px;display:flex;gap:14px;flex-wrap:wrap">
+        <a href="contact" class="btn btn-primary">Book a technician / Request quote</a>
+        <a href="#map" class="btn btn-ghost">Explore the map</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="map-section" id="map">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Our Coverage</div>
+        <h2>Where we operate</h2>
+        <p>From Borlänge and Falun in the north down to Linköping and Jönköping in the south. Click and explore our local presence areas.</p>
+      </div>
+
+      <div class="map-grid">
+        <div class="map-card reveal">
+          <div class="badge-live">Live Coverage Map</div>
+          <img src="assets/webbitar-coverage-map-clean.jpg" alt="3D Coverage map of Webbitar service areas in Sweden: Dalarna, Gästrikland, Västerås, Linköping, and Jönköping" loading="lazy">
+          <p class="caption">Isometric overview of highlighted regions with on-site technician coverage and nationwide digital availability.</p>
+        </div>
+
+        <div class="regions-list reveal">
+          <div class="region-box">
+            <div class="region-head">
+              <div class="region-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <h3>Dalarna</h3>
+              </div>
+              <span class="region-badge">On-Site</span>
+            </div>
+            <div class="region-cities">Borlänge &bull; Falun &bull; Leksand &bull; Rättvik &bull; Mora &bull; Ludvika &bull; Avesta</div>
+            <p class="region-desc">Our home base. Prompt on-site response and technical advisory for office IT issues, network hardware replacements, PC troubleshooting, Wi-Fi, and printers.</p>
+          </div>
+
+          <div class="region-box">
+            <div class="region-head">
+              <div class="region-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <h3>Gästrikland</h3>
+              </div>
+              <span class="region-badge">On-Site</span>
+            </div>
+            <div class="region-cities">Gävle &bull; Sandviken &bull; Hofors &bull; Ockelbo</div>
+            <p class="region-desc">Local technician assistance for offices, retail, and commercial businesses. Practical support with IT trouble, cabling, network setups, and hardware replacements.</p>
+          </div>
+
+          <div class="region-box">
+            <div class="region-head">
+              <div class="region-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <h3>Västerås &amp; Västmanland</h3>
+              </div>
+              <span class="region-badge">On-Site</span>
+            </div>
+            <div class="region-cities">Västerås &bull; Köping &bull; Sala &bull; Fagersta</div>
+            <p class="region-desc">Hands-on IT consulting and ongoing maintenance for small and mid-size companies. Fast turnaround across the Mälardalen region.</p>
+          </div>
+
+          <div class="region-box">
+            <div class="region-head">
+              <div class="region-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <h3>Linköping &amp; Östergötland</h3>
+              </div>
+              <span class="region-badge">On-Site</span>
+            </div>
+            <div class="region-cities">Linköping &bull; Norrköping &bull; Motala &bull; Mjölby</div>
+            <p class="region-desc">On-site technical support for office setups, hardware configuration, dependable business Wi-Fi, and printer networks in tech-driven Östergötland.</p>
+          </div>
+
+          <div class="region-box">
+            <div class="region-head">
+              <div class="region-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <h3>Jönköping &amp; Småland</h3>
+              </div>
+              <span class="region-badge">On-Site</span>
+            </div>
+            <div class="region-cities">Jönköping &bull; Huskvarna &bull; Nässjö &bull; Värnamo &bull; Tranås</div>
+            <p class="region-desc">Local on-site technician support in the Jönköping hub. Hands-on IT troubleshooting, network configuration, workstation setups, and printer support.</p>
+          </div>
+
+          <div class="region-box" style="border-style:dashed;background:var(--paper)">
+            <div class="region-head">
+              <div class="region-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <h3>Nationwide &amp; Global</h3>
+              </div>
+              <span class="region-badge" style="background:#fff">Digital</span>
+            </div>
+            <div class="region-cities">Stockholm &bull; Gothenburg &bull; Malmö &bull; Worldwide</div>
+            <p class="region-desc">All website design, hosting packages, SEO management, and paid digital marketing campaigns are delivered seamlessly and remotely to clients anywhere.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="matrix-sec">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Service Breakdown</div>
+        <h2>On-site assistance versus digital services</h2>
+        <p>A single team and single point of contact whether your challenge is written in code or in a faulty network line.</p>
+      </div>
+
+      <div class="matrix-grid reveal">
+        <div class="matrix-col">
+          <div class="col-tag">Physical Presence</div>
+          <h3>On site at your office</h3>
+          <p class="lead">For businesses in Dalarna, Gästrikland, Västerås, Linköping, and Jönköping, we show up in person when hardware fails.</p>
+          <ul class="matrix-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Workstations &amp; Computers:</strong> Troubleshooting, setup, and optimization for PC and Mac.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Networks &amp; Wi-Fi:</strong> Configuration of routers, managed switches, access points, and signal coverage.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Printers &amp; Office Gear:</strong> Installation, network connection, and maintenance of printers and scanners.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Hardware Replacements:</strong> Fast upgrades and repairs for drives, memory, power supplies, and accessories.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="matrix-col">
+          <div class="col-tag">Cloud &amp; Web</div>
+          <h3>Delivered digitally nationwide</h3>
+          <p class="lead">Web design, hosting, search ranking, and advertising executed with high craft and rapid turnarounds wherever you are.</p>
+          <ul class="matrix-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Custom Websites:</strong> Distinct, high-converting design built on clean, performant code.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Managed Hosting:</strong> Lightning-fast cloud servers, SSL encryption, daily automated backups, and updates.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>SEO &amp; Google Profile:</strong> Systematic optimization to reach top search rankings with straightforward monthly reporting.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong>Paid Advertising:</strong> ROI-focused campaigns across Google Ads, Meta, Pinterest, and X.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reasons">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Advantages</div>
+        <h2>Why consolidate under Webbitar?</h2>
+      </div>
+      <div class="reasons-grid reveal">
+        <div class="reason-card">
+          <div class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h4>One contact for everything</h4>
+          <p>No more juggling four different agencies for web, ads, email hosting, and office tech. We manage the entire lifecycle.</p>
+        </div>
+        <div class="reason-card">
+          <div class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <h4>Fast on-site dispatch</h4>
+          <p>With local technicians across Dalarna, Gästrikland, Västerås, Linköping, and Jönköping, we can be on site when you need immediate hands-on help.</p>
+        </div>
+        <div class="reason-card">
+          <div class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 15h0M2 9.5h20"/></svg></div>
+          <h4>Straightforward pricing</h4>
+          <p>No unexpected surcharges or ambiguous consulting retainers. You always know exactly what you pay for.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-final">
+    <div class="wrap reveal">
+      <div class="eyebrow" style="color:var(--gold-soft)">Get in Touch</div>
+      <h2>Need help with office <em>tech</em> or a new website?</h2>
+      <p>Tell us what you're working on and we'll reply promptly with straight answers and a clear quote.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <a href="contact" class="btn btn-primary" style="background:#fff;color:var(--ink)">Get a quote</a>
+        <a href="mailto:contact@webbitar.com" class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.3)">Email us directly</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="site.js"></script>
+</body>
+</html>

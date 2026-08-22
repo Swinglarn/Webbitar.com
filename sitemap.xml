@@ -62,6 +62,26 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://webbitar.com/sv/client-services"/>
   </url>
 
+  <!-- Service Areas -->
+  <url>
+    <loc>https://webbitar.com/service-areas</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/service-areas"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/tjansteomraden"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webbitar.com/sv/tjansteomraden"/>
+  </url>
+  <url>
+    <loc>https://webbitar.com/sv/tjansteomraden</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webbitar.com/service-areas"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://webbitar.com/sv/tjansteomraden"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webbitar.com/sv/tjansteomraden"/>
+  </url>
+
   <!-- Portfolio -->
   <url>
     <loc>https://webbitar.com/portfolio</loc>

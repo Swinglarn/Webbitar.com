@@ -9,6 +9,11 @@
   var file = path.substring(path.lastIndexOf('/') + 1).replace('.html', '');
   if (file === 'sv' || file === 'index') file = '';
   var langToggleUrl = isSv ? '/' + file : (file ? '/sv/' + file : '/sv');
+  if (isSv && file === 'tjansteomraden') {
+    langToggleUrl = '/service-areas';
+  } else if (!isSv && file === 'service-areas') {
+    langToggleUrl = '/sv/tjansteomraden';
+  }
   var langToggleText = isSv ? 'EN' : 'SV';
 
   // Prevent relative path breaking if pathname is exactly '/sv' without trailing slash
@@ -51,6 +56,7 @@
           '<a href="' + linkPrefix + 'about" data-p="about">Om oss</a>'+
           '<a href="' + linkPrefix + 'portfolio" data-p="portfolio">Portfolio</a>'+
           '<a href="' + linkPrefix + 'client-services" data-p="client">Våra tjänster</a>'+
+          '<a href="' + linkPrefix + 'tjansteomraden" data-p="tjansteomraden">Tjänsteområden</a>'+
           '<a href="' + linkPrefix + 'marketing" data-p="marketing">Marknadsföring</a>'+
           '<a href="' + linkPrefix + 'pricing" data-p="pricing">Priser</a>'+
           '<a href="' + linkPrefix + 'calculator" data-p="calculator">Kalkylator</a>'+
@@ -72,6 +78,7 @@
           '<a href="about" data-p="about">About</a>'+
           '<a href="portfolio" data-p="portfolio">Portfolio</a>'+
           '<a href="client-services" data-p="client">Client Services</a>'+
+          '<a href="service-areas" data-p="service-areas">Service Areas</a>'+
           '<a href="marketing" data-p="marketing">Marketing</a>'+
           '<a href="pricing" data-p="pricing">Pricing</a>'+
           '<a href="calculator" data-p="calculator">Calculator</a>'+
@@ -108,6 +115,7 @@
             '<a href="' + linkPrefix + 'about">Om oss</a>'+
             '<a href="' + linkPrefix + 'portfolio">Portfolio</a>'+
             '<a href="' + linkPrefix + 'client-services">Våra tjänster</a>'+
+            '<a href="' + linkPrefix + 'tjansteomraden">Tjänsteområden</a>'+
             '<a href="' + linkPrefix + 'marketing">Marknadsföring</a>'+
             '<a href="' + linkPrefix + 'pricing">Priser</a>'+
             '<a href="' + linkPrefix + 'calculator">Priskalkylator</a>'+
@@ -136,6 +144,7 @@
             '<a href="about">About</a>'+
             '<a href="portfolio">Portfolio</a>'+
             '<a href="client-services">Client Services</a>'+
+            '<a href="service-areas">Service Areas</a>'+
             '<a href="marketing">Marketing</a>'+
             '<a href="pricing">Pricing</a>'+
             '<a href="calculator">Pricing Calculator</a>'+
