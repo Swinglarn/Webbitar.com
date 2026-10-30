@@ -60,7 +60,6 @@
           '<a href="' + linkPrefix + 'marketing" data-p="marketing">Marknadsföring</a>'+
           '<a href="' + linkPrefix + 'pricing" data-p="pricing">Priser</a>'+
           '<a href="' + linkPrefix + 'calculator" data-p="calculator">Kalkylator</a>'+
-          '<a href="' + linkPrefix + 'support" data-p="support">Support</a>'+
         '</div>'+
         '<div class="nav-right">'+
           '<a href="' + linkPrefix + 'contact" data-p="contact" class="nav-cta">Begär offert</a>'+
@@ -82,7 +81,6 @@
           '<a href="marketing" data-p="marketing">Marketing</a>'+
           '<a href="pricing" data-p="pricing">Pricing</a>'+
           '<a href="calculator" data-p="calculator">Calculator</a>'+
-          '<a href="support" data-p="support">Support</a>'+
         '</div>'+
         '<div class="nav-right">'+
           '<a href="contact" data-p="contact" class="nav-cta">Get a quote</a>'+
@@ -118,11 +116,10 @@
             '<a href="' + linkPrefix + 'tjansteomraden">Tjänsteområden</a>'+
             '<a href="' + linkPrefix + 'marketing">Marknadsföring</a>'+
             '<a href="' + linkPrefix + 'pricing">Priser</a>'+
-            '<a href="' + linkPrefix + 'calculator">Priskalkylator</a>'+
+            '<a href="' + linkPrefix + 'calculator">Kalkylator</a>'+
           '</div>'+
           '<div class="foot-col"><h5>Kontakt</h5>'+
             '<a href="' + linkPrefix + 'contact">Begär offert</a>'+
-            '<a href="' + linkPrefix + 'support">Support</a>'+
             '<a href="mailto:contact@webbitar.com">contact@webbitar.com</a>'+
             '<a href="' + linkPrefix + 'privacy">Integritetspolicy</a>'+
           '</div>'+
@@ -147,11 +144,10 @@
             '<a href="service-areas">Service Areas</a>'+
             '<a href="marketing">Marketing</a>'+
             '<a href="pricing">Pricing</a>'+
-            '<a href="calculator">Pricing Calculator</a>'+
+            '<a href="calculator">Calculator</a>'+
           '</div>'+
           '<div class="foot-col"><h5>Contact</h5>'+
             '<a href="contact">Get a quote</a>'+
-            '<a href="support">Support</a>'+
             '<a href="mailto:contact@webbitar.com">contact@webbitar.com</a>'+
             '<a href="privacy">Privacy Policy</a>'+
           '</div>'+

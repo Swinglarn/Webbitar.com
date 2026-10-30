@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Build Your Plan &mdash; Webbitar</title>
-<meta name="description" content="Calculate your website design, hosting, and SEO costs. Build a custom plan and request a tailormade quote in minutes.">
+<meta name="description" content="Put together the website, marketing, and IT services your business needs and request a tailored quote from Webbitar.">
 <link rel="icon" type="image/png" href="assets/Webbitar_Favicon_512.png">
 <link rel="canonical" href="https://webbitar.com/calculator">
 <link rel="alternate" hreflang="en" href="https://webbitar.com/calculator">
@@ -13,7 +13,7 @@
 
 <!-- Open Graph -->
 <meta property="og:title" content="Build Your Plan &mdash; Webbitar">
-<meta property="og:description" content="Calculate your website design, hosting, and SEO costs. Build a custom plan and request a tailormade quote in minutes.">
+<meta property="og:description" content="Put together the website, marketing, and IT services your business needs and request a tailored quote from Webbitar.">
 <meta property="og:image" content="https://webbitar.com/assets/Webbitar_Navy_on_White.jpg">
 <meta property="og:url" content="https://webbitar.com/calculator">
 <meta property="og:type" content="website">
@@ -22,7 +22,7 @@
 <!-- Twitter Cards -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Build Your Plan &mdash; Webbitar">
-<meta name="twitter:description" content="Calculate your website design, hosting, and SEO costs. Build a custom plan and request a tailormade quote in minutes.">
+<meta name="twitter:description" content="Put together the website, marketing, and IT services your business needs and request a tailored quote from Webbitar.">
 <meta name="twitter:image" content="https://webbitar.com/assets/Webbitar_Navy_on_White.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -94,12 +94,6 @@
   font-size: 13px;
   color: var(--muted);
 }
-.option-price {
-  font-weight: 600;
-  color: var(--gold);
-  font-size: 18px;
-  white-space: nowrap;
-}
 .cycle-tabs {
   display: flex;
   background: var(--paper);
@@ -159,12 +153,6 @@
   color: var(--muted);
   max-width: 42ch;
 }
-.addon-cost {
-  font-size: 14.5px;
-  font-weight: 600;
-  color: var(--ink);
-  white-space: nowrap;
-}
 .qty-input {
   width: 60px;
   padding: 6px 8px;
@@ -222,32 +210,42 @@
   font-weight: 500;
   color: var(--ink);
 }
-.total-line {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 18px 0;
-  border-bottom: 2px solid var(--ink);
+.est-services {
+  padding: 12px 0 4px;
+  font-size: 14.5px;
 }
-.total-line.no-border {
-  border-bottom: none;
-}
-.total-line .lbl {
-  font-weight: 600;
-  color: var(--ink);
-  font-size: 16px;
-}
-.total-line .val {
-  font-size: 32px;
-  font-weight: 600;
-  color: var(--gold);
-  font-family: var(--sans);
-}
-.total-line .val small {
-  font-size: 14px;
-  font-weight: 400;
+.est-services .lbl {
   color: var(--muted);
-  margin-left: 2px;
+  margin-bottom: 8px;
+}
+.est-services ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.est-services li {
+  color: var(--ink);
+  font-weight: 500;
+  padding: 6px 0 6px 18px;
+  position: relative;
+}
+.est-services li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 14px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.est-services li.empty {
+  color: var(--muted);
+  font-weight: 400;
+  padding-left: 0;
+}
+.est-services li.empty::before {
+  display: none;
 }
 .calc-disclaimer {
   font-size: 12.5px;
@@ -342,9 +340,6 @@ input:focus, textarea:focus {
     align-items: flex-start;
     gap: 8px;
   }
-  .addon-cost {
-    margin-left: 29px;
-  }
 }
 </style>
 </head>
@@ -353,9 +348,9 @@ input:focus, textarea:focus {
 <main>
   <section class="page-head">
     <div class="wrap">
-      <div class="eyebrow">Price Calculator</div>
-      <h1>Build your custom <em>website plan</em>.</h1>
-      <p>Select the baseline services and addons you need. Your dynamic cost estimate will update in real time. Submit your build to get a formal quote.</p>
+      <div class="eyebrow">Build your request</div>
+      <h1>Put together the services <em>you need</em>.</h1>
+      <p>Pick a package and the services you are interested in, then send it over. We book a short meeting with you and come back with a quote tailored to your business.</p>
     </div>
   </section>
 
@@ -371,37 +366,34 @@ input:focus, textarea:focus {
             <h3>1. Select your Base Option</h3>
             <div class="option-grid">
               <!-- Small Plan -->
-              <div class="option-box active" onclick="selectBasePlan('small', 45)">
+              <div class="option-box active" onclick="selectBasePlan('small')">
                 <input type="radio" name="basePlan" id="planSmall" value="small" checked>
                 <div class="option-details">
                   <div class="option-title">Website &amp; Hosting (Small Plan)</div>
                   <div class="option-desc">5 custom pages, secure hosting, SSL &amp; backups, maintenance, one-time SEO setup.</div>
                 </div>
-                <div class="option-price" id="priceLabelSmall">$45<small style="font-size:12px; font-weight:400; color:var(--muted)">/mo</small></div>
               </div>
               
               <!-- Medium Plan -->
-              <div class="option-box" onclick="selectBasePlan('medium', 89)">
+              <div class="option-box" onclick="selectBasePlan('medium')">
                 <input type="radio" name="basePlan" id="planMedium" value="medium">
                 <div class="option-details">
                   <div class="option-title">Growth Bundle (Medium Plan)</div>
                   <div class="option-desc">5 pages, hosting, ongoing SEO, Google Business Profile setup, ongoing edits.</div>
                 </div>
-                <div class="option-price" id="priceLabelMedium">$89<small style="font-size:12px; font-weight:400; color:var(--muted)">/mo</small></div>
               </div>
               
               <!-- Large Plan -->
-              <div class="option-box" onclick="selectBasePlan('large', 239)">
+              <div class="option-box" onclick="selectBasePlan('large')">
                 <input type="radio" name="basePlan" id="planLarge" value="large">
                 <div class="option-details">
                   <div class="option-title">Professional Growth (Large Plan)</div>
                   <div class="option-desc">10 pages, hosting, ongoing SEO + reports, managed Google Business Profile, blog/booking, priority support.</div>
                 </div>
-                <div class="option-price" id="priceLabelLarge">$239<small style="font-size:12px; font-weight:400; color:var(--muted)">/mo</small></div>
               </div>
 
               <!-- Design Makeover -->
-              <div class="option-box" onclick="selectBasePlan('makeover', 0)">
+              <div class="option-box" onclick="selectBasePlan('makeover')">
                 <input type="radio" name="basePlan" id="planMakeover" value="makeover">
                 <div class="option-details">
                   <div class="option-title">Design Makeover (Self-hosted)</div>
@@ -410,20 +402,17 @@ input:focus, textarea:focus {
                   <div class="qty-wrapper" id="qtyWrapperMakeover" style="display:none">
                     Extra makeover pages (beyond 5):
                     <input type="number" class="qty-input" id="qtyMakeover" value="0" min="0" oninput="updateCalculator(); event.stopPropagation();" onclick="event.stopPropagation();">
-                    <span style="margin-left:8px">(+$49 / page)</span>
                   </div>
                 </div>
-                <div class="option-price">$189<small style="font-size:12px; font-weight:400; color:var(--muted)"> one-time</small></div>
               </div>
 
               <!-- None -->
-              <div class="option-box" onclick="selectBasePlan('none', 0)">
+              <div class="option-box" onclick="selectBasePlan('none')">
                 <input type="radio" name="basePlan" id="planNone" value="none">
                 <div class="option-details">
                   <div class="option-title">Custom / Addons Only</div>
                   <div class="option-desc">Host your own website and choose only the monthly addons you need.</div>
                 </div>
-                <div class="option-price">$0</div>
               </div>
             </div>
           </div>
@@ -433,9 +422,9 @@ input:focus, textarea:focus {
             <h3>2. Choose Billing Cycle</h3>
             <p style="font-size:13.5px; color:var(--muted); margin-bottom:14px;">Commit to a longer period and get a substantial discount on your monthly base plan price.</p>
             <div class="cycle-tabs">
-              <div class="cycle-tab active" onclick="selectCycle('monthly', 0)">Monthly</div>
-              <div class="cycle-tab" onclick="selectCycle('annual', 0.25)">12 Months (25% Off)</div>
-              <div class="cycle-tab" onclick="selectCycle('biennial', 0.35)">24 Months (35% Off)</div>
+              <div class="cycle-tab active" onclick="selectCycle('monthly')">Monthly</div>
+              <div class="cycle-tab" onclick="selectCycle('annual')">12 Months (25% Off)</div>
+              <div class="cycle-tab" onclick="selectCycle('biennial')">24 Months (35% Off)</div>
             </div>
           </div>
 
@@ -457,7 +446,6 @@ input:focus, textarea:focus {
                     </div>
                   </div>
                 </div>
-                <div class="addon-cost">+$15 / page / mo</div>
               </div>
 
               <!-- Extra Language -->
@@ -466,14 +454,13 @@ input:focus, textarea:focus {
                   <input type="checkbox" class="addon-checkbox" id="addonLang" onchange="toggleAddon('lang')">
                   <div class="addon-meta">
                     <h4>Extra Language</h4>
-                    <p>Complete translated copy of your website (+40% of your base plan per language).</p>
+                    <p>Complete translated copy of your website.</p>
                     <div class="qty-wrapper" id="qtyWrapperLang" style="display:none">
                       Number of extra languages?
                       <input type="number" class="qty-input" id="qtyLang" value="1" min="1" oninput="updateCalculator()">
                     </div>
                   </div>
                 </div>
-                <div class="addon-cost">+40% / lang / mo</div>
               </div>
 
               <!-- Blog -->
@@ -485,7 +472,6 @@ input:focus, textarea:focus {
                     <p>We build and maintain the blog page/layout, you draft the posts.</p>
                   </div>
                 </div>
-                <div class="addon-cost">+$79 / mo</div>
               </div>
 
               <!-- Booking -->
@@ -497,7 +483,6 @@ input:focus, textarea:focus {
                     <p>Let customers book appointments or schedule calls directly.</p>
                   </div>
                 </div>
-                <div class="addon-cost">+$25 / mo</div>
               </div>
 
               <!-- E-commerce -->
@@ -509,7 +494,6 @@ input:focus, textarea:focus {
                     <p>Add shopping cart, product listings, and digital checkout flow.</p>
                   </div>
                 </div>
-                <div class="addon-cost">+$129 / mo</div>
               </div>
 
               <!-- SEO -->
@@ -521,7 +505,6 @@ input:focus, textarea:focus {
                     <p>Ongoing optimization to make sure your site stays visible in Google search.</p>
                   </div>
                 </div>
-                <div class="addon-cost">+$35 / mo</div>
               </div>
 
               <!-- Google Business Profile -->
@@ -533,7 +516,6 @@ input:focus, textarea:focus {
                     <p>Ongoing management and monthly optimization of your Google profile. (Setup is included from the Medium plan up.)</p>
                   </div>
                 </div>
-                <div class="addon-cost">+$24 / mo</div>
               </div>
 
               <!-- Priority Support -->
@@ -545,7 +527,6 @@ input:focus, textarea:focus {
                     <p>Jump to the front of the support queue and get faster turnaround.</p>
                   </div>
                 </div>
-                <div class="addon-cost">+$49 / mo</div>
               </div>
 
             </div>
@@ -564,7 +545,6 @@ input:focus, textarea:focus {
                     <p>Audit, Tag Manager tracking pixel installations (Meta, Google, Pinterest, X), and 1-hour strategy consultation.</p>
                   </div>
                 </div>
-                <div class="addon-cost">+$490 (one-time)</div>
               </div>
 
               <!-- Single Channel -->
@@ -576,7 +556,6 @@ input:focus, textarea:focus {
                     <p>Full-service management &amp; optimization of either Google Ads or Meta Ads.</p>
                   </div>
                 </div>
-                <div class="addon-cost">+$349 / mo</div>
               </div>
 
               <!-- Omnichannel -->
@@ -588,7 +567,32 @@ input:focus, textarea:focus {
                     <p>Full-service management of campaigns across Google, Meta, Pinterest, and X.</p>
                   </div>
                 </div>
-                <div class="addon-cost">+$699 / mo</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. IT & Consulting -->
+          <div class="calc-panel">
+            <h3>5. IT &amp; Consulting</h3>
+            <div class="addon-list">
+              <div class="addon-row">
+                <div class="addon-info">
+                  <input type="checkbox" class="addon-checkbox" id="addonIt" onchange="updateCalculator()">
+                  <div class="addon-meta">
+                    <h4>IT Consulting &amp; Office Support</h4>
+                    <p>Troubleshooting of computers, networks, Wi-Fi, and printers, on site in Dalarna and Gästrikland.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="addon-row">
+                <div class="addon-info">
+                  <input type="checkbox" class="addon-checkbox" id="addonAi" onchange="updateCalculator()">
+                  <div class="addon-meta">
+                    <h4>AI Guidance &amp; Training</h4>
+                    <p>Advice on where AI fits in your business, and training on how to use it as a practical tool.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -598,38 +602,27 @@ input:focus, textarea:focus {
         <!-- Right Side: Estimate Sidebar & Form -->
         <div class="est-sidebar reveal">
           <div class="est-box">
-            <h3>Package Summary</h3>
-            
+            <h3>Your selection</h3>
+
             <div class="est-line"><span class="lbl">Base Plan</span><span class="val" id="estBasePlan">Website &amp; Hosting</span></div>
-            <div class="est-line"><span class="lbl">Billing Cycle</span><span class="val" id="estBillingCycle">Monthly</span></div>
-            <div class="est-line"><span class="lbl">Monthly Addons</span><span class="val" id="estMonthlyAddons">$0 / mo</span></div>
-            <div class="est-line" id="estLineOneTime" style="display:none"><span class="lbl">One-time Fee</span><span class="val" id="estOneTimeCost">$0</span></div>
-            
-            <div class="total-line" id="totalLineMonthly">
-              <span class="lbl">Monthly Estimate</span>
-              <span class="val" id="totalMonthly">$45<small>/mo</small></span>
+            <div class="est-line" id="estLineCycle"><span class="lbl">Contract Length</span><span class="val" id="estBillingCycle">Monthly</span></div>
+            <div class="est-services">
+              <div class="lbl">Selected services</div>
+              <ul id="estServices"></ul>
             </div>
-            
-            <div class="total-line no-border" id="totalLineSetup" style="display:none">
-              <span class="lbl">One-time Setup Estimate</span>
-              <span class="val" id="totalSetup">$0</span>
-            </div>
-            
+
             <div class="calc-disclaimer">
-              <strong>Estimate only:</strong> Every business has unique needs. We will review your selections and deliver an exact proposal with a fixed price.
+              <strong>No prices here:</strong> our website packages have fixed monthly prices (see <a href="pricing" style="color:var(--gold)">Pricing</a>). Everything else is quoted case by case after a short meeting with you.
             </div>
 
             <!-- Form -->
             <form id="calcForm">
               <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
               <!-- Hidden inputs to structure data for Formspree email -->
-              <input type="hidden" name="_subject" value="New Custom Quote Estimate Build">
-              <input type="hidden" name="Selected Base Plan" id="hiddenBasePlan" value="Website & Hosting ($45/mo)">
-              <input type="hidden" name="Billing Cycle" id="hiddenBillingCycle" value="Monthly">
-              <input type="hidden" name="Monthly Add-ons" id="hiddenMonthlyAddons" value="None">
-              <input type="hidden" name="One-time Setup Add-ons" id="hiddenOneTimeAddons" value="None">
-              <input type="hidden" name="Total Monthly Estimate" id="hiddenMonthlyTotal" value="$45/mo">
-              <input type="hidden" name="Total Setup Estimate" id="hiddenSetupTotal" value="$0">
+              <input type="hidden" name="_subject" value="New Service Request from the Calculator">
+              <input type="hidden" name="Selected Base Plan" id="hiddenBasePlan" value="Website & Hosting (Small Plan)">
+              <input type="hidden" name="Contract Length" id="hiddenBillingCycle" value="Monthly">
+              <input type="hidden" name="Selected Services" id="hiddenServices" value="None">
               <input type="hidden" name="Breakdown Summary" id="hiddenSummary" value="">
 
               <div class="field">
@@ -661,7 +654,7 @@ input:focus, textarea:focus {
             <div class="sent" id="sent">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
               <h3>Request sent!</h3>
-              <p>We'll review your plan and email you an exact proposal within a day or two.</p>
+              <p>We'll go through your selection and get in touch to book a short meeting.</p>
             </div>
 
           </div>
@@ -677,32 +670,41 @@ input:focus, textarea:focus {
 // State
 var state = {
   basePlan: 'small',
-  basePrice: 45,
-  cycle: 'monthly',
-  discountRate: 0,
-  addons: {
-    pages: false,
-    qtyPages: 1,
-    lang: false,
-    qtyLang: 1,
-    blog: false,
-    booking: false,
-    shop: false,
-    seo: false,
-    gbp: false,
-    support: false,
-    makeover: false,
-    qtyMakeover: 0,
-    adsSetup: false,
-    adsSingle: false,
-    adsMulti: false
-  }
+  cycle: 'monthly'
 };
 
-function selectBasePlan(plan, price) {
+var planNames = {
+  small: 'Website & Hosting (Small Plan)',
+  medium: 'Growth Bundle (Medium Plan)',
+  large: 'Professional Growth (Large Plan)',
+  makeover: 'Design Makeover (Self-hosted)',
+  none: 'Custom / Add-ons only'
+};
+var cycleNames = { monthly: 'Monthly', annual: '12 months', biennial: '24 months' };
+var noneText = 'None';
+var emptyText = 'No services selected yet';
+var extraPagesText = ' extra pages';
+
+// [checkbox id, label, quantity input id]
+var services = [
+  ['addonPages', 'Extra pages', 'qtyPages'],
+  ['addonLang', 'Extra language', 'qtyLang'],
+  ['addonBlog', 'Blog / news section'],
+  ['addonBooking', 'Booking & scheduling'],
+  ['addonShop', 'Online store'],
+  ['addonSeo', 'Consistent SEO'],
+  ['addonGbp', 'Google Business Profile management'],
+  ['addonSupport', 'Priority support'],
+  ['addonAdsSetup', 'Ads setup & consulting'],
+  ['addonAdsSingle', 'Single channel ads management'],
+  ['addonAdsMulti', 'Omnichannel ads management'],
+  ['addonIt', 'IT consulting & office support'],
+  ['addonAi', 'AI guidance & training']
+];
+
+function selectBasePlan(plan) {
   state.basePlan = plan;
-  state.basePrice = price;
-  
+
   // Update active styling
   document.querySelectorAll('input[name="basePlan"]').forEach(function(radio) {
     var card = radio.closest('.option-box');
@@ -714,7 +716,7 @@ function selectBasePlan(plan, price) {
     }
   });
 
-  // Show/Hide billing cycle options if no monthly plan
+  // Contract length only applies to the monthly packages
   var billingPanel = document.getElementById('billingPanel');
   var makeoverQty = document.getElementById('qtyWrapperMakeover');
   if (plan === 'none' || plan === 'makeover') {
@@ -725,17 +727,13 @@ function selectBasePlan(plan, price) {
     billingPanel.style.pointerEvents = 'auto';
   }
 
-  if (plan === 'makeover') {
-    makeoverQty.style.display = 'flex';
-  } else {
-    makeoverQty.style.display = 'none';
-  }
+  makeoverQty.style.display = (plan === 'makeover') ? 'flex' : 'none';
 
-  // Handle auto inclusion logic
+  // Mark services that are already part of the selected package
   var seoChk = document.getElementById('addonSeo');
   var gbpChk = document.getElementById('addonGbp');
   var supportChk = document.getElementById('addonSupport');
-  
+
   var seoLabel = document.getElementById('labelSeoIncl');
   var gbpLabel = document.getElementById('labelGbpIncl');
   var supportLabel = document.getElementById('labelSupportIncl');
@@ -757,9 +755,8 @@ function selectBasePlan(plan, price) {
   updateCalculator();
 }
 
-function selectCycle(cycle, discount) {
+function selectCycle(cycle) {
   state.cycle = cycle;
-  state.discountRate = discount;
 
   var tabs = document.querySelectorAll('.cycle-tab');
   tabs.forEach(function(tab, i) {
@@ -776,202 +773,59 @@ function selectCycle(cycle, discount) {
 function toggleAddon(addon) {
   var chk = document.getElementById('addon' + addon.charAt(0).toUpperCase() + addon.slice(1));
   var wrapper = document.getElementById('qtyWrapper' + addon.charAt(0).toUpperCase() + addon.slice(1));
-  
-  if (chk.checked) {
-    wrapper.style.display = 'flex';
-  } else {
-    wrapper.style.display = 'none';
-  }
-  
+  wrapper.style.display = chk.checked ? 'flex' : 'none';
   updateCalculator();
 }
 
 function updateCalculator() {
-  // Sync checkbox state
-  state.addons.pages = document.getElementById('addonPages').checked;
-  state.addons.qtyPages = parseInt(document.getElementById('qtyPages').value) || 1;
-  state.addons.lang = document.getElementById('addonLang').checked;
-  state.addons.qtyLang = parseInt(document.getElementById('qtyLang').value) || 1;
-  state.addons.blog = document.getElementById('addonBlog').checked;
-  state.addons.booking = document.getElementById('addonBooking').checked;
-  state.addons.shop = document.getElementById('addonShop').checked;
-  state.addons.adsSetup = document.getElementById('addonAdsSetup').checked;
-  state.addons.adsSingle = document.getElementById('addonAdsSingle').checked;
-  state.addons.adsMulti = document.getElementById('addonAdsMulti').checked;
-  
-  // Auto override based on base plan
-  if (state.basePlan === 'medium' || state.basePlan === 'large') {
-    state.addons.seo = true;
-  } else {
-    state.addons.seo = document.getElementById('addonSeo').checked;
-  }
-  // GBP management is only bundled in Large; on Medium it stays a paid add-on
-  if (state.basePlan === 'large') {
-    state.addons.gbp = true;
-  } else {
-    state.addons.gbp = document.getElementById('addonGbp').checked;
-  }
-  
-  if (state.basePlan === 'large') {
-    state.addons.support = true;
-  } else {
-    state.addons.support = document.getElementById('addonSupport').checked;
-  }
+  var isPackage = state.basePlan !== 'none' && state.basePlan !== 'makeover';
 
-  state.addons.makeover = (state.basePlan === 'makeover');
-  state.addons.qtyMakeover = parseInt(document.getElementById('qtyMakeover').value) || 0;
-
-  var discountRate = 0;
-  if (state.basePlan !== 'none' && state.basePlan !== 'makeover') {
-    discountRate = state.discountRate || 0;
-  }
-
-  // 1. Calculate Base Plan (with discount)
-  var planName = 'Custom / Addons Only';
-  var basePlanCalculatedPrice = 0;
-  
-  if (state.basePlan !== 'none' && state.basePlan !== 'makeover') {
-    if (state.basePlan === 'small') {
-      planName = 'Small Plan';
-      basePlanCalculatedPrice = Math.floor(45 * (1 - discountRate));
-    }
-    if (state.basePlan === 'medium') {
-      planName = 'Medium Plan';
-      basePlanCalculatedPrice = Math.floor(89 * (1 - discountRate));
-    }
-    if (state.basePlan === 'large') {
-      planName = 'Large Plan';
-      basePlanCalculatedPrice = Math.floor(239 * (1 - discountRate));
-    }
-  } else if (state.basePlan === 'makeover') {
-    planName = 'Design Makeover';
-  }
-
-  // 2. Calculate Addons Monthly Cost
-  var monthlyAddonsTotal = 0;
-  var addonsList = [];
-
-  if (state.addons.pages) {
-    var pCost = state.addons.qtyPages * 15;
-    monthlyAddonsTotal += pCost;
-    addonsList.push('Extra Pages (' + state.addons.qtyPages + 'x: +$' + pCost + '/mo)');
-  }
-  if (state.addons.lang && state.basePlan !== 'none' && state.basePlan !== 'makeover') {
-    var lCost = state.addons.qtyLang * (state.basePrice * 0.40);
-    monthlyAddonsTotal += lCost;
-    addonsList.push('Extra Language (' + state.addons.qtyLang + 'x: +$' + lCost.toFixed(0) + '/mo)');
-  }
-  if (state.addons.blog) {
-    monthlyAddonsTotal += 79;
-    addonsList.push('Blog Section (+$79/mo)');
-  }
-  if (state.addons.booking) {
-    monthlyAddonsTotal += 25;
-    addonsList.push('Booking Scheduling (+$25/mo)');
-  }
-  if (state.addons.shop) {
-    monthlyAddonsTotal += 129;
-    addonsList.push('Online Store (+$129/mo)');
-  }
-  if (state.addons.seo && state.basePlan !== 'medium' && state.basePlan !== 'large') {
-    monthlyAddonsTotal += 35;
-    addonsList.push('Consistent SEO (+$35/mo)');
-  }
-  if (state.addons.gbp && state.basePlan !== 'large') {
-    monthlyAddonsTotal += 24;
-    addonsList.push('Google Business Profile management (+$24/mo)');
-  }
-  if (state.addons.support && state.basePlan !== 'large') {
-    monthlyAddonsTotal += 49;
-    addonsList.push('Priority Support (+$49/mo)');
-  }
-  if (state.addons.adsSingle) {
-    monthlyAddonsTotal += 349;
-    addonsList.push('Single Channel Ads Management (+$349/mo)');
-  }
-  if (state.addons.adsMulti) {
-    monthlyAddonsTotal += 699;
-    addonsList.push('Omnichannel Ads Management (+$699/mo)');
-  }
-
-  // 3. Calculate Setup / One-time cost
-  var oneTimeTotal = 0;
-  var setupList = [];
-  if (state.addons.makeover) {
-    var baseMakeover = 189;
-    var extraMakeoverCost = state.addons.qtyMakeover * 49;
-    oneTimeTotal = baseMakeover + extraMakeoverCost;
-    setupList.push('Design Makeover (+$189)');
-    if (state.addons.qtyMakeover > 0) {
-      setupList.push('Extra Makeover Pages (' + state.addons.qtyMakeover + 'x: +$' + extraMakeoverCost + ')');
-    }
-  }
-  if (state.addons.adsSetup) {
-    oneTimeTotal += 490;
-    setupList.push('Ads Setup & Consulting (+$490)');
-  }
-
-  // 4. Calculate Final Totals
-  var discountedAddonsTotal = Math.floor(monthlyAddonsTotal * (1 - discountRate));
-  var finalMonthlyPrice = basePlanCalculatedPrice + discountedAddonsTotal;
-
-  // 5. Update DOM elements
+  var planText = planNames[state.basePlan];
   if (state.basePlan === 'makeover') {
-    document.getElementById('estBasePlan').innerText = planName;
-  } else {
-    document.getElementById('estBasePlan').innerText = planName + ' ($' + basePlanCalculatedPrice.toFixed(0) + '/mo)';
+    var extraMakeover = parseInt(document.getElementById('qtyMakeover').value) || 0;
+    if (extraMakeover > 0) planText += ' + ' + extraMakeover + extraPagesText;
   }
-  
-  var cycleText = 'Monthly';
-  if (state.cycle === 'annual') cycleText = '12 Months (25% off)';
-  if (state.cycle === 'biennial') cycleText = '24 Months (35% off)';
+  var cycleText = isPackage ? cycleNames[state.cycle] : '-';
+
+  // Services included in the package are disabled and left out of the list
+  var selected = [];
+  services.forEach(function(s) {
+    var chk = document.getElementById(s[0]);
+    if (!chk.checked || chk.disabled) return;
+    var label = s[1];
+    if (s[2]) label += ' (' + (parseInt(document.getElementById(s[2]).value) || 1) + 'x)';
+    selected.push(label);
+  });
+
+  // Update sidebar
+  document.getElementById('estBasePlan').innerText = planText;
   document.getElementById('estBillingCycle').innerText = cycleText;
+  document.getElementById('estLineCycle').style.display = isPackage ? 'flex' : 'none';
 
-  document.getElementById('estMonthlyAddons').innerText = '$' + discountedAddonsTotal.toFixed(0) + ' / mo';
-
-  if (oneTimeTotal > 0) {
-    document.getElementById('estLineOneTime').style.display = 'flex';
-    document.getElementById('estOneTimeCost').innerText = '$' + oneTimeTotal.toFixed(0);
-    document.getElementById('totalLineSetup').style.display = 'flex';
-    document.getElementById('totalSetup').innerText = '$' + oneTimeTotal.toFixed(0);
-    document.getElementById('totalLineMonthly').classList.remove('no-border');
+  var list = document.getElementById('estServices');
+  list.innerHTML = '';
+  if (selected.length === 0) {
+    var empty = document.createElement('li');
+    empty.className = 'empty';
+    empty.innerText = emptyText;
+    list.appendChild(empty);
   } else {
-    document.getElementById('estLineOneTime').style.display = 'none';
-    document.getElementById('totalLineSetup').style.display = 'none';
-    document.getElementById('totalLineMonthly').classList.add('no-border');
+    selected.forEach(function(label) {
+      var li = document.createElement('li');
+      li.innerText = label;
+      list.appendChild(li);
+    });
   }
 
-  document.getElementById('totalMonthly').innerHTML = '$' + finalMonthlyPrice.toFixed(0) + '<small>/mo</small>';
-
-  // 6. Update hidden inputs for Formspree submission
-  if (state.basePlan === 'makeover') {
-    document.getElementById('hiddenBasePlan').value = planName;
-  } else {
-    document.getElementById('hiddenBasePlan').value = planName + ' ($' + basePlanCalculatedPrice.toFixed(0) + '/mo)';
-  }
+  // Update hidden inputs for Formspree submission
+  document.getElementById('hiddenBasePlan').value = planText;
   document.getElementById('hiddenBillingCycle').value = cycleText;
-  document.getElementById('hiddenMonthlyAddons').value = addonsList.join(', ') || 'None';
-  document.getElementById('hiddenOneTimeAddons').value = setupList.join(', ') || 'None';
-  document.getElementById('hiddenMonthlyTotal').value = '$' + finalMonthlyPrice.toFixed(0) + '/mo';
-  document.getElementById('hiddenSetupTotal').value = '$' + oneTimeTotal.toFixed(0);
+  document.getElementById('hiddenServices').value = selected.join(', ') || noneText;
 
-  // Compile detailed text breakdown
-  var summaryText = '--- CUSTOM PACKAGE ESTIMATE BUILD ---\n';
-  if (state.basePlan === 'makeover') {
-    summaryText += 'Base Plan: ' + planName + '\n';
-  } else {
-    summaryText += 'Base Plan: ' + planName + ' ($' + basePlanCalculatedPrice.toFixed(0) + '/mo)\n';
-  }
-  summaryText += 'Billing Cycle: ' + cycleText + '\n';
-  summaryText += 'Monthly Add-ons: ' + (addonsList.join(', ') || 'None') + '\n';
-  if (discountRate > 0) {
-    summaryText += 'Discount Applied: ' + (discountRate * 100) + '% off on all monthly fees (including add-ons)\n';
-    summaryText += 'Monthly Add-ons (discounted): $' + discountedAddonsTotal.toFixed(0) + '/mo\n';
-  }
-  summaryText += 'One-time Setup: ' + (setupList.join(', ') || 'None') + '\n';
-  summaryText += '-----------------------------\n';
-  summaryText += 'TOTAL ESTIMATED MONTHLY COST: $' + finalMonthlyPrice.toFixed(0) + '/mo\n';
-  summaryText += 'TOTAL ESTIMATED ONE-TIME COST: $' + oneTimeTotal.toFixed(0) + '\n';
+  var summaryText = '--- SERVICE REQUEST ---\n';
+  summaryText += 'Base Plan: ' + planText + '\n';
+  if (isPackage) summaryText += 'Contract Length: ' + cycleText + '\n';
+  summaryText += 'Services: ' + (selected.join(', ') || noneText) + '\n';
   summaryText += '-----------------------------';
   document.getElementById('hiddenSummary').value = summaryText;
 }

@@ -7,7 +7,9 @@
       "has": [{ "type": "host", "value": "www.webbitar.com" }],
       "destination": "https://webbitar.com/$1",
       "permanent": true
-    }
+    },
+    { "source": "/support", "destination": "/contact", "permanent": true },
+    { "source": "/sv/support", "destination": "/sv/contact", "permanent": true }
   ],
   "headers": [
     {
